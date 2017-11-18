@@ -8,8 +8,7 @@
   	<%@ include file="menu.jspf" %>
   	<div class="container">
   		<br/>
-  		<br/>
-  		<h2>Teste2</h2>
+
   		<p><fmt:message key="br.cefetrj.sisgee.index.msg"/></p>
   	</div>
     <%@ include file="scripts_imports.jspf" %>
