@@ -14,34 +14,43 @@ public class Curso {
 	
 	@Id
 	@GeneratedValue
-	private Long id;
+	private Long idCurso;
 	private String codigoCurso;
 	private String nomeCurso;
-	public Long getId() {
-		return id;
+	
+	public Long getIdCurso() {
+		return idCurso;
 	}
-	public void setId(Long id) {
-		this.id = id;
+
+	public void setIdCurso(Long idCurso) {
+		this.idCurso = idCurso;
 	}
+
 	public String getCodigoCurso() {
 		return codigoCurso;
 	}
+
 	public void setCodigoCurso(String codigoCurso) {
 		this.codigoCurso = codigoCurso;
 	}
+
 	public String getNomeCurso() {
 		return nomeCurso;
 	}
+
 	public void setNomeCurso(String nomeCurso) {
 		this.nomeCurso = nomeCurso;
 	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((idCurso == null) ? 0 : idCurso.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -51,13 +60,14 @@ public class Curso {
 		if (getClass() != obj.getClass())
 			return false;
 		Curso other = (Curso) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (idCurso == null) {
+			if (other.idCurso != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!idCurso.equals(other.idCurso))
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return nomeCurso;
