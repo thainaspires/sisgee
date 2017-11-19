@@ -8,13 +8,12 @@ import javax.persistence.Persistence;
 public class PersistenceManager {
 	
 	private static EntityManagerFactory factory =
-			Persistence.createEntityManagerFactory("CrudOrganizadoPU");
+			Persistence.createEntityManagerFactory("SisgeePU");
 	private static EntityManager manager = factory.createEntityManager();
 	
 	static EntityManager getEntityManager(){
 		return manager;
 	}
-	
 	
 	public static <T> GenericDAO<T> createGenericDAO(Class<T> t) {
 		return new GenericDAO<T>(t, manager);

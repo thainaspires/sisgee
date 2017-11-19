@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.cefetrj.sisgee.view.commands.CadastrarEmpresaCommand;
 import br.cefetrj.sisgee.view.commands.Command;
 import br.cefetrj.sisgee.view.commands.IncluirTermoEstagioCommand;
+import br.cefetrj.sisgee.view.commands.ListarProfessoresOrientadoresCommand;
 
 /**
  * Servlet implementation class FrontControllerServlet
@@ -26,6 +27,7 @@ public class FrontControllerServlet extends HttpServlet {
 	static{
 		comandos.put("IncluirTermoEstagio", new IncluirTermoEstagioCommand());
 		comandos.put("CadastrarEmpresa", new CadastrarEmpresaCommand());
+		comandos.put("ListarProfessoresOrien", new ListarProfessoresOrientadoresCommand());
 	}
 	
 	

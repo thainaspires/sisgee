@@ -23,6 +23,7 @@ public class CadastrarEmpresaCommand implements Command {
 		String agente = req.getParameter("agente");
 		String cnpj = req.getParameter("cnpj");
 		String razaosocial = req.getParameter("razaosocial");
+	
 		String msg = "";
 		if(agente.equals("s")){
 			// utilizar AgenteIntegracaoServices
