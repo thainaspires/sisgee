@@ -15,18 +15,4 @@ public class AgenteIntegracaoServices {
 			PersistenceManager.getTransaction().rollback();
 		}
 	}
-	public static String validaCnpjAgente(String cnpj){
-		String msg = "";
-		if(!(cnpj != null && cnpj.trim().length() > 0)){
-			msg += "CNPJ é um campo obrigatório.";
-		}
-		return msg;
-	}
-	public static String validaRazaoSocialAgente(String razaosocial){
-		String msg = "";
-		if(!(razaosocial != null && razaosocial.trim().length() > 0)){
-			msg += "Razão Social é um campo obrigatório.";
-		}
-		return msg;
-	}
 }

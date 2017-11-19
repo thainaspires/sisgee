@@ -25,11 +25,15 @@ public class CadastrarEmpresaCommand implements Command {
 		String razaosocial = req.getParameter("razaosocial");
 	
 		String msg = "";
+		if(!(cnpj != null && cnpj.trim().length() > 0)){
+			msg += "CNPJ é um campo obrigatório.";
+		}
+		if(!(razaosocial != null && razaosocial.trim().length() > 0)){
+			msg += "Razão Social é um campo obrigatório.";
+		}
 		if(agente.equals("s")){
 			// utilizar AgenteIntegracaoServices
-			msg += AgenteIntegracaoServices.validaCnpjAgente(cnpj);
-			msg += AgenteIntegracaoServices.validaRazaoSocialAgente(razaosocial);
-			if(msg == ""){
+			if(msg.equals("")){
 				AgenteIntegracao agenteintegracao = new AgenteIntegracao();
 				agenteintegracao.setCnpjAgenteIntegracao(cnpj);
 				agenteintegracao.setNomeAgenteIntegracao(razaosocial);
@@ -37,9 +41,7 @@ public class CadastrarEmpresaCommand implements Command {
 			}
 		}else if(agente.equals("n")){
 			// utilizar EmpresaServices
-			msg += EmpresaServices.validaCnpj(cnpj);
-			msg += EmpresaServices.validaRazaoSocial(razaosocial);
-			if(msg == ""){
+			if(msg.equals("")){
 				Empresa empresa = new Empresa();
 				empresa.setCnpjEmpresa(cnpj);
 				empresa.setNomeEmpresa(razaosocial);
@@ -49,7 +51,6 @@ public class CadastrarEmpresaCommand implements Command {
 			//redirect e manda erro
 			msg += "A Opção de Agente de Integração precisa ser sim ou não.";
 		}
-		
 		if(msg != ""){
 			req.setAttribute("msg", msg);
 			req.getRequestDispatcher("/cadastrar_empresa.jsp").forward(req,resp);
