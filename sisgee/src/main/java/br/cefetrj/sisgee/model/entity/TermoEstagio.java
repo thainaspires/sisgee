@@ -44,15 +44,10 @@ public class TermoEstagio {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Aluno aluno;
 	
-	@OneToMany(mappedBy="TermoAditivo")
+	@OneToMany(mappedBy="termoEstagio")
 	private List<TermoAditivo> termosAditivos;
-	
-	/**
-	 * Está faltando colocar que não é obrigatório
-	 * @author: Thainá Pires
-	 */
-	
-	@ManyToMany()
+
+	@ManyToMany(fetch=FetchType.EAGER)
 	private List<ProfessorOrientador> professoresOrientadores;
 	
 	public Long getIdte() {

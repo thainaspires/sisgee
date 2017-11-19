@@ -26,7 +26,7 @@ public class Convenio {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Empresa idEmpresa;
 	
-	@OneToMany(mappedBy="TermoEstagio")
+	@OneToMany(mappedBy="convenio")
 	private List<TermoEstagio> termosEstagios;
 
 	public Long getIdConvenio() {

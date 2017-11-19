@@ -18,7 +18,7 @@ public class ProfessorOrientador {
 	private Long idpo;
 	private String nomepo;
 	
-	@ManyToMany(mappedBy="TermoEstagio") 
+	@ManyToMany(mappedBy="professoresOrientadores") 
 	private List<TermoEstagio> termosEstagio;
 	
 	public Long getIdpo() {

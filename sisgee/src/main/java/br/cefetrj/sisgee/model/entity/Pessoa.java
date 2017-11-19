@@ -19,7 +19,7 @@ public class Pessoa {
 	private Long idPessoa;
 	private String nome;
 	
-	@OneToMany(mappedBy="Aluno")
+	@OneToMany(mappedBy="pessoa")
 	private List<Aluno> alunos;
 	
 	public Long getIdPessoa() {

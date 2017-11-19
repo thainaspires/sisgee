@@ -21,16 +21,12 @@ public class Empresa {
 	private Long idEmpresa;
 	private String cnpjEmpresa;
 	private String nomeEmpresa;
+
 	
-	/**
-	 * Está faltando colocar que não é obrigatório
-	 * @author: Thainá Pires
-	 */
-	
-	@ManyToMany(mappedBy="Empresa")
+	@ManyToMany(mappedBy="empresas")
 	private List<AgenteIntegracao> agentesDeIntegracao;
 	
-	@OneToMany(mappedBy="Convenio")
+	@OneToMany(mappedBy="empresa")
 	private List<Convenio> convenios;
 
 	

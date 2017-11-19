@@ -26,8 +26,8 @@ public class Curso {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Campus campus;
 	
-	@OneToMany(mappedBy="Aluno")
-	private List<TermoEstagio> alunos;
+	@OneToMany(mappedBy="curso")
+	private List<Aluno> alunos;
 	
 	public Long getIdCurso() {
 		return idCurso;

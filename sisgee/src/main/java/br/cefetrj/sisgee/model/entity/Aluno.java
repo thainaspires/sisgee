@@ -21,11 +21,14 @@ public class Aluno {
 	private Long idAluno;
 	private String matricula;
 	
-	@OneToMany(mappedBy="TermoEstagio")
+	@OneToMany(mappedBy="aluno")
 	private List<TermoEstagio> termosEstagios;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Pessoa pessoa;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Curso curso;
 	
 	public Long getIdAluno() {
 		return idAluno;

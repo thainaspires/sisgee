@@ -3,6 +3,7 @@ package br.cefetrj.sisgee.model.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -20,7 +21,7 @@ public class AgenteIntegracao {
 	private String cnpjAgenteIntegracao;
 	private String nomeAgenteIntegracao;
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	private List<Empresa> empresas;
 	
 	public Long getIdAgenteIntegracao() {

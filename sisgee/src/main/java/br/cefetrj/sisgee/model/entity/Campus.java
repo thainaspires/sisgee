@@ -20,7 +20,7 @@ public class Campus {
 	private Long idCampus;
 	private String nomeCampus;
 	
-	@OneToMany(mappedBy="Curso")
+	@OneToMany(mappedBy="campus")
 	private List<Curso> cursos;
 
 	@Override
