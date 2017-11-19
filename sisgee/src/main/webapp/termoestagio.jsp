@@ -17,47 +17,48 @@
 			<div class="container">
 				<form>
 					<fieldset>
-						<legend id="title-te">Dados da Empresa Conveniada</legend>
+						<legend id="title-te"><fmt:message key="br.cefetrj.sisgee.termo_estagio.titulo"/></legend>
 						<div class="row">
 							<div class="form-group col-md-12">
-								<label for="numero_convenio">Número do Convênio</label>
+								<label for="numero_convenio"><fmt:message key="br.cefetrj.sisgee.termo_estagio.numconvenio"></fmt:message></label>
 								<input type="text" class="form-control" name="numero_convenio" id="numero_convenio">
 							</div>
 							<div class="form-group col-md-12">
 								<div>
-									<label for="isn_obrigatorio">É agente de integração?</label>
+									<label for="isn_obrigatorio"><fmt:message key="br.cefetrj.sisgee.termo_estagio.is_agente"></fmt:message></label>
 									<br/>
 									<label class="form-check-label">
 									  <input class="form-check-input" type="radio" name="exampleRadios" checked onclick='eagente("sim");'/>
-									  Sim
+									  <fmt:message key="br.cefetrj.sisgee.termo_estagio.is_agentesim"></fmt:message>
 									</label>
 									<label class="form-check-label">
 									  <input class="form-check-input" type="radio" name="exampleRadios" onclick='eagente("nao");'/>
-									  Não
+									  <fmt:message key="br.cefetrj.sisgee.termo_estagio.is_agentenao"></fmt:message>
 									</label>
 								</div>
 							</div>
 								<div id="agente1" class="col-md-12">
 									<div class="form-group col-md-4">
-										<label for="razao_social">Razão Social</label>
+										<label for="razao_social"><fmt:message key="br.cefetrj.sisgee.termo_estagio.razao"></fmt:message></label>
 										<select style="float:left;" id="razao_social" class="form-control">
 									  		<c:forEach items="${agentesIntegracao}" var="agentesIntegracao">
 												<option value="${ agentesIntegracao.idAgenteIntegracao }" ${ param.agentesIntegracao eq agentesIntegracao.idAgenteIntegracao ? "selected" : "" } > ${ agentesIntegracao.nomeAgenteIntegracao }</option>
 											</c:forEach>						  
 										</select>	
-										<a href="cadastrar_empresa.jsp" style="float:right;">Cadastrar empresa</a>							
+
+										<a href="cadastrar_empresa.jsp" style="float:right;"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cadastro_empresa"></fmt:message></a>							
 									</div>									
 									<div class="form-group col-md-6" style="display:inline-block;">
-										<label for="cnpj_empresa_ligada">CNPJ da Empresa Ligada ao Agente de Integração</label>
+										<label for="cnpj_empresa_ligada"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cnpj_empresa_ligada"></fmt:message></label>
 										<div class="input-group">
 											<input type="text" class="form-control" name="cnpj_empresa_ligada" id="cnpj_empresa_ligada">	
 											<span class="input-group-btn">
-												<button class="btn btn-primary" type="button">Buscar</span></button>
+												<button class="btn btn-primary" type="button"><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></button>
 											</span>
 										</div>
 									</div>
 									<div class="form-group col-md-6" style="display:inline-block;">
-										<label for="razao_social_empresa_ligada">Razão Social da Empresa Ligada ao Agente de Integração</label>
+										<label for="razao_social_empresa_ligada"><fmt:message key="br.cefetrj.sisgee.termo_estagio.razao_empresa_ligada"></fmt:message></label>
 										<!--<input class="form-control" name="razao_social_empresa_ligada" id="razao_social_empresa_ligada"/>-->
 										<div class="input-group">
 											<input type="text" class="form-control" name="razao_social_empresa_ligada" id="razao_social_empresa_ligada" disabled="disabled">	
@@ -70,16 +71,16 @@
 								
 								<div id="agente2" class="col-md-12" style="display:none;">									
 									<div class="form-group col-md-6">
-										<label for="cnpj_empresa_ligada">CNPJ</label>
+										<label for="cnpj_empresa_ligada"><fmt:message key="br.cefetrj.sisgee.termo_estagio"></fmt:message></label>
 										<div class="input-group">
 											<input type="text" class="form-control" name="cnpj_empresa" id="cnpj_empresa">	
 											<span class="input-group-btn">
-												<button class="btn btn-primary" type="button">Buscar</span></button>
+												<button class="btn btn-primary" type="button"><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></button>
 											</span>
 										</div>
 									</div>
 									<div class="form-group col-md-6">
-										<label for="razao_social_empresa_ligada">Razão Social</label>
+										<label for="razao_social_empresa_ligada"><fmt:message key="br.cefetrj.sisgee.termo_estagio.razao"></fmt:message></label>
 										<div class="input-group">
 											<input type="text" class="form-control" name="razao_social_empresa" id="razao_social_empresa" disabled="disabled">	
 											<span class="input-group-btn">
@@ -92,94 +93,94 @@
 					</fieldset>
 					<hr />
 					<fieldset>
-						<legend>Dados do Aluno</legend>
+						<legend><fmt:message key="br.cefetrj.sisgee.termo_estagio.dadosaluno"></fmt:message></legend>
 						<div class="row">
 							<div class="form-group col-md-4" style="display:inline-block;">
-								<label for="matricula">Matrícula</label>
+								<label for="matricula"><fmt:message key="br.cefetrj.sisgee.termo_estagio.matricula"></fmt:message></label>
 								<div class="input-group">
 									<input type="text" class="form-control" name="matricula" id="matricula">	
 									<span class="input-group-btn">
-										<button class="btn btn-primary" type="button">Buscar</span></button>
+										<button class="btn btn-primary" type="button"><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span></button>
 									</span>
 								</div>
 							</div>
 
 							<div class="form-group col-md-8">
-								<label for="nome_aluno">Nome</label>
+								<label for="nome_aluno"><fmt:message key="br.cefetrj.sisgee.termo_estagio.nomealuno"></fmt:message></label>
 								<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled">
 							</div>							
 							<div class="form-group col-md-6">
-								<label for="curso">Curso</label>
+								<label for="curso"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cursoaluno"></fmt:message></label>
 								<input type="text" class="form-control" name="curso" id="curso" disabled="disabled">
 							</div>
 
 							<div class="form-group col-md-6">
-								<label for="unidade">Unidade</label>
+								<label for="unidade"><fmt:message key="br.cefetrj.sisgee.termo_estagio.unidadealuno"></fmt:message></label>
 								<input type="text" class="form-control" name="unidade" id="unidade" disabled="disabled">
 							</div>
 						</div>
 					</fieldset>
 					<hr />
 					<fieldset>
-						<legend>Vigência do Estágio</legend>
+						<legend><fmt:message key="br.cefetrj.sisgee.termo_estagio.vigencia_estagio"></fmt:message></legend>
 						<div class="row">
 							<div class="form-group col-md-3">
-								<label for="data_inicio">Data de Início</label>
+								<label for="data_inicio"><fmt:message key="br.cefetrj.sisgee.termo_estagio.data_inicio"></fmt:message></label>
 								<input type="date" class="form-control" name="data_inicio" id="data_inicio">
 							</div>
 
 							<div class="form-group col-md-3">
-								<label for="data_termino">Data de Término</label>
+								<label for="data_termino"><fmt:message key="br.cefetrj.sisgee.termo_estagio.data_fim"></fmt:message></label>
 								<input type="date" class="form-control" name="data_termino" id="data_termino">
 							</div>
 						</div>
 					</fieldset>
 					<hr />
 					<fieldset>
-						<legend>Carga Horária do Aluno</legend>
+						<legend><fmt:message key="br.cefetrj.sisgee.termo_estagio.ch_aluno"></fmt:message></legend>
 						<div class="row">		
 							<div class="form-group col-md-3">
-								<label for="horas_dia">Horas por dia</label>
+								<label for="horas_dia"><fmt:message key="br.cefetrj.sisgee.termo_estagio.horas_por_dia"></fmt:message></label>
 								<input type="number" class="form-control" name="horas_dia" id="horas_dia" min="0">
 							</div>
 						</div>
 					</fieldset>
 					<hr />	
 					<fieldset>
-						<legend>Valor da Bolsa de Estágio</legend>
+						<legend><fmt:message>br.cefetrj.sisgee.termo_estagio.valor_estagio</fmt:message></legend>
 						<div class="row">			
 							<div class="form-group col-md-3">
-								<label for="valor_bolsa">Valor</label>
+								<label for="valor_bolsa"><fmt:message key="br.cefetrj.sisgee.termo_estagio.valor"></fmt:message></label>
 								<input type="number" class="form-control" name="valor_bolsa" id="valor_bolsa" min="0">
 							</div>
 						</div>
 					</fieldset>
 					<hr />
 					<fieldset>
-						<legend>Local do Estágio</legend>
+						<legend><fmt:message key="br.cefetrj.sisgee.termo_estagio.local_estagio"></fmt:message></legend>
 						<div class="row">						
 							<div class="form-group col-md-9">
-								<label for="endereco">Endereço</label>
+								<label for="endereco"><fmt:message key="br.cefetrj.sisgee.termo_estagio.endereco"></fmt:message></label>
 								<input type="text" class="form-control" name="endereco" id="endereco">
 							</div>
 
 							<div class="form-group col-md-3">
-								<label for="compelemento">Complemento</label>
+								<label for="compelemento"><fmt:message key="br.cefetrj.sisgee.termo_estagio.complemento"></fmt:message></label>
 								<input type="text" class="form-control" name="compelemento" id="compelemento">
 							</div>
 
 							<div class="form-group col-md-3">
-								<label for="bairro">Bairro</label>
+								<label for="bairro"><fmt:message key="br.cefetrj.sisgee.termo_estagio.bairro"></fmt:message></label>
 								<input type="text" class="form-control" name="bairro" id="bairro">
 							</div>
 
 							<div class="form-group col-md-3">
-								<label for="cidade">Cidade</label>
+								<label for="cidade"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cidade"></fmt:message></label>
 								<input type="text" class="form-control" name="cidade" id="cidade">
 							</div>
 
 							<div class="form-group col-md-4">
-								<label for="estado">Estado</label>
+								<label for="estado"><fmt:message key="br.cefetrj.sisgee.termo_estagio.estado"></fmt:message></label>
 								<select class="form-control" class="form-control" name="estado" id="estado">
 									<option value="AC">Acre</option>
 									<option value="AL">Alagoas</option>
@@ -212,7 +213,7 @@
 							</div>
 
 							<div class="form-group col-md-2">
-								<label for="cep">CEP</label>
+								<label for="cep"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cep"></fmt:message></label>
 								<input type="text" class="form-control" name="cep" id="cep">
 							</div>
 						</div>
@@ -223,7 +224,7 @@
 						<div class="row">
 							<div class="form-group col-md-12">
 								<div>
-									<label for="isn_obrigatorio">O Estágio é Obrigatório</label>
+									<label for="isn_obrigatorio"><fmt:message key="br.cefetrj.sisgee.termo_estagio.prof_orientador"></fmt:message></label>
 									<br/>
 									<label class="form-check-label">
 									  <input class="form-check-input" type="radio" name="isn_obrigatorio" checked value="s"/>
@@ -237,7 +238,7 @@
 							</div>
 
 							<div class="form-group col-md-9">
-								<label for="professor_orientador">Professor Orientador</label>
+								<label for="professor_orientador"><fmt:message key="br.cefetrj.sisgee.termo_estagio.prof_orientador"></fmt:message></label>
 								<select class="form-control" class="form-control" name="professor_orientador" id="professor_orientador">
 									<c:forEach items="${professoresOrientadores}" var="professoresOrientadores">
 										<option value="${ professoresOrientadores.idpo }" ${ param.professoresOrientadores eq professoresOrientadores.idpo ? "selected" : "" } > ${ professoresOrientadores.nomepo }</option>
@@ -246,7 +247,8 @@
 							</div>
 						</div>
 					</fieldset>
-					<input type="submit" id="btn-enviar" class="btn btn-active" name="enviar" value="Enviar">
+					<button type="submit" class="btn btn-active" name="cancelar"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cancelar"></fmt:message></button>
+					<input type="submit" id="btn-enviar" class="btn btn-primary" name="enviar" value="<fmt:message key='br.cefetrj.sisgee.termo_estagio.enviar'></fmt:message>">
 				</form>
 			</div>			
 		</form>
