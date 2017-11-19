@@ -3,9 +3,11 @@ package br.cefetrj.sisgee.model.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class ProfessorOrientador {
@@ -18,8 +20,8 @@ public class ProfessorOrientador {
 	private Long idpo;
 	private String nomepo;
 	
-	@ManyToMany(mappedBy="professoresOrientadores") 
-	private List<TermoEstagio> termosEstagio;
+	@ManyToOne(fetch=FetchType.EAGER)
+	private TermoEstagio termoestagio;
 	
 	public Long getIdpo() {
 		return idpo;
@@ -58,7 +60,7 @@ public class ProfessorOrientador {
 	}
 	@Override
 	public String toString() {
-		return "ProfessorOrientador [nomepo=" + nomepo + "]";
+		return nomepo;
 	}
 	
 	

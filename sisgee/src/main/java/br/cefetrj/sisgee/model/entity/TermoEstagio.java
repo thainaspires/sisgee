@@ -46,8 +46,8 @@ public class TermoEstagio {
 	
 	@OneToMany(mappedBy="termoEstagio")
 	private List<TermoAditivo> termosAditivos;
-
-	@ManyToMany(fetch=FetchType.EAGER)
+	
+	@OneToMany(mappedBy="termoestagio")
 	private List<ProfessorOrientador> professoresOrientadores;
 	
 	public Long getIdte() {

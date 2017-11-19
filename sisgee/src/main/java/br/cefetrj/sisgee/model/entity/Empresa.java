@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -22,14 +23,12 @@ public class Empresa {
 	private String cnpjEmpresa;
 	private String nomeEmpresa;
 
-	
-	@ManyToMany(mappedBy="empresas")
-	private List<AgenteIntegracao> agentesDeIntegracao;
+	@OneToMany(mappedBy="empresa")
+	private List<AgenteIntegracao> agentesIntegracao;
 	
 	@OneToMany(mappedBy="empresa")
 	private List<Convenio> convenios;
 
-	
 	public Long getIdEmpresa() {
 		return idEmpresa;
 	}

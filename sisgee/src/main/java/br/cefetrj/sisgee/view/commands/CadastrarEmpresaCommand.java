@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.cefetrj.sisgee.control.AgenteIntegracaoServices;
 import br.cefetrj.sisgee.control.EmpresaServices;
+import br.cefetrj.sisgee.model.dao.GenericDAO;
+import br.cefetrj.sisgee.model.dao.PersistenceManager;
 import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
+import br.cefetrj.sisgee.model.entity.Curso;
 import br.cefetrj.sisgee.model.entity.Empresa;
 
 /**
@@ -42,6 +45,10 @@ public class CadastrarEmpresaCommand implements Command {
 		}else if(agente.equals("n")){
 			// utilizar EmpresaServices
 			if(msg.equals("")){
+				Curso curso = new Curso();
+				curso.setCodigoCurso("codigo001");
+				curso.setNomeCurso("ciencia da computacao");
+				
 				Empresa empresa = new Empresa();
 				empresa.setCnpjEmpresa(cnpj);
 				empresa.setNomeEmpresa(razaosocial);

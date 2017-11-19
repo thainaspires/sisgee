@@ -50,7 +50,7 @@
 			</fieldset>
 			<hr/>
 			<div class="btn-group" id="btn-group" role="group" aria-label="Basic example">
-				<button type="button"  class="btn btn-active">Cancelar</button>
+				<button type="button" class="btn btn-active" onClick="history.back()">Cancelar</button>
 				<input type="submit" class="btn btn-primary" name="enviar" value="Enviar">
 			</div>
 		</form>

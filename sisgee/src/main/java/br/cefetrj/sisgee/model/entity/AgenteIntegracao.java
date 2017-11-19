@@ -5,8 +5,10 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 /**
  * @author Thaina Pires
@@ -21,8 +23,8 @@ public class AgenteIntegracao {
 	private String cnpjAgenteIntegracao;
 	private String nomeAgenteIntegracao;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
-	private List<Empresa> empresas;
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Empresa empresa;
 	
 	public Long getIdAgenteIntegracao() {
 		return idAgenteIntegracao;

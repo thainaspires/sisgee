@@ -24,7 +24,7 @@ public class Convenio {
 	private String numeroConvenio;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	private Empresa idEmpresa;
+	private Empresa empresa;
 	
 	@OneToMany(mappedBy="convenio")
 	private List<TermoEstagio> termosEstagios;
@@ -45,13 +45,6 @@ public class Convenio {
 		this.numeroConvenio = numeroConvenio;
 	}
 
-	public Empresa getIdEmpresa() {
-		return idEmpresa;
-	}
-
-	public void setIdEmpresa(Empresa idEmpresa) {
-		this.idEmpresa = idEmpresa;
-	}
 
 	@Override
 	public int hashCode() {
@@ -77,10 +70,5 @@ public class Convenio {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
 	
 }
