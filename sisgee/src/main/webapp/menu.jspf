@@ -10,7 +10,7 @@
         <a class="nav-link" href="index.jsp"><fmt:message key="br.cefetrj.sisgee.menu.mn_home"/><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="termoestagio.jsp"><fmt:message key="br.cefetrj.sisgee.menu.registro_termo"/><span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="FrontControllerServlet?action=ListarProfessoresOrien"><fmt:message key="br.cefetrj.sisgee.menu.registro_termo"/><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item ">
         <a class="nav-link" href="termoaditivo.jsp"><fmt:message key="br.cefetrj.sisgee.menu.registro_aditivo"/><span class="sr-only">(current)</span></a>

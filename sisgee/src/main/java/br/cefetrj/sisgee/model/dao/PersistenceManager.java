@@ -15,7 +15,6 @@ public class PersistenceManager {
 		return manager;
 	}
 	
-	
 	public static <T> GenericDAO<T> createGenericDAO(Class<T> t) {
 		return new GenericDAO<T>(t, manager);
 	}
