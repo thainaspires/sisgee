@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 /**
@@ -24,8 +25,10 @@ public class Convenio {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Empresa idEmpresa;
-
 	
+	@OneToMany(mappedBy="TermoEstagio")
+	private List<TermoEstagio> termosEstagios;
+
 	public Long getIdConvenio() {
 		return idConvenio;
 	}

@@ -1,8 +1,11 @@
 package br.cefetrj.sisgee.model.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author Thaina Pires
@@ -15,6 +18,10 @@ public class Pessoa {
 	@GeneratedValue
 	private Long idPessoa;
 	private String nome;
+	
+	@OneToMany(mappedBy="Aluno")
+	private List<Aluno> alunos;
+	
 	public Long getIdPessoa() {
 		return idPessoa;
 	}

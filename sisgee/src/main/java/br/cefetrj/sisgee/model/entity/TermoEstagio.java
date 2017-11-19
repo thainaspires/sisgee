@@ -1,10 +1,15 @@
 package br.cefetrj.sisgee.model.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class TermoEstagio {
@@ -14,24 +19,41 @@ public class TermoEstagio {
 	 */
 	@Id
 	@GeneratedValue 
-	Long idte;
-	Date datainiciote;
-	Date datafimte;
-	Date datarescisaote;
-	String situacaote;
-	Integer cargahorariate;
-	Float valorbolsa;
-	String enderecote;
-	String numeroenderecote;
-	String complementoenderecote;
-	String bairroenderecote;
-	String cependerecote;
-	String cidadeenderecote;
-	String estadoenderecote;
-	Integer eestagioobrigatorio;
-	Long idprofessororientador;
-	Long idaluno;
-	Long idconvenio;
+	private Long idte;
+	private Date datainiciote;
+	private Date datafimte;
+	private Date datarescisaote;
+	private String situacaote;
+	private Integer cargahorariate;
+	private Float valorbolsa;
+	private String enderecote;
+	private String numeroenderecote;
+	private String complementoenderecote;
+	private String bairroenderecote;
+	private String cependerecote;
+	private String cidadeenderecote;
+	private String estadoenderecote;
+	private Integer estagioobrigatorio;
+	private Long idprofessororientador;
+	private Long idaluno;
+	private Long idconvenio;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Convenio convenio;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Aluno aluno;
+	
+	@OneToMany(mappedBy="TermoAditivo")
+	private List<TermoAditivo> termosAditivos;
+	
+	/**
+	 * Está faltando colocar que não é obrigatório
+	 * @author: Thainá Pires
+	 */
+	
+	@ManyToMany()
+	private List<ProfessorOrientador> professoresOrientadores;
 	
 	public Long getIdte() {
 		return idte;
@@ -118,10 +140,10 @@ public class TermoEstagio {
 		this.estadoenderecote = estadoenderecote;
 	}
 	public Integer getEestagioobrigatorio() {
-		return eestagioobrigatorio;
+		return estagioobrigatorio;
 	}
 	public void setEestagioobrigatorio(Integer eestagioobrigatorio) {
-		this.eestagioobrigatorio = eestagioobrigatorio;
+		this.estagioobrigatorio = eestagioobrigatorio;
 	}
 	public Long getIdprofessororientador() {
 		return idprofessororientador;

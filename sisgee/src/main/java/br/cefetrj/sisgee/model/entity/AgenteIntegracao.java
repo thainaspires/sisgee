@@ -1,8 +1,11 @@
 package br.cefetrj.sisgee.model.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  * @author Thaina Pires
@@ -16,6 +19,10 @@ public class AgenteIntegracao {
 	private Long idAgenteIntegracao;
 	private String cnpjAgenteIntegracao;
 	private String nomeAgenteIntegracao;
+	
+	@ManyToMany
+	private List<Empresa> empresas;
+	
 	public Long getIdAgenteIntegracao() {
 		return idAgenteIntegracao;
 	}

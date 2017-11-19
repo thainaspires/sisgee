@@ -1,8 +1,13 @@
 package br.cefetrj.sisgee.model.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * @author Thaina Pires
@@ -17,6 +22,12 @@ public class Curso {
 	private Long idCurso;
 	private String codigoCurso;
 	private String nomeCurso;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Campus campus;
+	
+	@OneToMany(mappedBy="Aluno")
+	private List<TermoEstagio> alunos;
 	
 	public Long getIdCurso() {
 		return idCurso;

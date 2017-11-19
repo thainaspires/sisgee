@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -20,6 +21,14 @@ public class Empresa {
 	private Long idEmpresa;
 	private String cnpjEmpresa;
 	private String nomeEmpresa;
+	
+	/**
+	 * Está faltando colocar que não é obrigatório
+	 * @author: Thainá Pires
+	 */
+	
+	@ManyToMany(mappedBy="Empresa")
+	private List<AgenteIntegracao> agentesDeIntegracao;
 	
 	@OneToMany(mappedBy="Convenio")
 	private List<Convenio> convenios;

@@ -1,6 +1,11 @@
 package br.cefetrj.sisgee.model.entity;
 
-import javax.persistence.*;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class ProfessorOrientador {
@@ -10,8 +15,11 @@ public class ProfessorOrientador {
 	 */
 	@Id
 	@GeneratedValue
-	Long idpo;
-	String nomepo;
+	private Long idpo;
+	private String nomepo;
+	
+	@ManyToMany(mappedBy="TermoEstagio") 
+	private List<TermoEstagio> termosEstagio;
 	
 	public Long getIdpo() {
 		return idpo;

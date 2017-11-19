@@ -3,8 +3,10 @@ package br.cefetrj.sisgee.model.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * @author Nathalia Gomes
@@ -17,7 +19,6 @@ public class TermoAditivo {
 	@Id
 	@GeneratedValue
 	private Long idTA;
-	
 	private Date dataFimTA;
 	private Integer cargaHorariaTA;
 	private Float valorBolsaTA;
@@ -28,6 +29,9 @@ public class TermoAditivo {
 	private String cepEnderecoTA;
 	private String cidadeEnderecoTA;
 	private String estadoEnderecoTA;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	private TermoEstagio termoEstagio;
 	
 	public Long getIdTA() {
 		return idTA;
