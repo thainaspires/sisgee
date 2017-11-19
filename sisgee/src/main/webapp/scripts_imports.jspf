@@ -6,3 +6,26 @@
     <script src="js/bootstrap-datepicker.min.js" ></script>
     <script src="locales/bootstrap-datepicker.pt-BR.min.js" ></script>
     
+    <script>
+		
+    	function eagente(tipo){
+			if(tipo=="sim"){
+				document.getElementById("agente1").style.display="block";
+				document.getElementById("agente2").style.display="none";
+				
+				document.getElementById("cnpj_empresa").setAttribute("disabled","disabled");
+				
+				document.getElementById("cnpj_empresa_ligada").removeAttribute("disabled");
+				document.getElementById("razao_social_empresa_ligada").removeAttribute("disabled");
+				
+			} else {
+				document.getElementById("agente1").style.display="none";
+				document.getElementById("agente2").style.display="inherit";
+				
+				document.getElementById("cnpj_empresa_ligada").setAttribute("disabled","disabled");
+				
+				document.getElementById("cnpj_empresa").removeAttribute("disabled");
+				
+			}
+		}
+	</script>

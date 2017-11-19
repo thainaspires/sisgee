@@ -1,0 +1,43 @@
+/*TermoEstagio*/
+/*@author: Alexander Hugo*/
+
+.btn-plus{
+	font-weight: bolder;
+}
+
+#title-te{
+	text-align: center;
+	font-size: 36px;
+	margin: 25px 0;
+}
+
+#btn-enviar, #btn-group{
+	float: right !important;
+}
+
+.title-func{
+	margin-top: 15px;
+}
+
+.checkbox{
+	float: left !important;
+	margin-left: 25px;
+}
+
+.checkbox:first-child{
+	margin-left: 0;
+}
+
+.checkbox input{
+	margin: 10px 5px 5px 5px;
+}
+
+#recisaogrupo{
+	background: #e0e0e0; 
+	padding: 50px 0; 
+	border-radius: 5px;">
+}
+
+#radioestagio div label{
+	margin-right: 20px;
+}

@@ -16,103 +16,92 @@ public class TermoAditivo {
 	
 	@Id
 	@GeneratedValue
-	private Long idTA;
+	private Long idta;
 	
-	private Date dataFimTA;
-	private Integer cargaHorariaTA;
-	private Float valorBolsaTA;
-	private String enderecoTA;
-	private String numeroEnderecoTA;
-	private String complementoEnderecoTA;
-	private String bairroEnderecoTA;
-	private String cepEnderecoTA;
-	private String cidadeEnderecoTA;
-	private String estadoEnderecoTA;
+	private Date dataFimta;
+	private Integer cargaHorariata;
+	private Float valorBolsata;
+	private String enderecota;
+	private String numeroEnderecota;
+	private String complementoEnderecota;
+	private String bairroEnderecota;
+	private String cepEnderecota;
+	private String cidadeEnderecota;
+	private String estadoEnderecota;
 	
-	public Long getIdTA() {
-		return idTA;
+	public Long getIdta() {
+		return idta;
 	}
-	public void setIdTA(Long idTA) {
-		this.idTA = idTA;
+	public void setIdta(Long idta) {
+		this.idta = idta;
 	}
-	public Date getDataFimTA() {
-		return dataFimTA;
+	public Date getDataFimta() {
+		return dataFimta;
 	}
-	public void setDataFimTA(Date dataFimTA) {
-		this.dataFimTA = dataFimTA;
+	public void setDataFimta(Date dataFimta) {
+		this.dataFimta = dataFimta;
 	}
-	public Integer getCargaHorariaTA() {
-		return cargaHorariaTA;
+	public Integer getCargaHorariata() {
+		return cargaHorariata;
 	}
-	public void setCargaHorariaTA(Integer cargaHorariaTA) {
-		this.cargaHorariaTA = cargaHorariaTA;
+	public void setCargaHorariata(Integer cargaHorariata) {
+		this.cargaHorariata = cargaHorariata;
 	}
-	public Float getValorBolsaTA() {
-		return valorBolsaTA;
+	public Float getValorBolsata() {
+		return valorBolsata;
 	}
-	public void setValorBolsaTA(Float valorBolsaTA) {
-		this.valorBolsaTA = valorBolsaTA;
+	public void setValorBolsata(Float valorBolsata) {
+		this.valorBolsata = valorBolsata;
 	}
-	public String getEnderecoTA() {
-		return enderecoTA;
+	public String getEnderecota() {
+		return enderecota;
 	}
-	public void setEnderecoTA(String enderecoTA) {
-		this.enderecoTA = enderecoTA;
+	public void setEnderecota(String enderecota) {
+		this.enderecota = enderecota;
 	}
-	public String getNumeroEnderecoTA() {
-		return numeroEnderecoTA;
+	public String getNumeroEnderecota() {
+		return numeroEnderecota;
 	}
-	public void setNumeroEnderecoTA(String numeroEnderecoTA) {
-		this.numeroEnderecoTA = numeroEnderecoTA;
+	public void setNumeroEnderecota(String numeroEnderecota) {
+		this.numeroEnderecota = numeroEnderecota;
 	}
-	public String getComplementoEnderecoTA() {
-		return complementoEnderecoTA;
+	public String getComplementoEnderecota() {
+		return complementoEnderecota;
 	}
-	public void setComplementoEnderecoTA(String complementoEnderecoTA) {
-		this.complementoEnderecoTA = complementoEnderecoTA;
+	public void setComplementoEnderecota(String complementoEnderecota) {
+		this.complementoEnderecota = complementoEnderecota;
 	}
-	public String getBairroEnderecoTA() {
-		return bairroEnderecoTA;
+	public String getBairroEnderecota() {
+		return bairroEnderecota;
 	}
-	public void setBairroEnderecoTA(String bairroEnderecoTA) {
-		this.bairroEnderecoTA = bairroEnderecoTA;
+	public void setBairroEnderecota(String bairroEnderecota) {
+		this.bairroEnderecota = bairroEnderecota;
 	}
-	public String getCepEnderecoTA() {
-		return cepEnderecoTA;
+	public String getCepEnderecota() {
+		return cepEnderecota;
 	}
-	public void setCepEnderecoTA(String cepEnderecoTA) {
-		this.cepEnderecoTA = cepEnderecoTA;
+	public void setCepEnderecota(String cepEnderecota) {
+		this.cepEnderecota = cepEnderecota;
 	}
-	public String getCidadeEnderecoTA() {
-		return cidadeEnderecoTA;
+	public String getCidadeEnderecota() {
+		return cidadeEnderecota;
 	}
-	public void setCidadeEnderecoTA(String cidadeEnderecoTA) {
-		this.cidadeEnderecoTA = cidadeEnderecoTA;
+	public void setCidadeEnderecota(String cidadeEnderecota) {
+		this.cidadeEnderecota = cidadeEnderecota;
 	}
-	public String getEstadoEnderecoTA() {
-		return estadoEnderecoTA;
+	public String getEstadoEnderecota() {
+		return estadoEnderecota;
 	}
-	public void setEstadoEnderecoTA(String estadoEnderecoTA) {
-		this.estadoEnderecoTA = estadoEnderecoTA;
+	public void setEstadoEnderecota(String estadoEnderecota) {
+		this.estadoEnderecota = estadoEnderecota;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((bairroEnderecoTA == null) ? 0 : bairroEnderecoTA.hashCode());
-		result = prime * result + ((cargaHorariaTA == null) ? 0 : cargaHorariaTA.hashCode());
-		result = prime * result + ((cepEnderecoTA == null) ? 0 : cepEnderecoTA.hashCode());
-		result = prime * result + ((cidadeEnderecoTA == null) ? 0 : cidadeEnderecoTA.hashCode());
-		result = prime * result + ((complementoEnderecoTA == null) ? 0 : complementoEnderecoTA.hashCode());
-		result = prime * result + ((dataFimTA == null) ? 0 : dataFimTA.hashCode());
-		result = prime * result + ((enderecoTA == null) ? 0 : enderecoTA.hashCode());
-		result = prime * result + ((estadoEnderecoTA == null) ? 0 : estadoEnderecoTA.hashCode());
-		result = prime * result + ((idTA == null) ? 0 : idTA.hashCode());
-		result = prime * result + ((numeroEnderecoTA == null) ? 0 : numeroEnderecoTA.hashCode());
-		result = prime * result + ((valorBolsaTA == null) ? 0 : valorBolsaTA.hashCode());
+		result = prime * result + ((idta == null) ? 0 : idta.hashCode());
 		return result;
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -122,71 +111,18 @@ public class TermoAditivo {
 		if (getClass() != obj.getClass())
 			return false;
 		TermoAditivo other = (TermoAditivo) obj;
-		if (bairroEnderecoTA == null) {
-			if (other.bairroEnderecoTA != null)
+		if (idta == null) {
+			if (other.idta != null)
 				return false;
-		} else if (!bairroEnderecoTA.equals(other.bairroEnderecoTA))
-			return false;
-		if (cargaHorariaTA == null) {
-			if (other.cargaHorariaTA != null)
-				return false;
-		} else if (!cargaHorariaTA.equals(other.cargaHorariaTA))
-			return false;
-		if (cepEnderecoTA == null) {
-			if (other.cepEnderecoTA != null)
-				return false;
-		} else if (!cepEnderecoTA.equals(other.cepEnderecoTA))
-			return false;
-		if (cidadeEnderecoTA == null) {
-			if (other.cidadeEnderecoTA != null)
-				return false;
-		} else if (!cidadeEnderecoTA.equals(other.cidadeEnderecoTA))
-			return false;
-		if (complementoEnderecoTA == null) {
-			if (other.complementoEnderecoTA != null)
-				return false;
-		} else if (!complementoEnderecoTA.equals(other.complementoEnderecoTA))
-			return false;
-		if (dataFimTA == null) {
-			if (other.dataFimTA != null)
-				return false;
-		} else if (!dataFimTA.equals(other.dataFimTA))
-			return false;
-		if (enderecoTA == null) {
-			if (other.enderecoTA != null)
-				return false;
-		} else if (!enderecoTA.equals(other.enderecoTA))
-			return false;
-		if (estadoEnderecoTA == null) {
-			if (other.estadoEnderecoTA != null)
-				return false;
-		} else if (!estadoEnderecoTA.equals(other.estadoEnderecoTA))
-			return false;
-		if (idTA == null) {
-			if (other.idTA != null)
-				return false;
-		} else if (!idTA.equals(other.idTA))
-			return false;
-		if (numeroEnderecoTA == null) {
-			if (other.numeroEnderecoTA != null)
-				return false;
-		} else if (!numeroEnderecoTA.equals(other.numeroEnderecoTA))
-			return false;
-		if (valorBolsaTA == null) {
-			if (other.valorBolsaTA != null)
-				return false;
-		} else if (!valorBolsaTA.equals(other.valorBolsaTA))
+		} else if (!idta.equals(other.idta))
 			return false;
 		return true;
 	}
-	
 	@Override
 	public String toString() {
-		return "TermoAditivo [idTA=" + idTA + ", dataFimTA=" + dataFimTA + ", cargaHorariaTA=" + cargaHorariaTA
-				+ ", valorBolsaTA=" + valorBolsaTA + ", enderecoTA=" + enderecoTA + ", numeroEnderecoTA="
-				+ numeroEnderecoTA + ", complementoEnderecoTA=" + complementoEnderecoTA + ", bairroEnderecoTA="
-				+ bairroEnderecoTA + ", cepEnderecoTA=" + cepEnderecoTA + ", cidadeEnderecoTA=" + cidadeEnderecoTA
-				+ ", estadoEnderecoTA=" + estadoEnderecoTA + "]";
+		return "TermoAditivo [idta=" + idta + "]";
 	}
+	
+	
 	
 }
