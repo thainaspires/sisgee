@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -38,11 +41,11 @@
 									<div class="form-group col-md-4">
 										<label for="razao_social">Razão Social</label>
 										<select style="float:left;" id="razao_social" class="form-control">
-							  				<option value="" selected>Valor A</option>
-									  		<option value="">Valor B</option>
-									  		<option value="">Valor C</option>						  
+									  		<c:forEach items="${agentesIntegracao}" var="agentesIntegracao">
+												<option value="${ agentesIntegracao.idAgenteIntegracao }" ${ param.agentesIntegracao eq agentesIntegracao.idAgenteIntegracao ? "selected" : "" } > ${ agentesIntegracao.nomeAgenteIntegracao }</option>
+											</c:forEach>						  
 										</select>	
-										<a href="#" style="float:right;">Cadastrar empresa</a>							
+										<a href="cadastrar_empresa.jsp" style="float:right;">Cadastrar empresa</a>							
 									</div>									
 									<div class="form-group col-md-6" style="display:inline-block;">
 										<label for="cnpj_empresa_ligada">CNPJ da Empresa Ligada ao Agente de Integração</label>
@@ -236,8 +239,9 @@
 							<div class="form-group col-md-9">
 								<label for="professor_orientador">Professor Orientador</label>
 								<select class="form-control" class="form-control" name="professor_orientador" id="professor_orientador">
-									<option value="ba">Eduardo Bezerra</option>
-									<option value="pa">Diogo Mendonça</option>
+									<c:forEach items="${professoresOrientadores}" var="professoresOrientadores">
+										<option value="${ professoresOrientadores.idpo }" ${ param.professoresOrientadores eq professoresOrientadores.idpo ? "selected" : "" } > ${ professoresOrientadores.nomepo }</option>
+									</c:forEach>
 								</select>
 							</div>
 						</div>
