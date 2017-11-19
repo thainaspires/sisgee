@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 public class PersistenceManager {
 	
 	private static EntityManagerFactory factory =
-			Persistence.createEntityManagerFactory("CrudOrganizadoPU");
+			Persistence.createEntityManagerFactory("SisgeePU");
 	private static EntityManager manager = factory.createEntityManager();
 	
 	static EntityManager getEntityManager(){
