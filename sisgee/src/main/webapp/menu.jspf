@@ -10,6 +10,7 @@
         <a class="nav-link" href="index.jsp"><fmt:message key="br.cefetrj.sisgee.menu.mn_home"/><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item ">
+      
         <a class="nav-link" href="FrontControllerServlet?action=ConsultasTermoEst"><fmt:message key="br.cefetrj.sisgee.menu.registro_termo"/><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item ">

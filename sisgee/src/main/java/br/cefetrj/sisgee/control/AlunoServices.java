@@ -2,6 +2,7 @@ package br.cefetrj.sisgee.control;
 
 import java.util.List;
 
+import br.cefetrj.sisgee.model.dao.AlunoDAO;
 import br.cefetrj.sisgee.model.dao.GenericDAO;
 import br.cefetrj.sisgee.model.dao.PersistenceManager;
 import br.cefetrj.sisgee.model.entity.Aluno;
@@ -24,8 +25,11 @@ public class AlunoServices {
 		return alunoDao.buscarTodos();
 	}
 	
-	
-	public static void incluirAluno(Aluno aluno){
+	public static List<Aluno> buscarDetermAluno(String matricula){
+		
+		return AlunoDAO.buscarPorMatricula(matricula);
+	}
+	/*public static void incluirAluno(Aluno aluno){
 		GenericDAO<Aluno> alunoDao = PersistenceManager.createGenericDAO(Aluno.class);
 		PersistenceManager.getTransaction().begin();
 		try{
@@ -34,7 +38,7 @@ public class AlunoServices {
 		}catch(Exception e){
 			PersistenceManager.getTransaction().rollback();
 		}
-	}
+	}*/ 
 	
 
 }

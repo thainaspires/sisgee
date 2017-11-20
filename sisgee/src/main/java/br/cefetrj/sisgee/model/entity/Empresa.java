@@ -28,7 +28,7 @@ public class Empresa {
 	
 	@OneToMany(mappedBy="empresa")
 	private List<Convenio> convenios;
-
+	
 	public Long getIdEmpresa() {
 		return idEmpresa;
 	}

@@ -31,6 +31,15 @@ public class Aluno {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Curso curso;
 	
+	
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
 	public Long getIdAluno() {
 		return idAluno;
 	}

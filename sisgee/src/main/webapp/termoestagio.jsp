@@ -98,10 +98,11 @@
 							<div class="form-group col-md-4" style="display:inline-block;">
 								<label for="matricula"><fmt:message key="br.cefetrj.sisgee.termo_estagio.matricula"></fmt:message></label>
 								<div class="input-group">
-									<input type="text" class="form-control" name="matricula" id="matricula">	
-									<span class="input-group-btn">
-										<button class="btn btn-primary" type="button"><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span></button>
+									<input type="text" class="form-control" name="matricula" id="matricula" value="${ param.alunoBuscado.matricula }">	
+									<span class="input-group-btn"> 
+										<button class="btn btn-primary" type="button" onClick = "javascript:location.href='FrontControllerServlet?action=ConsultasTermoEst&matricula=123'" "><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span></button>
 									</span>
+									
 								</div>
 							</div>
 

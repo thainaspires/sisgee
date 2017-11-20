@@ -62,7 +62,7 @@ public class CadastrarEmpresaCommand implements Command {
 			req.setAttribute("msg", msg);
 			req.getRequestDispatcher("/cadastrar_empresa.jsp").forward(req,resp);
 		} else {
-			req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
+			req.getRequestDispatcher("/FrontControllerServlet?action=ConsultasTermoEst").forward(req, resp);
 		}
 	}
 

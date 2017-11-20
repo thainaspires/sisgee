@@ -25,6 +25,7 @@ public class FrontControllerServlet extends HttpServlet {
 	private static Map<String, Command> comandos = new HashMap<String, Command>();
 	
 	static{
+		System.out.println("1");
 		comandos.put("IncluirTermoEstagio", new IncluirTermoEstagioCommand());
 		comandos.put("CadastrarEmpresa", new CadastrarEmpresaCommand());
 		comandos.put("ConsultasTermoEst", new ConsultasTermoEstagioCommand());
