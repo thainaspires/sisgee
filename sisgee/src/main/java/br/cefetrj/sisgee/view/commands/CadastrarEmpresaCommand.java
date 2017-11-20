@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.cefetrj.sisgee.control.AgenteIntegracaoServices;
 import br.cefetrj.sisgee.control.EmpresaServices;
-import br.cefetrj.sisgee.model.dao.GenericDAO;
-import br.cefetrj.sisgee.model.dao.PersistenceManager;
 import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
 import br.cefetrj.sisgee.model.entity.Curso;
 import br.cefetrj.sisgee.model.entity.Empresa;
@@ -26,14 +24,19 @@ public class CadastrarEmpresaCommand implements Command {
 		String agente = req.getParameter("agente");
 		String cnpj = req.getParameter("cnpj");
 		String razaosocial = req.getParameter("razaosocial");
-	
 		String msg = "";
+		
 		if(!(cnpj != null && cnpj.trim().length() > 0)){
 			msg += "CNPJ é um campo obrigatório.";
 		}
 		if(!(razaosocial != null && razaosocial.trim().length() > 0)){
 			msg += "Razão Social é um campo obrigatório.";
 		}
+		if(agente.equals("")){
+			//Agente deve ser sim ou não
+			msg += "A Opção de Agente de Integração precisa ser sim ou não.";
+		}
+		
 		if(agente.equals("s")){
 			// utilizar AgenteIntegracaoServices
 			if(msg.equals("")){
@@ -44,19 +47,12 @@ public class CadastrarEmpresaCommand implements Command {
 			}
 		}else if(agente.equals("n")){
 			// utilizar EmpresaServices
-			if(msg.equals("")){
-				Curso curso = new Curso();
-				curso.setCodigoCurso("codigo001");
-				curso.setNomeCurso("ciencia da computacao");
-				
+			if(msg.equals("")){		
 				Empresa empresa = new Empresa();
 				empresa.setCnpjEmpresa(cnpj);
 				empresa.setNomeEmpresa(razaosocial);
 				EmpresaServices.registrarEmpresa(empresa);
 			}
-		}else{
-			//redirect e manda erro
-			msg += "A Opção de Agente de Integração precisa ser sim ou não.";
 		}
 		if(msg != ""){
 			req.setAttribute("msg", msg);

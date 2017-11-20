@@ -71,7 +71,7 @@
 								
 								<div id="agente2" class="col-md-12" style="display:none;">									
 									<div class="form-group col-md-6">
-										<label for="cnpj_empresa_ligada"><fmt:message key="br.cefetrj.sisgee.termo_estagio"></fmt:message></label>
+										<label for="cnpj_empresa"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cnpj"></fmt:message></label>
 										<div class="input-group">
 											<input type="text" class="form-control" name="cnpj_empresa" id="cnpj_empresa">	
 											<span class="input-group-btn">
@@ -126,12 +126,12 @@
 						<div class="row">
 							<div class="form-group col-md-3">
 								<label for="data_inicio"><fmt:message key="br.cefetrj.sisgee.termo_estagio.data_inicio"></fmt:message></label>
-								<input type="date" class="form-control" name="data_inicio" id="data_inicio">
+								<input type="text" class="form-control" name="data_inicio" id="data_inicio">
 							</div>
 
 							<div class="form-group col-md-3">
 								<label for="data_termino"><fmt:message key="br.cefetrj.sisgee.termo_estagio.data_fim"></fmt:message></label>
-								<input type="date" class="form-control" name="data_termino" id="data_termino">
+								<input type="text" class="form-control" name="data_termino" id="data_termino">
 							</div>
 						</div>
 					</fieldset>
@@ -254,5 +254,38 @@
 		</form>
 	</div>
     <%@ include file="scripts_imports.jspf" %>
+    <script type="text/javascript">
+		function eagente(tipo){
+			if(tipo=="sim"){
+				document.getElementById("agente1").style.display="block";
+				document.getElementById("agente2").style.display="none";
+				
+				document.getElementById("cnpj_empresa").setAttribute("disabled","disabled");
+				
+				document.getElementById("cnpj_empresa_ligada").removeAttribute("disabled");
+				document.getElementById("razao_social_empresa_ligada").removeAttribute("disabled");
+				
+			} else {
+				document.getElementById("agente1").style.display="none";
+				document.getElementById("agente2").style.display="inherit";
+				
+				document.getElementById("cnpj_empresa_ligada").setAttribute("disabled","disabled");
+				
+				document.getElementById("cnpj_empresa").removeAttribute("disabled");
+				
+			}
+		}
+	    $('#data_termino').datepicker({
+	    	<c:if test="${ lang eq 'pt_BR' }">
+	    	language: 'pt-BR'
+	        </c:if>
+	    });
+	    
+	    $('#data_inicio').datepicker({
+	    	<c:if test="${ lang eq 'pt_BR' }">
+	    	language: 'pt-BR'
+	        </c:if>
+	    });
+	</script>
 </body>
 </html>

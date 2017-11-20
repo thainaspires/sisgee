@@ -16,11 +16,11 @@
 				<div class="col-md-2"></div>
 				<div class="form-group col-md-4">
 						<label for="unidade">Data de Início</label>
-						<input type="date" class="form-control" name="data_inicio" id="data_fim">
+						<input type="text" class="form-control" name="data_inicio" id="data_inicio">
 				</div>
 				<div class="form-group col-md-4">
 						<label for="unidade">Data de Fim</label>
-						<input type="date" class="form-control" name="data_inicio" id="data_fim">
+						<input type="text" class="form-control" name="data_fim" id="data_fim">
 				</div>
 				<div class="form-group col-md-12" id="radioestagio">
 					<div>
@@ -96,10 +96,20 @@
 					</div>
 				</div>
 			</div>
-			<br/>
-			<input type="submit" id="btn-enviar" class="btn btn-active" name="enviar" value="Enviar">
 		</form>
 	</div>			
     <%@ include file="scripts_imports.jspf" %>
+    <script type="text/javascript">
+    $('#data_inicio').datepicker({
+    	<c:if test="${ lang eq 'pt_BR' }">
+    	language: 'pt-BR'
+        </c:if>
+    });
+    $('#data_fim').datepicker({
+    	<c:if test="${ lang eq 'pt_BR' }">
+    	language: 'pt-BR'
+        </c:if>
+    });
+    </script>
 </body>
 </html>

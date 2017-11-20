@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <%@ include file="head_imports.jspf" %>
-    <title><fmt:message key="br.cefetrj.crudorganizado.index.title"/></title>
+    <title>Erro</title>
   </head>
   <body>
   	<%@ include file="menu.jspf" %>
