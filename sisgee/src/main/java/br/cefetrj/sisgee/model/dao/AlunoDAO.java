@@ -22,11 +22,22 @@ public class AlunoDAO  extends GenericDAO<Aluno> {
 
 		//Query query = manager.createQuery("SELECT c, p.nome from Pessoa p "+"JOIN c.id p where p.matricula = :paramNome");
 		
-		Query query = manager.createQuery("select p from Aluno as p "+"where p.matricula = :paramNome");
+		/* ALERTA: Query correta -> Comentada para fazer teste
+		 * 
+		 * Query query = manager.createQuery("select p from Aluno as p "+"where p.matricula = :paramNome");
 		query.setParameter("paramNome", matricula);
 		List<Aluno> lista = query.getResultList();
 		System.out.println("lista: "+lista);
+		*/
 		
+		/* ALERTA: QUERY PARA SER TESTADA */
+		
+		Query query = manager.createQuery("select a from Aluno a JOIN a.pessoa");
+		//query.setParameter("paramNome", matricula);
+		List<Aluno> lista = query.getResultList();
+		System.out.println("lista: "+lista);
+		
+		/* ALERTA: FIM DA QUERY PARA SER TESTADA */
 		/*
 		Query query2 = manager.createQuery("select p from Pessoa as p "+"where p.idpessoa = 5");
 		//query.setParameter("paramNome2", 5);
@@ -44,7 +55,7 @@ public class AlunoDAO  extends GenericDAO<Aluno> {
 		query.setParameter("paramNome", matricula);
 		List lista2 = query.getResultList();
 		System.out.println("lista: "+lista2);*/
-		
+		manager.close();
 		return lista;
 	}
 
