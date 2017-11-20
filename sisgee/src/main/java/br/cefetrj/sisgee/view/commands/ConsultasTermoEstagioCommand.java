@@ -44,13 +44,15 @@ public class ConsultasTermoEstagioCommand implements Command {
 			/*Avalia se a lista retornada está vazia*/
 			if(aluno.size() > 0){
 				Aluno alunoBuscado = aluno.get(0);
+				sucesso = true;
+				msg += "Matrícula retornada com sucesso";
 			} else {
 				msg += "Matrícula não encontrada";
 			}	
 		}else{
 			msg += "É necessário digitar uma matrícula antes de buscar";
 		}
-		
+		req.setAttribute("sucesso", sucesso);
 		req.setAttribute("msg", msg);
 		req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
 	
