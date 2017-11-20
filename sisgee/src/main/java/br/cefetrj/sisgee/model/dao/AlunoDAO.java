@@ -20,20 +20,18 @@ public class AlunoDAO  extends GenericDAO<Aluno> {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");
 		EntityManager manager = factory.createEntityManager();
 
-		/* ALERTA: QUERY ANTIGAS
-		 * 
-		 * 
+		
 		Query query = manager.createQuery("select p from Aluno as p "+"where p.matricula = :paramNome");
 		query.setParameter("paramNome", matricula);
 		List<Aluno> lista = query.getResultList();
 		System.out.println("lista: "+lista);
-		*/
+		
 		
 		/* ALERTA: QUERY FUNCIONANDO */
 		
-		Query query = manager.createQuery("select a from Aluno a JOIN a.pessoa JOIN a.curso WHERE matricula = :paramNome");
+		/*Query query = manager.createQuery("select a from Aluno a JOIN a.pessoa JOIN a.curso WHERE matricula = :paramNome");
 		query.setParameter("paramNome", matricula);
-		List<Aluno> lista = query.getResultList();
+		List<Aluno> lista = query.getResultList();*/
 		
 		manager.close();
 		

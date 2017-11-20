@@ -109,13 +109,9 @@
 								<div class="input-group">
 									<input type="text" class="form-control" name="matricula" id="matricula" value="${ param.matricula }">	
 									<span class="input-group-btn"> 
-<<<<<<< HEAD
-										<button class="btn btn-primary" type="button" onClick = "var mat = document.getElementById('matricula').value;javascript:location.href='FrontControllerServlet?action=ConsultasTermoEst&matricula='+x"><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span></button>
-=======
 										<button class="btn btn-primary" type="button" onClick = "var mat = document.getElementById('matricula').value;javascript:location.href='FrontControllerServlet?action=ConsultasTermoEst&matricula='+mat">
-											<fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span>
+											<span><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span>
 										</button>
->>>>>>> origin/master
 									</span>
 									
 								</div>
@@ -123,11 +119,11 @@
 
 							<div class="form-group col-md-8">
 								<label for="nome_aluno"><fmt:message key="br.cefetrj.sisgee.termo_estagio.nomealuno"></fmt:message></label>
-								<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled" <c:out value="${ param.cursoAluno }"/>>
+								<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled">
 							</div>							
 							<div class="form-group col-md-6">
 								<label for="curso"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cursoaluno"></fmt:message></label>
-								<input type="text" class="form-control" name="curso" id="curso" disabled="disabled" value="${ param.cursoAluno }">
+								<input type="text" class="form-control" name="curso" id="curso" disabled="disabled">
 							</div>
 
 							<div class="form-group col-md-6">
