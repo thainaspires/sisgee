@@ -24,7 +24,7 @@ public class TermoAditivo {
 	
 	@Column(columnDefinition="date")
 	private Date dataFimta;
-	@Column(columnDefinition="tinyint",nullable=false)
+	@Column(columnDefinition="integer",nullable=false)
 	private Integer cargaHorariata;
 	@Column(columnDefinition="float",nullable=false)
 	private Float valorBolsata;

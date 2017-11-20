@@ -39,12 +39,19 @@ public class ConsultasTermoEstagioCommand implements Command {
 		
 		if (matricula != null && matricula.trim().length() > 0){
 			aluno = AlunoServices.buscarDetermAluno(matricula);
+			System.out.println(aluno);
 			/*TODO Após constatar sucesso do método, lembrar de tirar teste*/
-			System.out.println("Teste: "+aluno);
 			/*Avalia se a lista retornada está vazia*/
-			if(!(aluno.size() > 0)){
+			if(aluno.size() > 0){
 				Aluno alunoBuscado = aluno.get(0);
-				req.setAttribute("alunoBuscado", alunoBuscado);	
+				System.out.println(alunoBuscado.getCurso().getNomeCurso());
+				//req.setAttribute("alunoBuscado", alunoBuscado);	
+				req.setAttribute("matricula", matricula);
+				String nomedoAluno = alunoBuscado.getPessoa().getNome();
+				String cursoAluno = alunoBuscado.getCurso().getNomeCurso();
+				req.setAttribute("nomeAluno", nomedoAluno);	
+				req.setAttribute("cursoAluno", cursoAluno);	
+				
 			} else {
 				msg += "Matrícula não encontrada";
 			}	
