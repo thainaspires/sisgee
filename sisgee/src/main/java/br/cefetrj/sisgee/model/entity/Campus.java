@@ -74,6 +74,12 @@ public class Campus {
 	public void setCursos(List<Curso> cursos) {
 		this.cursos = cursos;
 	}
+
+	@Override
+	public String toString() {
+		return nomeCampus;
+	}
+	
 	
 	
 }
