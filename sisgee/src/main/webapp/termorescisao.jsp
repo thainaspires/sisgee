@@ -45,7 +45,7 @@
 				<div class="col-md-4"></div>
 				<div class="form-group col-md-4">
 						<label for="unidade">Data de Rescisão</label>
-						<input type="date" class="form-control" name="data_rescisao" id="data_rescisao">
+						<input type="text" class="form-control" name="datarescisao" id="datarescisao">
 				</div>
 			</div>
 			<br/>
@@ -53,5 +53,12 @@
 		</form>
 	</div>			
     <%@ include file="scripts_imports.jspf" %>
+    <script type="text/javascript">
+    $('#datarescisao').datepicker({
+    	<c:if test="${ lang eq 'pt_BR' }">
+    	language: 'pt-BR'
+        </c:if>
+    });
+    </script>
 </body>
 </html>

@@ -16,14 +16,13 @@
 				<h2></h2>
 				<div class="alert alert-danger">
 				  ${ msg }
-
 				</div>
 			</c:if>
 			<div class="form-group col-md-12" id="radioestagio">
 				<label style="float: left; margin-right: 25px;">É Agente de Integração?</label>
 				<div>
 					<label class="form-check-label">
-					  <input class="form-check-input" type="radio" name="agente" ${ param.agente eq "s" ? "checked" : "" } value="s"/>
+					  <input class="form-check-input" type="radio" name="agente" checked ${ param.agente eq "s" ? "checked" : "" } value="s"/>
 					  Sim
 					</label>
 					<label class="form-check-label">
