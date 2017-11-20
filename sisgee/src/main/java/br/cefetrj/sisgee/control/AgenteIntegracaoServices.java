@@ -23,7 +23,6 @@ public class AgenteIntegracaoServices {
 	public static List<AgenteIntegracao> listarAgentesIntegracao(){
 		GenericDAO<AgenteIntegracao> agenteIntegracaoDAO = 
 				PersistenceManager.createGenericDAO(AgenteIntegracao.class);
-		System.out.println(agenteIntegracaoDAO.buscarTodos());
 		return agenteIntegracaoDAO.buscarTodos();
 	}
 	

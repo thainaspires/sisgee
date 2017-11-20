@@ -100,7 +100,7 @@
 								<div class="input-group">
 									<input type="text" class="form-control" name="matricula" id="matricula" value="${ param.alunoBuscado.matricula }">	
 									<span class="input-group-btn"> 
-										<button class="btn btn-primary" type="button" onClick = "javascript:location.href='FrontControllerServlet?action=ConsultasTermoEst&matricula=123'" "><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span></button>
+										<button class="btn btn-primary" type="button" onClick = "javascript:location.href='FrontControllerServlet?action=ConsultasTermoEst&matricula=456'" "><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span></button>
 									</span>
 									
 								</div>
