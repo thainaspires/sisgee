@@ -1,8 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -100,7 +95,7 @@
 								<div class="input-group">
 									<input type="text" class="form-control" name="matricula" id="matricula" value="${ param.alunoBuscado.matricula }">	
 									<span class="input-group-btn"> 
-										<button class="btn btn-primary" type="button" onClick = "javascript:location.href='FrontControllerServlet?action=ConsultasTermoEst&matricula='+document.getElementById('matricula').value"><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span></button>
+										<button class="btn btn-primary" type="button" onClick = "var mat = document.getElementById('matricula').value;javascript:location.href='FrontControllerServlet?action=ConsultasTermoEst&matricula='+x"><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span></button>
 									</span>
 									
 								</div>
