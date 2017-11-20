@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.cefetrj.sisgee.view.commands.BuscarAlunoCommand;
 import br.cefetrj.sisgee.view.commands.CadastrarEmpresaCommand;
 import br.cefetrj.sisgee.view.commands.Command;
 import br.cefetrj.sisgee.view.commands.ConsultasTermoEstagioCommand;
@@ -25,7 +26,6 @@ public class FrontControllerServlet extends HttpServlet {
 	private static Map<String, Command> comandos = new HashMap<String, Command>();
 	
 	static{
-		System.out.println("1");
 		comandos.put("IncluirTermoEstagio", new IncluirTermoEstagioCommand());
 		comandos.put("CadastrarEmpresa", new CadastrarEmpresaCommand());
 		comandos.put("ConsultasTermoEst", new ConsultasTermoEstagioCommand());
