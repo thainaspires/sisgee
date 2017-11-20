@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.cefetrj.sisgee.view.commands.BuscarAlunoCommand;
 import br.cefetrj.sisgee.view.commands.CadastrarEmpresaCommand;
 import br.cefetrj.sisgee.view.commands.Command;
 import br.cefetrj.sisgee.view.commands.ConsultasTermoEstagioCommand;
+import br.cefetrj.sisgee.view.commands.GerarRelatorioCommand;
 import br.cefetrj.sisgee.view.commands.IncluirTermoEstagioCommand;
 
 /**
@@ -29,6 +29,7 @@ public class FrontControllerServlet extends HttpServlet {
 		comandos.put("IncluirTermoEstagio", new IncluirTermoEstagioCommand());
 		comandos.put("CadastrarEmpresa", new CadastrarEmpresaCommand());
 		comandos.put("ConsultasTermoEst", new ConsultasTermoEstagioCommand());
+		comandos.put("GerarRelatorio", new GerarRelatorioCommand());
 	}
 	
 	

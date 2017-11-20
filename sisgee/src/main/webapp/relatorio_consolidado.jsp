@@ -25,16 +25,18 @@
 				<div class="form-group col-md-12" id="radioestagio">
 					<div>
 						<label class="form-check-label">
-						  <input class="form-check-input" type="radio" name="isn_obrigatorio" checked value="s"/>
+						  <input class="form-check-input" id="radioestagio1" type="radio" name="isn_obrigatorio" checked value="1"/>
 						  Estágio Obrigatório
 						</label>
 						<label class="form-check-label">
-						  <input class="form-check-input" type="radio" name="isn_obrigatorio" value="n"/>
+						  <input class="form-check-input" id="radioestagio2" type="radio" name="isn_obrigatorio" value="0"/>
 						  Estágio Não Obrigatório
 						</label>
 					</div>
-					<button style="margin-top: 15px;" type="button" class="btn btn-primary">Pesquisar</button>
-				</div>				
+					
+					<button style="margin-top: 15px;" type="button" class="btn btn-primary"  onClick = "var teste = document.getElementById('radioestagio1').checked; if(teste == true){radio = document.getElementById('radioestagio1').value;}else{radio = document.getElementById('radioestagio2').value;};var dataInicial = document.getElementById('data_inicio').value;var dataFinal = document.getElementById('data_fim').value;javascript:location.href='FrontControllerServlet?action=GerarRelatorio&datainicio='+dataInicial+'&datafim='+dataFinal+'&radioestagio='+radio">Pesquisar</button>
+					
+				</div>
 			</div>
 			<hr/>
 			<div class="row">
