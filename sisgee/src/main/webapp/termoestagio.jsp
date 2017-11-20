@@ -119,11 +119,11 @@
 
 							<div class="form-group col-md-8">
 								<label for="nome_aluno"><fmt:message key="br.cefetrj.sisgee.termo_estagio.nomealuno"></fmt:message></label>
-								<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled" <c:out value="${ param.cursoAluno }"/>>
+								<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled">
 							</div>							
 							<div class="form-group col-md-6">
 								<label for="curso"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cursoaluno"></fmt:message></label>
-								<input type="text" class="form-control" name="curso" id="curso" disabled="disabled" value="${ param.cursoAluno }">
+								<input type="text" class="form-control" name="curso" id="curso" disabled="disabled">
 							</div>
 
 							<div class="form-group col-md-6">

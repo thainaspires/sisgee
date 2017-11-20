@@ -44,14 +44,6 @@ public class ConsultasTermoEstagioCommand implements Command {
 			/*Avalia se a lista retornada está vazia*/
 			if(aluno.size() > 0){
 				Aluno alunoBuscado = aluno.get(0);
-				System.out.println(alunoBuscado.getCurso().getNomeCurso());
-				//req.setAttribute("alunoBuscado", alunoBuscado);	
-				req.setAttribute("matricula", matricula);
-				String nomedoAluno = alunoBuscado.getPessoa().getNome();
-				String cursoAluno = alunoBuscado.getCurso().getNomeCurso();
-				req.setAttribute("nomeAluno", nomedoAluno);	
-				req.setAttribute("cursoAluno", cursoAluno);	
-				
 			} else {
 				msg += "Matrícula não encontrada";
 			}	
