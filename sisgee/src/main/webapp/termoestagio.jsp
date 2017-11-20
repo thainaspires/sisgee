@@ -152,7 +152,7 @@
 						<div class="row">			
 							<div class="form-group col-md-3">
 								<label for="valor_bolsa"><fmt:message key="br.cefetrj.sisgee.termo_estagio.valor"></fmt:message></label>
-								<input type="number" class="form-control" name="valor_bolsa" id="valor_bolsa" min="0">
+								<input type="text" class="form-control" name="valor_bolsa" id="valor_bolsa" min="0">
 							</div>
 						</div>
 					</fieldset>
@@ -248,8 +248,10 @@
 							</div>
 						</div>
 					</fieldset>
-					<button type="submit" class="btn btn-active" name="cancelar"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cancelar"></fmt:message></button>
-					<input type="submit" id="btn-enviar" class="btn btn-primary" name="enviar" value="<fmt:message key='br.cefetrj.sisgee.termo_estagio.enviar'></fmt:message>">
+						<div class="btn-group" id="btn-group" role="group" aria-label="Basic example">
+							<button type="submit" class="btn btn-active" name="cancelar"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cancelar"></fmt:message></button>
+							<input type="submit" id="btn-enviar" class="btn btn-primary" name="enviar" value="<fmt:message key='br.cefetrj.sisgee.termo_estagio.enviar'></fmt:message>">
+						</div>
 				</form>
 			</div>			
 		</form>
