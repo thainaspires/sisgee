@@ -2,6 +2,7 @@ package br.cefetrj.sisgee.model.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,17 +19,28 @@ public class TermoAditivo {
 	
 	@Id
 	@GeneratedValue
+	@Column(columnDefinition="integer")
 	private Long idta;
 	
+	@Column(columnDefinition="date")
 	private Date dataFimta;
+	@Column(columnDefinition="tinyint",nullable=false)
 	private Integer cargaHorariata;
+	@Column(columnDefinition="float",nullable=false)
 	private Float valorBolsata;
+	@Column(columnDefinition="VARCHAR(255)",nullable=false)
 	private String enderecota;
+	@Column(columnDefinition="VARCHAR(10)",nullable=false)
 	private String numeroEnderecota;
+	@Column(columnDefinition="VARCHAR(150)",nullable=false)
 	private String complementoEnderecota;
+	@Column(columnDefinition="VARCHAR(150)",nullable=false)
 	private String bairroEnderecota;
+	@Column(columnDefinition="VARCHAR(15)",nullable=false)
 	private String cepEnderecota;
+	@Column(columnDefinition="VARCHAR(150)",nullable=false)
 	private String cidadeEnderecota;
+	@Column(columnDefinition="VARCHAR(2)",nullable=false)
 	private String estadoEnderecota;
 
 	
