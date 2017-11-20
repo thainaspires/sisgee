@@ -19,8 +19,6 @@ import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
  * Servlet implementation class IncluirAlunoServlet
  */
 public class ConsultasTermoEstagioCommand implements Command {
-
-	List<Aluno> aluno = null;
 	
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -31,17 +29,11 @@ public class ConsultasTermoEstagioCommand implements Command {
 		req.setAttribute("agentesIntegracao", agentesIntegracao);
 		
 		String msg = "";
-		/*Variável para indicar se a mensagem é um erro ou não.
-		 *Utilizada para mostrar um alert verde (sucesso) ou vermelho (erro). 
-		 * */
-		boolean sucesso = false;
 		String matricula = req.getParameter("matricula");
 		
 		if (matricula != null && matricula.trim().length() > 0){
+			List<Aluno> aluno = null;
 			aluno = AlunoServices.buscarDetermAluno(matricula);
-			System.out.println(aluno);
-			/*TODO Após constatar sucesso do método, lembrar de tirar teste*/
-			/*Avalia se a lista retornada está vazia*/
 			if(aluno.size() > 0){
 				Aluno alunoBuscado = aluno.get(0);
 				msg += "Matrícula retornada com sucesso";
@@ -52,8 +44,8 @@ public class ConsultasTermoEstagioCommand implements Command {
 		}else{
 			msg += "É necessário digitar uma matrícula antes de buscar";
 		}
-		req.setAttribute("sucesso", sucesso);
 		req.setAttribute("msg", msg);
+		
 		req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
 	
 	}
