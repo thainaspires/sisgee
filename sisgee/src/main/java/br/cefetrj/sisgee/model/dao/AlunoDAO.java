@@ -19,13 +19,10 @@ public class AlunoDAO  extends GenericDAO<Aluno> {
 	public static List<Aluno> buscarPorMatricula(String matricula){
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");
 		EntityManager manager = factory.createEntityManager();
-
-		
 		Query query = manager.createQuery("select p from Aluno as p "+"where p.matricula = :paramNome");
 		query.setParameter("paramNome", matricula);
 		List<Aluno> lista = query.getResultList();
 		System.out.println("lista: "+lista);
-		
 		
 		/* ALERTA: QUERY FUNCIONANDO */
 		
