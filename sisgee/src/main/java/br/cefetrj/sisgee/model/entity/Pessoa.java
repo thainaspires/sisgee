@@ -2,6 +2,7 @@ package br.cefetrj.sisgee.model.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,7 +17,9 @@ import javax.persistence.OneToMany;
 public class Pessoa {
 	@Id
 	@GeneratedValue
+	@Column(columnDefinition="integer")
 	private Long idPessoa;
+	@Column(columnDefinition="VARCHAR(100)")
 	private String nome;
 	
 	@OneToMany(mappedBy="pessoa")

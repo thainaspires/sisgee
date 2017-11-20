@@ -2,6 +2,7 @@ package br.cefetrj.sisgee.model.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,7 +18,9 @@ public class ProfessorOrientador {
 	 */
 	@Id
 	@GeneratedValue
+	@Column(columnDefinition="integer")
 	private Long idpo;
+	@Column(columnDefinition="VARCHAR(80)",nullable=false)
 	private String nomepo;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
