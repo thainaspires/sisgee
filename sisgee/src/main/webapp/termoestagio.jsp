@@ -15,20 +15,6 @@
 	<div class="container">
 		<form method="post" action="">
 			<div class="container">
-				<c:if test="${ not empty msg }">
-					<c:chose>
-						<c:when test="${ param.sucesso eq false }">
-							<div class="alert alert-danger">
-							  ${ msg }
-							</div>
-						</c:when>
-						<c:otherwise>
-							<div class="alert alert-success">
-							  ${ msg }
-							</div>
-						</c:otherwise>
-					</c:chose>
-				</c:if>
 				<form>
 					<fieldset>
 						<legend id="title-te"><fmt:message key="br.cefetrj.sisgee.termo_estagio.titulo"/></legend>

@@ -2,6 +2,7 @@ package br.cefetrj.sisgee.model.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,9 @@ import javax.persistence.OneToMany;
 public class Convenio {
 	@Id
 	@GeneratedValue
+	@Column(columnDefinition="integer")
 	private Long idConvenio;
+	@Column(columnDefinition="CHAR(10)", nullable = false)
 	private String numeroConvenio;
 	
 	@ManyToOne(fetch=FetchType.EAGER)

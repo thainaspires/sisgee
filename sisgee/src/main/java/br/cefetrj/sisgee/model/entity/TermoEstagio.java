@@ -3,6 +3,7 @@ package br.cefetrj.sisgee.model.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,24 +20,34 @@ public class TermoEstagio {
 	 */
 	@Id
 	@GeneratedValue 
+	@Column(columnDefinition="integer")
 	private Long idte;
+	@Column(columnDefinition="date", nullable = false)
 	private Date datainiciote;
+	@Column(columnDefinition="date", nullable = false)
 	private Date datafimte;
+	@Column(columnDefinition="date", nullable = false)
 	private Date datarescisaote;
-	private String situacaote;
+	@Column(columnDefinition="TINYINT", nullable = false)
 	private Integer cargahorariate;
+	@Column(columnDefinition="float", nullable = false)
 	private Float valorbolsa;
+	@Column(columnDefinition="VARCHAR(255)", nullable = false)
 	private String enderecote;
+	@Column(columnDefinition="VARCHAR(10)", nullable = false)
 	private String numeroenderecote;
+	@Column(columnDefinition="VARCHAR(150)", nullable = false)
 	private String complementoenderecote;
+	@Column(columnDefinition="VARCHAR(150)", nullable = false)
 	private String bairroenderecote;
+	@Column(columnDefinition="VARCHAR(15)", nullable = false)
 	private String cependerecote;
+	@Column(columnDefinition="VARCHAR(150)", nullable = false)
 	private String cidadeenderecote;
+	@Column(columnDefinition="CHAR(2)", nullable = false)
 	private String estadoenderecote;
+	@Column(columnDefinition="TINYINT", nullable = false)
 	private Integer estagioobrigatorio;
-	private Long idprofessororientador;
-	private Long idaluno;
-	private Long idconvenio;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Convenio convenio;
@@ -73,12 +84,6 @@ public class TermoEstagio {
 	}
 	public void setDatarescisaote(Date datarescisaote) {
 		this.datarescisaote = datarescisaote;
-	}
-	public String getSituacaote() {
-		return situacaote;
-	}
-	public void setSituacaote(String situacaote) {
-		this.situacaote = situacaote;
 	}
 	public Integer getCargahorariate() {
 		return cargahorariate;
@@ -139,24 +144,6 @@ public class TermoEstagio {
 	}
 	public void setEestagioobrigatorio(Integer eestagioobrigatorio) {
 		this.estagioobrigatorio = eestagioobrigatorio;
-	}
-	public Long getIdprofessororientador() {
-		return idprofessororientador;
-	}
-	public void setIdprofessororientador(Long idprofessororientador) {
-		this.idprofessororientador = idprofessororientador;
-	}
-	public Long getIdaluno() {
-		return idaluno;
-	}
-	public void setIdaluno(Long idaluno) {
-		this.idaluno = idaluno;
-	}
-	public Long getIdconvenio() {
-		return idconvenio;
-	}
-	public void setIdconvenio(Long idconvenio) {
-		this.idconvenio = idconvenio;
 	}
 	
 	@Override

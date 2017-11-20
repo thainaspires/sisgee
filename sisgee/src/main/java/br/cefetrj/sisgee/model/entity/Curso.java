@@ -2,6 +2,7 @@ package br.cefetrj.sisgee.model.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,8 +20,11 @@ public class Curso {
 	
 	@Id
 	@GeneratedValue
+	@Column(columnDefinition="integer")
 	private Long idCurso;
+	@Column(columnDefinition="VARCHAR(50)", nullable = false)
 	private String codigoCurso;
+	@Column(columnDefinition="VARCHAR(255)", nullable = false)
 	private String nomeCurso;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
