@@ -44,8 +44,8 @@ public class ConsultasTermoEstagioCommand implements Command {
 			/*Avalia se a lista retornada está vazia*/
 			if(aluno.size() > 0){
 				Aluno alunoBuscado = aluno.get(0);
-				sucesso = true;
 				msg += "Matrícula retornada com sucesso";
+				req.setAttribute("alunoBuscado", alunoBuscado);
 			} else {
 				msg += "Matrícula não encontrada";
 			}	

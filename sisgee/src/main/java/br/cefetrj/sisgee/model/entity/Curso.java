@@ -33,6 +33,10 @@ public class Curso {
 	@OneToMany(mappedBy="curso")
 	private List<Aluno> alunos;
 	
+	public Campus getCampus() {
+		return campus;
+	}
+	
 	public Long getIdCurso() {
 		return idCurso;
 	}
