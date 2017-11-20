@@ -1,8 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,6 +10,20 @@
 	<div class="container">
 		<form method="post" action="">
 			<div class="container">
+				<c:if test="${ not empty msg }">
+	 				<c:choose>
+	 						<c:when test="${ param.sucesso eq false }">
+	 							<div class="alert alert-danger">
+	 							  ${ msg }
+	 							</div>
+	 						</c:when>
+	 						<c:otherwise>
+	 							<div class="alert alert-success">
+	 							  ${ msg }
+	 							</div>
+	 						</c:otherwise>
+	 					</c:choose>
+	 				</c:if>
 				<form>
 					<fieldset>
 						<legend id="title-te"><fmt:message key="br.cefetrj.sisgee.termo_estagio.titulo"/></legend>
@@ -98,9 +107,11 @@
 							<div class="form-group col-md-4" style="display:inline-block;">
 								<label for="matricula"><fmt:message key="br.cefetrj.sisgee.termo_estagio.matricula"></fmt:message></label>
 								<div class="input-group">
-									<input type="text" class="form-control" name="matricula" id="matricula" value="${ param.alunoBuscado.matricula }">	
+									<input type="text" class="form-control" name="matricula" id="matricula" value="${ param.matricula }">	
 									<span class="input-group-btn"> 
-										<button class="btn btn-primary" type="button" onClick = "javascript:location.href='FrontControllerServlet?action=ConsultasTermoEst&matricula='+document.getElementById('matricula').value"><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span></button>
+										<button class="btn btn-primary" type="button" onClick = "var mat = document.getElementById('matricula').value;javascript:location.href='FrontControllerServlet?action=ConsultasTermoEst&matricula='+mat">
+											<fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span>
+										</button>
 									</span>
 									
 								</div>
@@ -108,16 +119,16 @@
 
 							<div class="form-group col-md-8">
 								<label for="nome_aluno"><fmt:message key="br.cefetrj.sisgee.termo_estagio.nomealuno"></fmt:message></label>
-								<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled">
+								<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled" <c:out value="${ param.cursoAluno }"/>>
 							</div>							
 							<div class="form-group col-md-6">
 								<label for="curso"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cursoaluno"></fmt:message></label>
-								<input type="text" class="form-control" name="curso" id="curso" disabled="disabled">
+								<input type="text" class="form-control" name="curso" id="curso" disabled="disabled" value="${ param.cursoAluno }">
 							</div>
 
 							<div class="form-group col-md-6">
 								<label for="unidade"><fmt:message key="br.cefetrj.sisgee.termo_estagio.unidadealuno"></fmt:message></label>
-								<input type="text" class="form-control" name="unidade" id="unidade" disabled="disabled">
+								<input type="text" class="form-control" name="unidade" id="unidade" disabled="disabled" value="Cefet-RJ">
 							</div>
 						</div>
 					</fieldset>

@@ -24,11 +24,11 @@ public class TermoEstagio {
 	private Long idte;
 	@Column(columnDefinition="date", nullable = false)
 	private Date datainiciote;
-	@Column(columnDefinition="date", nullable = false)
+	@Column(columnDefinition="date")
 	private Date datafimte;
-	@Column(columnDefinition="date", nullable = false)
+	@Column(columnDefinition="date")
 	private Date datarescisaote;
-	@Column(columnDefinition="TINYINT", nullable = false)
+	@Column(columnDefinition="integer", nullable = false)
 	private Integer cargahorariate;
 	@Column(columnDefinition="float", nullable = false)
 	private Float valorbolsa;
@@ -46,7 +46,7 @@ public class TermoEstagio {
 	private String cidadeenderecote;
 	@Column(columnDefinition="CHAR(2)", nullable = false)
 	private String estadoenderecote;
-	@Column(columnDefinition="TINYINT", nullable = false)
+	@Column(columnDefinition="integer", nullable = false)
 	private Integer estagioobrigatorio;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
