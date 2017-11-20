@@ -30,19 +30,29 @@ public class ConsultasTermoEstagioCommand implements Command {
 		List<AgenteIntegracao> agentesIntegracao = AgenteIntegracaoServices.listarAgentesIntegracao();
 		req.setAttribute("agentesIntegracao", agentesIntegracao);
 		
+		String msg = "";
+		/*Variável para indicar se a mensagem é um erro ou não.
+		 *Utilizada para mostrar um alert verde (sucesso) ou vermelho (erro). 
+		 * */
+		boolean sucesso = false;
 		String matricula = req.getParameter("matricula");
 		
 		if (matricula != null && matricula.trim().length() > 0){
 			aluno = AlunoServices.buscarDetermAluno(matricula);
-			System.out.println(aluno);
-			Aluno alunoBuscado = aluno.get(0);
-			System.out.println(alunoBuscado.getMatricula());
-			req.setAttribute("alunoBuscado", alunoBuscado);	
-			
+			/*TODO Após constatar sucesso do método, lembrar de tirar teste*/
+			System.out.println("Teste: "+aluno);
+			/*Avalia se a lista retornada está vazia*/
+			if(!(aluno.size() > 0)){
+				Aluno alunoBuscado = aluno.get(0);
+				req.setAttribute("alunoBuscado", alunoBuscado);	
+			} else {
+				msg += "Matrícula não encontrada";
+			}	
 		}else{
-			System.out.println("erro");
+			msg += "É necessário digitar uma matrícula antes de buscar";
 		}
 		
+		req.setAttribute("msg", msg);
 		req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
 	
 	}

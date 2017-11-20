@@ -25,6 +25,7 @@ public class CadastrarEmpresaCommand implements Command {
 		String cnpj = req.getParameter("cnpj");
 		String razaosocial = req.getParameter("razaosocial");
 		String msg = "";
+		boolean sucesso = false;
 		
 		if(!(cnpj != null && cnpj.trim().length() > 0)){
 			msg += "CNPJ é um campo obrigatório.";
@@ -58,6 +59,10 @@ public class CadastrarEmpresaCommand implements Command {
 			req.setAttribute("msg", msg);
 			req.getRequestDispatcher("/cadastrar_empresa.jsp").forward(req,resp);
 		} else {
+			sucesso = true;
+			msg += "Cadastro realizado com sucesso";
+			req.setAttribute("msg", msg);
+			req.setAttribute("sucesso", sucesso);
 			req.getRequestDispatcher("/FrontControllerServlet?action=ConsultasTermoEst").forward(req, resp);
 		}
 	}

@@ -15,6 +15,20 @@
 	<div class="container">
 		<form method="post" action="">
 			<div class="container">
+				<c:if test="${ not empty msg }">
+					<c:chose>
+						<c:when test="${ param.sucesso eq false }">
+							<div class="alert alert-danger">
+							  ${ msg }
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="alert alert-success">
+							  ${ msg }
+							</div>
+						</c:otherwise>
+					</c:chose>
+				</c:if>
 				<form>
 					<fieldset>
 						<legend id="title-te"><fmt:message key="br.cefetrj.sisgee.termo_estagio.titulo"/></legend>
@@ -100,7 +114,7 @@
 								<div class="input-group">
 									<input type="text" class="form-control" name="matricula" id="matricula" value="${ param.alunoBuscado.matricula }">	
 									<span class="input-group-btn"> 
-										<button class="btn btn-primary" type="button" onClick = "javascript:location.href='FrontControllerServlet?action=ConsultasTermoEst&matricula=456'" "><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span></button>
+										<button class="btn btn-primary" type="button" onClick = "javascript:location.href='FrontControllerServlet?action=ConsultasTermoEst&matricula='+document.getElementById('matricula').value"><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span></button>
 									</span>
 									
 								</div>
