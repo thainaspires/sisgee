@@ -61,6 +61,9 @@ public class TermoEstagio {
 	@OneToMany(mappedBy="termoestagio")
 	private List<ProfessorOrientador> professoresOrientadores;
 	
+	public Aluno getAluno(){
+		return aluno;
+	}
 	public Long getIdte() {
 		return idte;
 	}
@@ -172,8 +175,10 @@ public class TermoEstagio {
 			return false;
 		return true;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return idte.toString();
+	}
 	
 	
 }
