@@ -23,6 +23,7 @@ public class AlunoDAO  extends GenericDAO<Aluno> {
 		query.setParameter("paramNome", matricula);
 		List<Aluno> lista = query.getResultList();
 		System.out.println("lista: "+lista);
+
 		
 		/* ALERTA: QUERY FUNCIONANDO */
 		

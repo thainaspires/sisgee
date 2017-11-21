@@ -13,12 +13,18 @@ import javax.swing.JOptionPane;
 
 import br.cefetrj.sisgee.control.GerarRelatorioServices;
 
+/**
+ * Command para gerar o relatório consolidado
+ * @author Thainá
+ *
+ */
 public class GerarRelatorioCommand implements Command{
 
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String dataInicial = req.getParameter("datainicio");
 		String dataFinal = req.getParameter("datafim");
 		String radioestagio = req.getParameter("radioestagio");
+		String msg = "";
 		
 		if(dataInicial != null && dataInicial.length() != 0 && dataFinal != null && dataFinal.length() != 0 && dataInicial.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d")
 				 && dataFinal.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d")){
@@ -47,8 +53,21 @@ public class GerarRelatorioCommand implements Command{
 	        } catch (Exception e) {
 	            JOptionPane.showMessageDialog(null, "Erro ao converte data para sql: " + e.getMessage());
 	        }
-	        
-			List<String> listas = GerarRelatorioServices.gerarRelatorio(dataSql, dataSql2, radioestagio);
+	        if (!(dataSql.after(dataSql2))){
+	        	List<String> listas = GerarRelatorioServices.gerarRelatorio(dataSql, dataSql2, radioestagio);
+	        	System.out.println("Valido");
+	        }else{
+	        	msg+="Data inicial deve ser antes da data final";
+	        }
+		}else{
+			msg+="Datas precisam ser preenchidas";
+		}
+		
+		if(msg != ""){
+			req.setAttribute("msg", msg);
+			req.getRequestDispatcher("/relatorio_consolidado.jsp").forward(req,resp);
+		} else {
+			req.getRequestDispatcher("/relatorio_consolidado.jsp").forward(req, resp);
 		}
 	}
 }

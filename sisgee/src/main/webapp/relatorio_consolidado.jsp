@@ -11,6 +11,9 @@
 	<%@ include file="menu.jspf" %>
 	<div class="container">
 		<form method="post" action="">
+			<c:if test="${ not empty msg }">
+	 				<div class="alert" style="margin-top: 20px; background: #B8B3CC;">${ msg }</div>		
+	 		</c:if>
 			<h2 class="title-func text-center">Pesquisa de Relatório Consolidado</h2>
 			<div class="row text-center">
 				<div class="col-md-2"></div>
