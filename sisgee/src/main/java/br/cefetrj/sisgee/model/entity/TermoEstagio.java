@@ -67,6 +67,9 @@ public class TermoEstagio {
 	public void setIdte(Long idte) {
 		this.idte = idte;
 	}
+	public List<TermoAditivo> getTermosAditivos(){
+		return termosAditivos;
+	}
 	public Date getDatainiciote() {
 		return datainiciote;
 	}
