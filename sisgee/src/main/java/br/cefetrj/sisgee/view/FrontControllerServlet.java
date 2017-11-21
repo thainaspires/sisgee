@@ -39,7 +39,8 @@ public class FrontControllerServlet extends HttpServlet {
 			String action = req.getParameter("action");
 			comandos.get(action).execute(req, resp);
 		} catch(Exception e){
-			req.getRequestDispatcher("/erro.jsp").forward(req, resp);
+			System.out.println(e);
+			//req.getRequestDispatcher("/erro.jsp").forward(req, resp);
 		}
 	}
 
