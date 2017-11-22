@@ -22,8 +22,4 @@ public class EmpresaServices {
 			PersistenceManager.getTransaction().rollback();
 		}
 	}
-	
-	public static List<Empresa> buscarPorAgentInt(AgenteIntegracao agenteIntegracao, String CNPJ){
-		return EmpresaDAO.buscarPorAgenteIntegracao(agenteIntegracao, CNPJ);
-	}
 }
