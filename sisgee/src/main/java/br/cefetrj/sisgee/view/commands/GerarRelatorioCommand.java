@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -60,9 +62,11 @@ public class GerarRelatorioCommand implements Command{
 	        	/**
 	        	 * Continuar para fazer as contagens
 	        	 */
+	        		/*
 	        		for(int i = 0; i < lista.size(); i++){
 	        			System.out.println(lista.get(i).getAluno().getCurso());
-	        		}
+	        		}*/
+	        		
 	        		
 	        	/**
 	        	 * Continuar para fazer as contagens

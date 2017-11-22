@@ -22,7 +22,9 @@ public class RelatorioDAO {
 		List<TermoEstagio> lista = query.getResultList();
 		System.out.println(lista);
 		
+		manager.close();
 		return lista;
+	
 		
 		/*
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");

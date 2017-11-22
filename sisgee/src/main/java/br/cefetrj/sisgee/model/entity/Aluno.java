@@ -33,6 +33,9 @@ public class Aluno {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Curso curso;
 	
+	public List<TermoEstagio> getTermoEstagio(){
+		return termosEstagios;
+	}
 	
 	public Pessoa getPessoa() {
 		return pessoa;
