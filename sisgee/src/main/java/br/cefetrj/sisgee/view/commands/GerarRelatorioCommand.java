@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
 import br.cefetrj.sisgee.control.GerarRelatorioServices;
+import br.cefetrj.sisgee.model.entity.TermoEstagio;
 
 /**
  * Command para gerar o relatório consolidado
@@ -54,8 +57,21 @@ public class GerarRelatorioCommand implements Command{
 	            JOptionPane.showMessageDialog(null, "Erro ao converte data para sql: " + e.getMessage());
 	        }
 	        if (!(dataSql.after(dataSql2))){
-	        	List<String> listas = GerarRelatorioServices.gerarRelatorio(dataSql, dataSql2, radioestagio);
+				List<TermoEstagio> lista = GerarRelatorioServices.gerarRelatorio(dataSql, dataSql2, radioestagio);
 	        	System.out.println("Valido");
+	        	/**
+	        	 * Continuar para fazer as contagens
+	        	 */
+	        		/*
+	        		for(int i = 0; i < lista.size(); i++){
+	        			System.out.println(lista.get(i).getAluno().getCurso());
+	        		}*/
+	        		
+	        		
+	        	/**
+	        	 * Continuar para fazer as contagens
+	        	 */  	
+	        	
 	        }else{
 	        	msg+="Data inicial deve ser antes da data final";
 	        }

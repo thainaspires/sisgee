@@ -8,11 +8,24 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import br.cefetrj.sisgee.model.entity.Curso;
+import br.cefetrj.sisgee.model.entity.TermoEstagio;
 
 public class RelatorioDAO {
 	
-	public static List<String> relatorioTermos(Date dataInicial, Date dataFinal, String estagioObr){
+	public static List<TermoEstagio> relatorioTermos(Date dataInicial, Date dataFinal, String estagioObr){
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");
+		EntityManager manager = factory.createEntityManager();
+		Query query = manager.createQuery("select p from TermoEstagio as p "+"where p.estagioobrigatorio = :paramNome and p.datainiciote >= :datainicial and p.datainiciote <= :datafinal");
+		query.setParameter("paramNome", Integer.parseInt(estagioObr));
+		query.setParameter("datainicial", dataInicial);
+		query.setParameter("datafinal", dataFinal);
+		List<TermoEstagio> lista = query.getResultList();
+		System.out.println(lista);
+		
+		manager.close();
+		return lista;
+	
+		
 		/*
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");
 		EntityManager manager = factory.createEntityManager();
@@ -66,7 +79,7 @@ te.datainiciote >= '1960-02-01' and te.datainiciote <= '2017-08-01'  group by c.
 		
 		/*System.out.println(dataInicial + " " + dataFinal + " " + estagioObr);
 		manager.close();*/
-		return null;
+		
 	}
 		
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="cmp" uri="WEB-INF/components.tld"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -102,9 +103,9 @@
 											<span><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span>
 										</button>
 									</span>
-									
 								</div>
 							</div>
+							
 
 							<div class="form-group col-md-8">
 								<label for="nome_aluno"><fmt:message key="br.cefetrj.sisgee.termo_estagio.nomealuno"></fmt:message></label>
