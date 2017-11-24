@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class IncluirTermoEstagioCommand implements Command {
 
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 	
 	}
 	

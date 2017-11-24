@@ -19,8 +19,7 @@ import br.cefetrj.sisgee.model.entity.Empresa;
 public class CadastrarEmpresaCommand implements Command {
 
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+				
 		String agente = req.getParameter("agente");
 		String cnpj = req.getParameter("cnpj");
 		String razaosocial = req.getParameter("razaosocial");

@@ -59,18 +59,7 @@ public class GerarRelatorioCommand implements Command{
 	        if (!(dataSql.after(dataSql2))){
 				List<TermoEstagio> lista = GerarRelatorioServices.gerarRelatorio(dataSql, dataSql2, radioestagio);
 	        	System.out.println("Valido");
-	        	/**
-	        	 * Continuar para fazer as contagens
-	        	 */
-	        		/*
-	        		for(int i = 0; i < lista.size(); i++){
-	        			System.out.println(lista.get(i).getAluno().getCurso());
-	        		}*/
-	        		
-	        		
-	        	/**
-	        	 * Continuar para fazer as contagens
-	        	 */  	
+	        	 	
 	        	
 	        }else{
 	        	msg+="Data inicial deve ser antes da data final";

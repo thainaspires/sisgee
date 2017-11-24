@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * @author Thaina Pires
@@ -27,8 +28,9 @@ public class AgenteIntegracao {
 	@Column(columnDefinition="VARCHAR(100)",nullable=false)
 	private String nomeAgenteIntegracao;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	private Empresa empresa;
+	@OneToMany(mappedBy="agenteIntegracao")
+	private List<Empresa> empresa;
+	
 	
 	public Long getIdAgenteIntegracao() {
 		return idAgenteIntegracao;
