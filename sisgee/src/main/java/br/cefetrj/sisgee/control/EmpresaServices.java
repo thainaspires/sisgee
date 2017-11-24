@@ -26,4 +26,12 @@ public class EmpresaServices {
 	public static List<Empresa> buscarPorAgentInt(AgenteIntegracao agenteIntegracao, String CNPJ){
 		return EmpresaDAO.buscarPorAgenteIntegracao(agenteIntegracao, CNPJ);
 	}
+	
+	public static List<Empresa> buscarEmpresa(String cnpj_empresa){
+		return EmpresaDAO.buscarPorCNPJ(cnpj_empresa);
+	}
+	
+	public static List<Empresa> buscarEmpresaLigadaAI(String cnpj_empresa, String nome_agente){
+		return EmpresaDAO.buscarEmpresaLigadaAI(cnpj_empresa, nome_agente);
+	}
 }

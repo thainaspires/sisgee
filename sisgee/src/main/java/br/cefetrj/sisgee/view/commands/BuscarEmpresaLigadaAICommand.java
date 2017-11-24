@@ -8,25 +8,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.cefetrj.sisgee.control.AgenteIntegracaoServices;
-import br.cefetrj.sisgee.control.AlunoServices;
+import br.cefetrj.sisgee.control.EmpresaServices;
 import br.cefetrj.sisgee.control.ProfessorOrientadorServices;
 import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
-import br.cefetrj.sisgee.model.entity.Aluno;
+import br.cefetrj.sisgee.model.entity.Empresa;
 import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
 
-public class BuscarAlunoCommand implements Command{
-		
+public class BuscarEmpresaLigadaAICommand implements Command {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		List<ProfessorOrientador> professoresOrientadores = ProfessorOrientadorServices.listarProfessoresOrientadores();
 		req.setAttribute("professoresOrientadores", professoresOrientadores);
 		
 		List<AgenteIntegracao> agentesIntegracao = AgenteIntegracaoServices.listarAgentesIntegracao();
 		req.setAttribute("agentesIntegracao", agentesIntegracao);
 		
+		String cnpj_empresa_ligada = req.getParameter("cnpj_empresa_ligada");
 		String matricula = req.getParameter("matricula");
 		String numero_convenio = req.getParameter("numero_convenio");
-		String cnpj_empresa_ligada = req.getParameter("cnpj_empresa_ligada");
 		String cnpj_empresa = req.getParameter("cnpj_empresa");
 		String data_inicio = req.getParameter("data_inicio");
 		String data_termino = req.getParameter("data_termino");
@@ -37,24 +35,16 @@ public class BuscarAlunoCommand implements Command{
 		String bairro = req.getParameter("bairro");
 		String cidade = req.getParameter("cidade");
 		String cep = req.getParameter("cep");
-		String razao_social_empresa = req.getParameter("razao_social_empresa");
 		
-		
-		String msg = null;
-		if (matricula != null && matricula.trim().length() > 0){
-			List<Aluno> aluno = null;
-			aluno = AlunoServices.buscarDetermAluno(matricula);
-			if(aluno.size() > 0){
-				Aluno alunoBuscado = aluno.get(0);
-				msg += "Matrícula retornada com sucesso";
-				req.setAttribute("alunoBuscado", alunoBuscado);
-			} else {
-				msg += "Matrícula não encontrada";
-			}	
-		}else{
-			msg += "É necessário digitar uma matrícula antes de buscar";
+		//String nome_agente = req.getParameter("nome_agente");
+		System.out.println(cnpj_empresa_ligada);
+		if (cnpj_empresa_ligada != null && cnpj_empresa_ligada.trim().length() > 0){
+			List<Empresa> empresa = null;
+			empresa = EmpresaServices.buscarEmpresaLigadaAI(cnpj_empresa_ligada, "CIEE");
+			Empresa empresaLigadaAIBuscada = empresa.get(0);
+			System.out.println(empresaLigadaAIBuscada.getNomeEmpresa());
+			req.setAttribute("empresaLigadaAIBuscada", empresaLigadaAIBuscada);
 		}
-		req.setAttribute("msg", msg);
 		req.setAttribute("numero_convenio", numero_convenio);
 		req.setAttribute("cnpj_empresa_ligada", cnpj_empresa_ligada);
 		req.setAttribute("cnpj_empresa", cnpj_empresa);
@@ -67,10 +57,6 @@ public class BuscarAlunoCommand implements Command{
 		req.setAttribute("cidade", cidade);
 		req.setAttribute("bairro", bairro);
 		req.setAttribute("cep", cep);
-		System.out.println(razao_social_empresa);
-		req.setAttribute("razao_social_empresa", razao_social_empresa);
-
 		req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
 	}
-	
 }

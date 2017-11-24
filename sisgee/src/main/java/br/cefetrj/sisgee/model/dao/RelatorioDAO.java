@@ -15,15 +15,33 @@ public class RelatorioDAO {
 	public static List<TermoEstagio> relatorioTermos(Date dataInicial, Date dataFinal, String estagioObr){
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");
 		EntityManager manager = factory.createEntityManager();
+		Query query = manager.createNativeQuery("select c.nomecurso as NomeCurso, count(te.idte) as NumTermoEstagio, count(ta.idta) as " + 
+				"NumTermoAditivo, count(te.datarescisaote) as NumRescisao from curso c JOIN aluno a ON "+
+				"a.curso_idcurso = c.idcurso JOIN termoestagio te ON te.aluno_idaluno = a.idaluno LEFT JOIN "+
+				"termoaditivo ta ON ta.termoestagio_idte = te.idte where te.estagioobrigatorio = 1 and "+
+				"te.datainiciote >= '1960-02-01' and te.datainiciote <= '2017-08-01'  group by c.nomecurso");
+		List<Object[]> lista = query.getResultList();
+		for (Object[] a : lista) {
+		    System.out.println("Curso "
+		            + a[0]
+		            + " "
+		            + a[1]
+		            + " "
+		            + a[2]
+		            + " "
+		            + a[3]);
+		}
+		
+		System.out.println(lista);
+		/*
 		Query query = manager.createQuery("select p from TermoEstagio as p "+"where p.estagioobrigatorio = :paramNome and p.datainiciote >= :datainicial and p.datainiciote <= :datafinal");
 		query.setParameter("paramNome", Integer.parseInt(estagioObr));
 		query.setParameter("datainicial", dataInicial);
 		query.setParameter("datafinal", dataFinal);
-		List<TermoEstagio> lista = query.getResultList();
-		System.out.println(lista);
+		List<TermoEstagio> lista = query.getResultList();*/
 		
 		manager.close();
-		return lista;
+		return null;
 	
 		
 		/*
