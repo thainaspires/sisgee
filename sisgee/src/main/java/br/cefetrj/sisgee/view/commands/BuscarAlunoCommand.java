@@ -18,83 +18,59 @@ public class BuscarAlunoCommand implements Command{
 		
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String ondeEstaVindo = req.getParameter("ondeEstaVindo");
-		System.out.println(ondeEstaVindo);
-		String matricula = req.getParameter("matricula");
-		System.out.println("ola");
+		/*List<ProfessorOrientador> professoresOrientadores = ProfessorOrientadorServices.listarProfessoresOrientadores();
+		req.setAttribute("professoresOrientadores", professoresOrientadores);
 		
-		if (ondeEstaVindo.equals("rescisao")){
-			
-			String msg = "";
-			if (matricula != null && matricula.trim().length() > 0){
-				List<Aluno> aluno = null;
-				aluno = AlunoServices.buscarDetermAluno(matricula);
-				if(aluno.size() > 0){
-					Aluno alunoBuscado = aluno.get(0);
-					msg += "Matrícula retornada com sucesso";
-					req.setAttribute("alunoBuscado", alunoBuscado);
-				} else {
-					msg += "Matrícula não encontrada";
-				}	
-			}else{
-				msg += "É necessário digitar uma matrícula antes de buscar";
-			}
-			req.setAttribute("msg", msg);
-			req.getRequestDispatcher("/termorescisao.jsp").forward(req, resp);
-			
+		List<AgenteIntegracao> agentesIntegracao = AgenteIntegracaoServices.listarAgentesIntegracao();
+		req.setAttribute("agentesIntegracao", agentesIntegracao);*/
+		
+		String matricula = req.getParameter("matricula");
+		/*String numero_convenio = req.getParameter("numero_convenio");
+		String cnpj_empresa_ligada = req.getParameter("cnpj_empresa_ligada");
+		String cnpj_empresa = req.getParameter("cnpj_empresa");
+		String data_inicio = req.getParameter("data_inicio");
+		String data_termino = req.getParameter("data_termino");
+		String horas_dia = req.getParameter("horas_dia");
+		String valor_bolsa = req.getParameter("valor_bolsa");
+		String endereco = req.getParameter("endereco");
+		String complemento = req.getParameter("complemento");
+		String bairro = req.getParameter("bairro");
+		String cidade = req.getParameter("cidade");
+		String cep = req.getParameter("cep");
+		String razao_social_empresa = req.getParameter("razao_social_empresa");
+		*/
+		
+		String msg = null;
+		if (matricula != null && matricula.trim().length() > 0){
+			List<Aluno> alunos = null;
+			alunos = AlunoServices.buscarDetermAluno(matricula);
+			if(alunos.size() > 0){
+				Aluno aluno = alunos.get(0);
+				msg += "Matrícula retornada com sucesso";
+				req.setAttribute("aluno", aluno);
+			} else {
+				msg += "Matrícula não encontrada";
+			}	
 		}else{
-			List<ProfessorOrientador> professoresOrientadores = ProfessorOrientadorServices.listarProfessoresOrientadores();
-			req.setAttribute("professoresOrientadores", professoresOrientadores);
-			
-			List<AgenteIntegracao> agentesIntegracao = AgenteIntegracaoServices.listarAgentesIntegracao();
-			req.setAttribute("agentesIntegracao", agentesIntegracao);
-			
-			String numero_convenio = req.getParameter("numero_convenio");
-			String cnpj_empresa_ligada = req.getParameter("cnpj_empresa_ligada");
-			String cnpj_empresa = req.getParameter("cnpj_empresa");
-			String data_inicio = req.getParameter("data_inicio");
-			String data_termino = req.getParameter("data_termino");
-			String horas_dia = req.getParameter("horas_dia");
-			String valor_bolsa = req.getParameter("valor_bolsa");
-			String endereco = req.getParameter("endereco");
-			String complemento = req.getParameter("complemento");
-			String bairro = req.getParameter("bairro");
-			String cidade = req.getParameter("cidade");
-			String cep = req.getParameter("cep");
-			String razao_social_empresa = req.getParameter("razao_social_empresa");
-			
-			String msg = null;
-			if (matricula != null && matricula.trim().length() > 0){
-				List<Aluno> aluno = null;
-				aluno = AlunoServices.buscarDetermAluno(matricula);
-				if(aluno.size() > 0){
-					Aluno alunoBuscado = aluno.get(0);
-					msg += "Matrícula retornada com sucesso";
-					req.setAttribute("alunoBuscado", alunoBuscado);
-				} else {
-					msg += "Matrícula não encontrada";
-				}	
-			}else{
-				msg += "É necessário digitar uma matrícula antes de buscar";
-			}
-			req.setAttribute("msg", msg);
-			
-			req.setAttribute("numero_convenio", numero_convenio);
-			req.setAttribute("cnpj_empresa_ligada", cnpj_empresa_ligada);
-			req.setAttribute("cnpj_empresa", cnpj_empresa);
-			req.setAttribute("data_inicio", data_inicio);
-			req.setAttribute("data_termino", data_termino);
-			req.setAttribute("horas_dia", horas_dia);
-			req.setAttribute("valor_bolsa", valor_bolsa);
-			req.setAttribute("endereco", endereco);
-			req.setAttribute("complemento", complemento);
-			req.setAttribute("cidade", cidade);
-			req.setAttribute("bairro", bairro);
-			req.setAttribute("cep", cep);
-			req.setAttribute("razao_social_empresa", razao_social_empresa);
-			req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
+			msg += "É necessário digitar uma matrícula antes de buscar";
 		}
-
+		/*
+		req.setAttribute("numero_convenio", numero_convenio);
+		req.setAttribute("cnpj_empresa_ligada", cnpj_empresa_ligada);
+		req.setAttribute("cnpj_empresa", cnpj_empresa);
+		req.setAttribute("data_inicio", data_inicio);
+		req.setAttribute("data_termino", data_termino);
+		req.setAttribute("horas_dia", horas_dia);
+		req.setAttribute("valor_bolsa", valor_bolsa);
+		req.setAttribute("endereco", endereco);
+		req.setAttribute("complemento", complemento);
+		req.setAttribute("cidade", cidade);
+		req.setAttribute("bairro", bairro);
+		req.setAttribute("cep", cep);
+		System.out.println(razao_social_empresa);
+		req.setAttribute("razao_social_empresa", razao_social_empresa);*/
+		req.setAttribute("msg", msg);
+		req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
 	}
 	
 }

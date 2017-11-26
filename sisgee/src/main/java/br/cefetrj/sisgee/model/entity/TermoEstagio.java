@@ -73,6 +73,15 @@ public class TermoEstagio {
 	public List<TermoAditivo> getTermosAditivos(){
 		return termosAditivos;
 	}
+	public void setTermosAditivos(List<TermoAditivo> termosAditivos) {
+		this.termosAditivos = termosAditivos;
+	}
+	public List<ProfessorOrientador> getProfessoresOrientadores() {
+		return professoresOrientadores;
+	}
+	public void setProfessoresOrientadores(List<ProfessorOrientador> professoresOrientadores) {
+		this.professoresOrientadores = professoresOrientadores;
+	}
 	public Date getDatainiciote() {
 		return datainiciote;
 	}
@@ -152,6 +161,21 @@ public class TermoEstagio {
 		this.estagioobrigatorio = eestagioobrigatorio;
 	}
 	
+	public Integer getEstagioobrigatorio() {
+		return estagioobrigatorio;
+	}
+	public void setEstagioobrigatorio(Integer estagioobrigatorio) {
+		this.estagioobrigatorio = estagioobrigatorio;
+	}
+	public Convenio getConvenio() {
+		return convenio;
+	}
+	public void setConvenio(Convenio convenio) {
+		this.convenio = convenio;
+	}
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

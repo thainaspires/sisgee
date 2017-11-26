@@ -17,7 +17,7 @@ public class EmpresaDAO  extends GenericDAO<EmpresaDAO>{
 		super(EmpresaDAO.class, PersistenceManager.getEntityManager());
 	}
 	
-	public static List<Empresa> buscarPorAgenteIntegracao(AgenteIntegracao agenteIntegracao, String CNPJ){
+	public static List<Empresa> buscarPorAgenteIntegracao(AgenteIntegracao agenteintegracao, String cnpj){
 		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");
 		EntityManager manager = factory.createEntityManager();

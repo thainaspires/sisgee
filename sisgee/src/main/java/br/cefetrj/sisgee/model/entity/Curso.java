@@ -37,6 +37,10 @@ public class Curso {
 		return campus;
 	}
 	
+	public void setCampus(Campus campus) {
+		this.campus = campus;
+	}
+
 	public Long getIdCurso() {
 		return idCurso;
 	}

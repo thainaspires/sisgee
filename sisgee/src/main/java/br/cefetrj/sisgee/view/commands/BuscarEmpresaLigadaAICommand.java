@@ -16,14 +16,8 @@ import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
 
 public class BuscarEmpresaLigadaAICommand implements Command {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<ProfessorOrientador> professoresOrientadores = ProfessorOrientadorServices.listarProfessoresOrientadores();
-		req.setAttribute("professoresOrientadores", professoresOrientadores);
-		
-		List<AgenteIntegracao> agentesIntegracao = AgenteIntegracaoServices.listarAgentesIntegracao();
-		req.setAttribute("agentesIntegracao", agentesIntegracao);
-		
 		String cnpj_empresa_ligada = req.getParameter("cnpj_empresa_ligada");
-		String matricula = req.getParameter("matricula");
+		/*String matricula = req.getParameter("matricula");
 		String numero_convenio = req.getParameter("numero_convenio");
 		String cnpj_empresa = req.getParameter("cnpj_empresa");
 		String data_inicio = req.getParameter("data_inicio");
@@ -34,17 +28,14 @@ public class BuscarEmpresaLigadaAICommand implements Command {
 		String complemento = req.getParameter("complemento");
 		String bairro = req.getParameter("bairro");
 		String cidade = req.getParameter("cidade");
-		String cep = req.getParameter("cep");
-		
+		String cep = req.getParameter("cep");*/
 		//String nome_agente = req.getParameter("nome_agente");
-		System.out.println(cnpj_empresa_ligada);
 		if (cnpj_empresa_ligada != null && cnpj_empresa_ligada.trim().length() > 0){
 			List<Empresa> empresa = null;
 			empresa = EmpresaServices.buscarEmpresaLigadaAI(cnpj_empresa_ligada, "CIEE");
 			Empresa empresaLigadaAIBuscada = empresa.get(0);
-			System.out.println(empresaLigadaAIBuscada.getNomeEmpresa());
-			req.setAttribute("empresaLigadaAIBuscada", empresaLigadaAIBuscada);
-		}
+			req.setAttribute("empresaligada", empresaLigadaAIBuscada);
+		}/*
 		req.setAttribute("numero_convenio", numero_convenio);
 		req.setAttribute("cnpj_empresa_ligada", cnpj_empresa_ligada);
 		req.setAttribute("cnpj_empresa", cnpj_empresa);
@@ -56,7 +47,7 @@ public class BuscarEmpresaLigadaAICommand implements Command {
 		req.setAttribute("complemento", complemento);
 		req.setAttribute("cidade", cidade);
 		req.setAttribute("bairro", bairro);
-		req.setAttribute("cep", cep);
+		req.setAttribute("cep", cep);*/
 		req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
 	}
 }
