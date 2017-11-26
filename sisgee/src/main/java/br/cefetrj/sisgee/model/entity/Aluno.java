@@ -41,10 +41,17 @@ public class Aluno {
 		return pessoa;
 	}
 	
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
 	public Curso getCurso() {
 		return curso;
 	}
-
+	
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
 
 	public Long getIdAluno() {
 		return idAluno;

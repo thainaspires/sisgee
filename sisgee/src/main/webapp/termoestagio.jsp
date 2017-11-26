@@ -1,16 +1,42 @@
+<%@ taglib prefix="cmp" uri="WEB-INF/components.tld"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<title>Registro do Termo de Estágio</title>
 	<%@ include file="head_imports.jspf" %>	
-	<meta charset="utf-8">
+	<meta charset="utf-8">	
 </head>
 <body>
+
 	<%@ include file="menu.jspf" %>
+		<!-- Declaração das classes que receberão os parâmetros -->
+		<c:if test="${ empty aluno }">
+			<jsp:useBean id="aluno" scope="request" class="br.cefetrj.sisgee.model.entity.Aluno" type="br.cefetrj.sisgee.model.entity.Aluno"/>		
+				<jsp:setProperty name="aluno" property="pessoa" value="${param.nome_aluno}" />
+				<jsp:setProperty name="aluno" property="matricula" value="${param.matricula}" />
+				<jsp:setProperty name="aluno" property="curso" value="${param.curso}" />
+			<jsp:useBean id="curso" scope="request" class="br.cefetrj.sisgee.model.entity.Curso" type="br.cefetrj.sisgee.model.entity.Curso"/>		
+				<jsp:setProperty name="curso" property="campus" value="${ param.unidade }"/>
+		</c:if>
+		<c:if test="${ not empty aluno }">
+			<jsp:useBean id="cursoalt" scope="request" class="br.cefetrj.sisgee.model.entity.Curso" type="br.cefetrj.sisgee.model.entity.Curso"/>		
+				<jsp:setProperty name="cursoalt" property="campus" value="${ aluno.getCurso().getCampus() }"/>
+		</c:if>
+		<c:if test="${ empty termoestagio}">	
+			<jsp:useBean id="professororientador" scope="request" class="br.cefetrj.sisgee.model.entity.ProfessorOrientador" type="br.cefetrj.sisgee.model.entity.ProfessorOrientador"/>		
+				<jsp:setProperty name="professororientador" property="idpo" value="${ param.professor_orientador }"/>
+			<jsp:useBean id="agenteintegracao" scope="request" class="br.cefetrj.sisgee.model.entity.AgenteIntegracao" type="br.cefetrj.sisgee.model.entity.AgenteIntegracao"/>		
+				<jsp:setProperty name="agenteintegracao" property="idAgenteIntegracao" value="${ param.professor_orientador }"/>
+		</c:if>
+		<!-- Erro: Usebean TermoEstagio não funciona, problema de conversão -->
+		<jsp:useBean id="termoestagio" scope="request" class="br.cefetrj.sisgee.model.entity.TermoEstagio" type="br.cefetrj.sisgee.model.entity.TermoEstagio"/>		
+			<jsp:setProperty name="termoestagio" property="convenio" value="${ param.numero_convenio }"/>
+			<jsp:setProperty name="termoestagio" property="datainiciote" value="${ param.data_inicio }"/>
+			<jsp:setProperty name="termoestagio" property="datafimte" value="${ param.data_termino }"/>		
 	
 	<div class="container">
-		num = ${ param.numero_convenio }
-		razao = ${ param.razao_social_empresa }
+	eita = ${ param.numero_convenio } <!-- Aqui pega -->
+	eita2 = ${ param.data_inicio }
 		<form method="post" action="FrontControllerServlet?action=ValidarTermoEstagio" id="formulario">
 			<div class="container">
 				<c:if test="${ not empty msg }">
@@ -22,7 +48,7 @@
 						<div class="row">
 							<div class="form-group col-md-12">
 								<label for="numero_convenio"><fmt:message key="br.cefetrj.sisgee.termo_estagio.numconvenio"></fmt:message></label>
-								<input type="text" class="form-control" name="numero_convenio" id="numero_convenio" value="${ param.numero_convenio }">
+								<input type="text" class="form-control" name="numero_convenio" id="numero_convenio" value="${ termoestagio.convenio }">
 							</div>
 							<div class="form-group col-md-12">
 								<div>
@@ -41,12 +67,9 @@
 								<div id="agente1" class="col-md-12">
 									<div class="form-group col-md-4">
 										<label for="razao_social"><fmt:message key="br.cefetrj.sisgee.termo_estagio.razao"></fmt:message></label>
-										<select style="float:left;" id="razao_social" name="razao_social" class="form-control">
-									  		<c:forEach items="${ agentesIntegracao }" var="agentesIntegracao">
-												<option value="${ agentesIntegracao.idAgenteIntegracao }" ${ param.agentesIntegracao eq agentesIntegracao.idAgenteIntegracao ? "selected" : "" } > ${ agentesIntegracao.nomeAgenteIntegracao }</option>
-											</c:forEach>						  
-										</select>	
-
+											
+										<cmp:ComboAgente id="${ agenteintegracao.idAgenteIntegracao }"/>
+														
 										<a href="cadastrar_empresa.jsp" style="float:right;"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cadastro_empresa"></fmt:message></a>							
 									</div>									
 									<div class="form-group col-md-6" style="display:inline-block;">
@@ -99,7 +122,7 @@
 							<div class="form-group col-md-4" style="display:inline-block;">
 								<label for="matricula"><fmt:message key="br.cefetrj.sisgee.termo_estagio.matricula"></fmt:message></label>
 								<div class="input-group">
-									<input type="text" class="form-control" name="matricula" id="matricula" value="${ param.matricula }">	
+									<input type="text" class="form-control" name="matricula" id="matricula" value="${ aluno.matricula }">	
 									<span class="input-group-btn"> <!-- javascript:location.href='FrontControllerServlet?action=ConsultasTermoEst&matricula='+mat+'&form='+form"-->
 										<button class="btn btn-primary" type="button" onClick="var form = document.getElementById('formulario');var mat = document.getElementById('matricula').value;form.action='FrontControllerServlet?action=BuscarAluno&matricula='+mat;form.submit()">
 											<span><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span>
@@ -111,16 +134,16 @@
 
 							<div class="form-group col-md-8">
 								<label for="nome_aluno"><fmt:message key="br.cefetrj.sisgee.termo_estagio.nomealuno"></fmt:message></label>
-								<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled" value="${ alunoBuscado.pessoa }">
+								<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled" value="${ aluno.pessoa }">
 							</div>							
 							<div class="form-group col-md-6">
 								<label for="curso"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cursoaluno"></fmt:message></label>
-								<input type="text" class="form-control" name="curso" id="curso" disabled="disabled" value="${ alunoBuscado.curso }">
+								<input type="text" class="form-control" name="curso" id="curso" disabled="disabled" value="${ aluno.curso }">
 							</div>
 
 							<div class="form-group col-md-6">
 								<label for="unidade"><fmt:message key="br.cefetrj.sisgee.termo_estagio.unidadealuno"></fmt:message></label>
-								<input type="text" class="form-control" name="unidade" id="unidade" disabled="disabled" value="${ alunoBuscado.curso.campus }">
+								<input type="text" class="form-control" name="unidade" id="unidade" disabled="disabled" value="${ not empty aluno ? cursoalt.campus : curso.campus}">
 							</div>
 						</div>
 					</fieldset>
@@ -243,11 +266,7 @@
 
 							<div class="form-group col-md-9">
 								<label for="professor_orientador"><fmt:message key="br.cefetrj.sisgee.termo_estagio.prof_orientador"></fmt:message></label>
-								<select class="form-control" class="form-control" name="professor_orientador" id="professor_orientador">
-									<c:forEach items="${professoresOrientadores}" var="professoresOrientadores">
-										<option value="${ professoresOrientadores.idpo }" ${ param.professoresOrientadores eq professoresOrientadores.idpo ? "selected" : "" } > ${ professoresOrientadores.nomepo }</option>
-									</c:forEach>
-								</select>
+								<cmp:ComboProfessor id="${ professororientador.idpo }"/>
 							</div>
 						</div>
 					</fieldset>

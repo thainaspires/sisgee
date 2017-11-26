@@ -3,14 +3,25 @@
 	 <jsp-version>2.0</jsp-version>
 	 <short-name>Componentes TLD</short-name>
 	 <tag>
-	 <name>ComboSistema</name>
-	 <tag-class>br.cefetrj.sisgee.view.tags.AlunoTag</tag-class>
+	 <name>ComboProfessor</name>
+	 <tag-class>br.cefetrj.sisgee.view.tags.ProfessorOrientadorTag</tag-class>
 		 <body-content>empty</body-content>
 		 <attribute>
-			 <name>matricula</name>
-			 <required>false</required>
+			 <name>id</name>
+			 <required>true</required>
 			 <type>java.lang.String</type>
 			 <rtexprvalue>true</rtexprvalue>
 		 </attribute>
 	 </tag>
+	 <tag>
+		 <name>ComboAgente</name>
+		 <tag-class>br.cefetrj.sisgee.view.tags.AgenteIntegracaoTag</tag-class>
+			 <body-content>empty</body-content>
+			 <attribute>
+				 <name>id</name>
+				 <required>true</required>
+				 <type>java.lang.String</type>
+				 <rtexprvalue>true</rtexprvalue>
+			 </attribute>
+		 </tag>
 </taglib>

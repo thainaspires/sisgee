@@ -18,14 +18,14 @@ public class BuscarAlunoCommand implements Command{
 		
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		List<ProfessorOrientador> professoresOrientadores = ProfessorOrientadorServices.listarProfessoresOrientadores();
+		/*List<ProfessorOrientador> professoresOrientadores = ProfessorOrientadorServices.listarProfessoresOrientadores();
 		req.setAttribute("professoresOrientadores", professoresOrientadores);
 		
 		List<AgenteIntegracao> agentesIntegracao = AgenteIntegracaoServices.listarAgentesIntegracao();
-		req.setAttribute("agentesIntegracao", agentesIntegracao);
+		req.setAttribute("agentesIntegracao", agentesIntegracao);*/
 		
 		String matricula = req.getParameter("matricula");
-		String numero_convenio = req.getParameter("numero_convenio");
+		/*String numero_convenio = req.getParameter("numero_convenio");
 		String cnpj_empresa_ligada = req.getParameter("cnpj_empresa_ligada");
 		String cnpj_empresa = req.getParameter("cnpj_empresa");
 		String data_inicio = req.getParameter("data_inicio");
@@ -38,23 +38,25 @@ public class BuscarAlunoCommand implements Command{
 		String cidade = req.getParameter("cidade");
 		String cep = req.getParameter("cep");
 		String razao_social_empresa = req.getParameter("razao_social_empresa");
-		
+		*/
 		
 		String msg = null;
 		if (matricula != null && matricula.trim().length() > 0){
-			List<Aluno> aluno = null;
-			aluno = AlunoServices.buscarDetermAluno(matricula);
-			if(aluno.size() > 0){
-				Aluno alunoBuscado = aluno.get(0);
+			List<Aluno> alunos = null;
+			alunos = AlunoServices.buscarDetermAluno(matricula);
+			if(alunos.size() > 0){
+				Aluno aluno = alunos.get(0);
 				msg += "Matrícula retornada com sucesso";
-				req.setAttribute("alunoBuscado", alunoBuscado);
+				req.setAttribute("aluno", aluno);
+				System.out.println("TIPO: "+ aluno.getCurso().getCampus());
+				req.setAttribute("teste",aluno.getCurso().getCampus());
 			} else {
 				msg += "Matrícula não encontrada";
 			}	
 		}else{
 			msg += "É necessário digitar uma matrícula antes de buscar";
 		}
-		req.setAttribute("msg", msg);
+		/*
 		req.setAttribute("numero_convenio", numero_convenio);
 		req.setAttribute("cnpj_empresa_ligada", cnpj_empresa_ligada);
 		req.setAttribute("cnpj_empresa", cnpj_empresa);
@@ -68,8 +70,8 @@ public class BuscarAlunoCommand implements Command{
 		req.setAttribute("bairro", bairro);
 		req.setAttribute("cep", cep);
 		System.out.println(razao_social_empresa);
-		req.setAttribute("razao_social_empresa", razao_social_empresa);
-
+		req.setAttribute("razao_social_empresa", razao_social_empresa);*/
+		req.setAttribute("msg", msg);
 		req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
 	}
 	
