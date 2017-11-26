@@ -48,8 +48,6 @@ public class BuscarAlunoCommand implements Command{
 				Aluno aluno = alunos.get(0);
 				msg += "Matrícula retornada com sucesso";
 				req.setAttribute("aluno", aluno);
-				System.out.println("TIPO: "+ aluno.getCurso().getCampus());
-				req.setAttribute("teste",aluno.getCurso().getCampus());
 			} else {
 				msg += "Matrícula não encontrada";
 			}	

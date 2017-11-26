@@ -93,6 +93,14 @@ public class Empresa {
 		return true;
 	}
 	
+	public void setAgenteIntegracao(AgenteIntegracao agenteIntegracao) {
+		this.agenteIntegracao = agenteIntegracao;
+	}
+	@Override
+	public String toString() {
+		return "Empresa [nomeEmpresa=" + nomeEmpresa + "]";
+	}
+	
 	
 	
 }

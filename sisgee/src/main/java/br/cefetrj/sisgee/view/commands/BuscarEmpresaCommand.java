@@ -16,14 +16,9 @@ import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
 
 public class BuscarEmpresaCommand  implements Command {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<ProfessorOrientador> professoresOrientadores = ProfessorOrientadorServices.listarProfessoresOrientadores();
-		req.setAttribute("professoresOrientadores", professoresOrientadores);
-		
-		List<AgenteIntegracao> agentesIntegracao = AgenteIntegracaoServices.listarAgentesIntegracao();
-		req.setAttribute("agentesIntegracao", agentesIntegracao);
 		
 		String cnpj_empresa = req.getParameter("cnpj_empresa");
-		String matricula = req.getParameter("matricula");
+		/*String matricula = req.getParameter("matricula");
 		String numero_convenio = req.getParameter("numero_convenio");
 		String cnpj_empresa_ligada = req.getParameter("cnpj_empresa_ligada");
 		String data_inicio = req.getParameter("data_inicio");
@@ -37,8 +32,8 @@ public class BuscarEmpresaCommand  implements Command {
 		String cep = req.getParameter("cep");
 		String razao_social_empresa = req.getParameter("razao_social_empresa");
 		System.out.println(razao_social_empresa);
-		
-		if (cnpj_empresa != null && cnpj_empresa.trim().length() > 0){
+		*/
+		/*if (cnpj_empresa != null && cnpj_empresa.trim().length() > 0){
 			List<Empresa> empresa = null;
 			empresa = EmpresaServices.buscarEmpresa(cnpj_empresa);
 			Empresa empresaBuscada = empresa.get(0);
@@ -46,9 +41,17 @@ public class BuscarEmpresaCommand  implements Command {
 			System.out.println(razao_social_empresa);
 			req.setAttribute("razao_social_empresa", razao_social_empresa);
 			System.out.println(req.getAttribute("razao_social_empresa"));
+		}*/
+		
+		if (cnpj_empresa != null && cnpj_empresa.trim().length() > 0){
+			List<Empresa> empresa = null;
+			empresa = EmpresaServices.buscarEmpresa(cnpj_empresa);
+			Empresa empresaBuscada = empresa.get(0);
+			req.setAttribute("empresa", empresaBuscada);
 		}
 		
-	
+		
+	/*
 		req.setAttribute("numero_convenio", numero_convenio);
 		req.setAttribute("cnpj_empresa_ligada", cnpj_empresa_ligada);
 		req.setAttribute("cnpj_empresa", cnpj_empresa);
@@ -60,7 +63,7 @@ public class BuscarEmpresaCommand  implements Command {
 		req.setAttribute("complemento", complemento);
 		req.setAttribute("cidade", cidade);
 		req.setAttribute("bairro", bairro);
-		req.setAttribute("cep", cep);
+		req.setAttribute("cep", cep);*/
 		req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
 	}
 

@@ -26,19 +26,27 @@
 			<jsp:useBean id="professororientador" scope="request" class="br.cefetrj.sisgee.model.entity.ProfessorOrientador" type="br.cefetrj.sisgee.model.entity.ProfessorOrientador"/>		
 				<jsp:setProperty name="professororientador" property="idpo" value="${ param.professor_orientador }"/>
 			<jsp:useBean id="agenteintegracao" scope="request" class="br.cefetrj.sisgee.model.entity.AgenteIntegracao" type="br.cefetrj.sisgee.model.entity.AgenteIntegracao"/>		
-				<jsp:setProperty name="agenteintegracao" property="idAgenteIntegracao" value="${ param.professor_orientador }"/>
+				<jsp:setProperty name="agenteintegracao" property="idAgenteIntegracao" value="${ param.razao_social }"/>
 		</c:if>
-		<!-- Erro: Usebean TermoEstagio não funciona, problema de conversão -->
-		<jsp:useBean id="termoestagio" scope="request" class="br.cefetrj.sisgee.model.entity.TermoEstagio" type="br.cefetrj.sisgee.model.entity.TermoEstagio"/>		
-			<jsp:setProperty name="termoestagio" property="convenio" value="${ param.numero_convenio }"/>
-			<jsp:setProperty name="termoestagio" property="datainiciote" value="${ param.data_inicio }"/>
-			<jsp:setProperty name="termoestagio" property="datafimte" value="${ param.data_termino }"/>		
+		<c:if test="${ empty empresaligada }">
+			<jsp:useBean id="empresaligada" scope="request" class="br.cefetrj.sisgee.model.entity.Empresa" type="br.cefetrj.sisgee.model.entity.Empresa"/>		
+				<jsp:setProperty name="empresaligada" property="cnpjEmpresa" value="${ param.cnpj_empresa_ligada }"/>
+				<jsp:setProperty name="empresaligada" property="nomeEmpresa" value="${ param.razao_social_empresa_ligada }"/>
+		</c:if>
+		<c:if test="${ empty empresa }">
+			<jsp:useBean id="empresa" scope="request" class="br.cefetrj.sisgee.model.entity.Empresa" type="br.cefetrj.sisgee.model.entity.Empresa"/>		
+				<jsp:setProperty name="empresa" property="cnpjEmpresa" value="${ param.cnpj_empresa }"/>
+				<jsp:setProperty name="empresa" property="nomeEmpresa" value="${ param.razao_social_empresa }"/>
+		</c:if>		
 	
 	<div class="container">
-	eita = ${ param.numero_convenio } <!-- Aqui pega -->
-	eita2 = ${ param.data_inicio }
+		X = ${ param.razao_social_empresa }<br/>
+		Y = ${ empresa.nomeEmpresa }<br/>
+		Z = ${ param.nome_aluno }<br/>
+		W = ${ aluno.pessoa }<br/>
 		<form method="post" action="FrontControllerServlet?action=ValidarTermoEstagio" id="formulario">
 			<div class="container">
+				<!-- Variável de mensagem que mostrao o Status do sistema -->
 				<c:if test="${ not empty msg }">
 	 				<div class="alert" style="margin-top: 20px; background: #B8B3CC;">${ msg }</div>		
 	 			</c:if>
@@ -48,18 +56,20 @@
 						<div class="row">
 							<div class="form-group col-md-12">
 								<label for="numero_convenio"><fmt:message key="br.cefetrj.sisgee.termo_estagio.numconvenio"></fmt:message></label>
-								<input type="text" class="form-control" name="numero_convenio" id="numero_convenio" value="${ termoestagio.convenio }">
+								<input type="text" class="form-control" name="numero_convenio" id="numero_convenio" value="${ param.numero_convenio }">
 							</div>
+							<!-- Campo hidden que pega o valor do Radio necessário para o JS -->
+							<input type="hidden" id="valorRadio" value="${param.exampleRadios}"/>
 							<div class="form-group col-md-12">
 								<div>
 									<label for="isn_obrigatorio"><fmt:message key="br.cefetrj.sisgee.termo_estagio.is_agente"></fmt:message></label>
 									<br/>
 									<label class="form-check-label">
-									  <input class="form-check-input" type="radio" name="exampleRadios" ${ param.exampleRadios eq "sim" ? "checked" : "" } onclick='eagente("sim");'/>
+									  <input class="form-check-input" type="radio" id="exampleRadios1" name="exampleRadios" value="sim"  onclick='eagente("sim");'/>
 									  <fmt:message key="br.cefetrj.sisgee.termo_estagio.is_agentesim"></fmt:message>
 									</label>
 									<label class="form-check-label">
-									  <input class="form-check-input" type="radio" name="exampleRadios" ${ param.exampleRadios eq "nao" ? "checked" : "" } onclick='eagente("nao");'/>
+									  <input class="form-check-input" type="radio" id="exampleRadios2" name="exampleRadios" value="nao" onclick='eagente("nao");'/>
 									  <fmt:message key="br.cefetrj.sisgee.termo_estagio.is_agentenao"></fmt:message>
 									</label>
 								</div>
@@ -67,7 +77,8 @@
 								<div id="agente1" class="col-md-12">
 									<div class="form-group col-md-4">
 										<label for="razao_social"><fmt:message key="br.cefetrj.sisgee.termo_estagio.razao"></fmt:message></label>
-											
+										
+										<!-- Tag para listar os Agentes de Integração -->	
 										<cmp:ComboAgente id="${ agenteintegracao.idAgenteIntegracao }"/>
 														
 										<a href="cadastrar_empresa.jsp" style="float:right;"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cadastro_empresa"></fmt:message></a>							
@@ -75,17 +86,16 @@
 									<div class="form-group col-md-6" style="display:inline-block;">
 										<label for="cnpj_empresa_ligada"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cnpj_empresa_ligada"></fmt:message></label>
 										<div class="input-group">
-											<input type="text" class="form-control" name="cnpj_empresa_ligada" id="cnpj_empresa_ligada" value="${ param.cnpj_empresa_ligada }">	
+											<input type="text" class="form-control" name="cnpj_empresa_ligada" id="cnpj_empresa_ligada" value="${ empresaligada.cnpjEmpresa }">	
 											<span class="input-group-btn">
-												<button class="btn btn-primary" type="button" onClick="var form = document.getElementById('formulario');var cnpj = document.getElementById('cnpj_empresa_ligada').value;form.action='FrontControllerServlet?action=BuscarEmpresaLigada&cnpj_empresa_ligada='+cnpj;form.submit()""><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></button>
+												<button class="btn btn-primary" type="button" onClick="buscarEmpresaLigada();"><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></button>
 											</span>
 										</div>
 									</div>
 									<div class="form-group col-md-6" style="display:inline-block;">
 										<label for="razao_social_empresa_ligada"><fmt:message key="br.cefetrj.sisgee.termo_estagio.razao_empresa_ligada"></fmt:message></label>
-										<!--<input class="form-control" name="razao_social_empresa_ligada" id="razao_social_empresa_ligada"/>-->
 										<div class="input-group">
-											<input type="text" class="form-control" name="razao_social_empresa_ligada" id="razao_social_empresa_ligada" disabled="disabled" value="${ empresaLigadaAIBuscada.nomeEmpresa }">	
+											<input type="text" class="form-control" name="razao_social_empresa_ligada" id="razao_social_empresa_ligada" disabled="disabled" value="${ empresaligada.nomeEmpresa }">	
 											<span class="input-group-btn">
 												<button class="btn btn-primary btn-plus" type="button" onclick="javascript:location.href='registrar_empresa_ligada_ai.jsp'">+</button>
 											</span>
@@ -97,16 +107,16 @@
 									<div class="form-group col-md-6">
 										<label for="cnpj_empresa"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cnpj"></fmt:message></label>
 										<div class="input-group">
-											<input type="text" class="form-control" name="cnpj_empresa" id="cnpj_empresa" value="${ param.cnpj_empresa }">	
+											<input type="text" class="form-control" name="cnpj_empresa" id="cnpj_empresa" value="${ empresa.cnpjEmpresa }">	
 											<span class="input-group-btn">
-												<button class="btn btn-primary" type="button" onClick="var form = document.getElementById('formulario');var cnpj = document.getElementById('cnpj_empresa').value;form.action='FrontControllerServlet?action=BuscarEmpresa&cnpj_empresa='+cnpj;form.submit()"><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></button>
+												<button class="btn btn-primary" type="button" onClick="buscarEmpresa();"><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></button>
 											</span>
 										</div>
 									</div>
 									<div class="form-group col-md-6">
-										<label for="razao_social_empresa_ligada"><fmt:message key="br.cefetrj.sisgee.termo_estagio.razao"></fmt:message></label>
+										<label for="razao_social_empresa"><fmt:message key="br.cefetrj.sisgee.termo_estagio.razao"></fmt:message></label>
 										<div class="input-group">
-											<input type="text" class="form-control" name="razao_social_empresa" id="razao_social_empresa" disabled="disabled" value="${ param.razao_social_empresa }">	
+											<input type="text" class="form-control" name="razao_social_empresa" id="razao_social_empresa" disabled="disabled" value="${ empresa.nomeEmpresa }">	
 											<span class="input-group-btn">
 												<button class="btn btn-primary btn-plus" type="button">+</button>
 											</span>
@@ -124,7 +134,7 @@
 								<div class="input-group">
 									<input type="text" class="form-control" name="matricula" id="matricula" value="${ aluno.matricula }">	
 									<span class="input-group-btn"> <!-- javascript:location.href='FrontControllerServlet?action=ConsultasTermoEst&matricula='+mat+'&form='+form"-->
-										<button class="btn btn-primary" type="button" onClick="var form = document.getElementById('formulario');var mat = document.getElementById('matricula').value;form.action='FrontControllerServlet?action=BuscarAluno&matricula='+mat;form.submit()">
+										<button class="btn btn-primary" type="button" onClick="buscarAluno();">
 											<span><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span>
 										</button>
 									</span>
@@ -279,38 +289,20 @@
 		</form>
 	</div>
     <%@ include file="scripts_imports.jspf" %>
-    <script type="text/javascript">
-		function eagente(tipo){
-			if(tipo=="sim"){
-				document.getElementById("agente1").style.display="block";
-				document.getElementById("agente2").style.display="none";
-				
-				document.getElementById("cnpj_empresa").setAttribute("disabled","disabled");
-				
-				document.getElementById("cnpj_empresa_ligada").removeAttribute("disabled");
-				document.getElementById("razao_social_empresa_ligada").removeAttribute("disabled");
-				
-			} else {
-				document.getElementById("agente1").style.display="none";
-				document.getElementById("agente2").style.display="inherit";
-				
-				document.getElementById("cnpj_empresa_ligada").setAttribute("disabled","disabled");
-				
-				document.getElementById("cnpj_empresa").removeAttribute("disabled");
-				
-			}
-		}
-	    $('#data_termino').datepicker({
-	    	<c:if test="${ lang eq 'pt_BR' }">
-	    	language: 'pt-BR'
-	        </c:if>
-	    });
-	    
-	    $('#data_inicio').datepicker({
-	    	<c:if test="${ lang eq 'pt_BR' }">
-	    	language: 'pt-BR'
-	        </c:if>
-	    });
-	</script>
+ 	<script src="js/termoestagio.js"></script>
+ 	
+ 	<script type="text/javascript">
+	 	$('#data_termino').datepicker({
+	 		<c:if test="${ lang eq 'pt_BR' }">
+	 		language: 'pt-BR'
+	 	    </c:if>
+	 	});
+	
+	 	$('#data_inicio').datepicker({
+	 		<c:if test="${ lang eq 'pt_BR' }">
+	 		language: 'pt-BR'
+	 	    </c:if>
+	 	});
+ 	</script>
 </body>
 </html>
