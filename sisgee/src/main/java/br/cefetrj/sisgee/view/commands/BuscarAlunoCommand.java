@@ -17,6 +17,29 @@ import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
 public class BuscarAlunoCommand implements Command{
 		
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String matricula = req.getParameter("matricula");
+		String ondeEstaVindo = req.getParameter("ondeEstaVindo");
+		
+		if (ondeEstaVindo.equals("rescisao")){
+			
+			String msg = "";
+			if (matricula != null && matricula.trim().length() > 0){
+				List<Aluno> aluno = null;
+				aluno = AlunoServices.buscarDetermAluno(matricula);
+				if(aluno.size() > 0){
+					Aluno alunoBuscado = aluno.get(0);
+					msg += "Matrícula retornada com sucesso";
+					req.setAttribute("alunoBuscado", alunoBuscado);
+				} else {
+					msg += "Matrícula não encontrada";
+				}	
+			}else{
+				msg += "É necessário digitar uma matrícula antes de buscar";
+			}
+			req.setAttribute("msg", msg);
+			req.getRequestDispatcher("/termorescisao.jsp").forward(req, resp);
+			
+		}else{
 		
 		/*List<ProfessorOrientador> professoresOrientadores = ProfessorOrientadorServices.listarProfessoresOrientadores();
 		req.setAttribute("professoresOrientadores", professoresOrientadores);
@@ -24,7 +47,7 @@ public class BuscarAlunoCommand implements Command{
 		List<AgenteIntegracao> agentesIntegracao = AgenteIntegracaoServices.listarAgentesIntegracao();
 		req.setAttribute("agentesIntegracao", agentesIntegracao);*/
 		
-		String matricula = req.getParameter("matricula");
+
 		/*String numero_convenio = req.getParameter("numero_convenio");
 		String cnpj_empresa_ligada = req.getParameter("cnpj_empresa_ligada");
 		String cnpj_empresa = req.getParameter("cnpj_empresa");
@@ -71,6 +94,7 @@ public class BuscarAlunoCommand implements Command{
 		req.setAttribute("razao_social_empresa", razao_social_empresa);*/
 		req.setAttribute("msg", msg);
 		req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
+		}
 	}
 	
 }
