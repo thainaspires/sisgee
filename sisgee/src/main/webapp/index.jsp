@@ -8,6 +8,9 @@
   	<%@ include file="menu.jspf" %>
   	<div class="container">
   		<br/>
+  		<c:if test="${ not empty sucesso }">
+	 		<div class="alert" style="margin-top: 20px; background: #B8B3CC;">${ sucesso }</div>		
+	 	</c:if>
 
   		<p><fmt:message key="br.cefetrj.sisgee.index.msg"/></p>
   	</div>

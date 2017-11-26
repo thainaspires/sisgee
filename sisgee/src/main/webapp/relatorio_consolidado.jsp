@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<title>Relatório Consolidado</title>
 	<%@ include file="head_imports.jspf" %>	
+	
 	<meta charset="utf-8">
 </head>
 <body>
@@ -42,65 +44,45 @@
 				</div>
 			</div>
 			<hr/>
-			<div class="row">
+			<c:if test="${ not empty msg2 }">
+	 				<div class="alert" style="margin-top: 20px; background: #B8B3CC;">${ msg2 }</div>		
+	 		</c:if>
 				<div class="result col-md-12">
 					<div class="row">
+						<c:if test="${ empty msg2 }">
 						<div class="col-md-12 title text-center">
 							<h4>Resultados da Pesquisa</h4>
 						</div>
-						<div class="col-md-6 col-md-offset-3">
-							<h5>Tecnico em Informática</h5>
-							<table class="table table-striped">
-							    <thead>
-							      <tr>
-							        <th></th>
-							        <th>Total</th>
-							      </tr>
-							    </thead>
-							    <tbody>
-							      <tr>
-							        <td>Termo de Estágios Registrados</td>
-							        <td>900</td>
-							      </tr>
-							      <tr>
-							        <td>Aditivos Regitrados</td>
-							        <td>207</td>
-							      </tr>
-							      <tr>
-							        <td>Rescisões Registradas</td>
-							        <td>105</td>
-							      </tr>
-							    </tbody>
-							</table>
-						</div>
-						<div class="col-md-6">
-							<h5>Engenharia Civil</h5>
-							<table class="table table-striped">
-							    <thead>
-							      <tr>
-							        <th></th>
-							        <th>Total</th>
-							      </tr>
-							    </thead>
-							    <tbody>
-							      <tr>
-							        <td>Termo de Estágios Registrados</td>
-							        <td>456</td>
-							      </tr>
-							      <tr>
-							        <td>Aditivos Regitrados</td>
-							        <td>81</td>
-							      </tr>
-							      <tr>
-							        <td>Rescisões Registradas</td>
-							        <td>12</td>
-							      </tr>
-							    </tbody>
-							</table>
-						</div>
+						</c:if>
+						<c:forEach items="${ listaRelatorio }" var="listaRelatorio">
+							<div class="col-md-6">
+								<h5>${ listaRelatorio[0] }</h5>
+									<table class="table table-striped">
+									    <thead>
+									      <tr>
+									        <th></th>
+												<th>Total</th>
+									      </tr>
+									    </thead>
+									    <tbody>
+									      <tr>
+									        <td>Termo de Estágios Registrados</td>
+									        <td>${ listaRelatorio[1] }</td>
+									      </tr>
+									      <tr>
+									        <td>Aditivos Regitrados</td>
+									        <td>${ listaRelatorio[2] }</td>
+									      </tr>
+									      <tr>
+									        <td>Rescisões Registradas</td>
+									        <td>${ listaRelatorio[3] }</td>
+									      </tr>
+									    </tbody>
+									</table>
+								</div>
+						</c:forEach>
 					</div>
 				</div>
-			</div>
 		</form>
 	</div>			
     <%@ include file="scripts_imports.jspf" %>

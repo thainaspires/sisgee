@@ -27,45 +27,53 @@ public class GerarRelatorioCommand implements Command{
 		String dataInicial = req.getParameter("datainicio");
 		String dataFinal = req.getParameter("datafim");
 		String radioestagio = req.getParameter("radioestagio");
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		Date dataInicialFormatada = null;
+		Date dataFinalFormatada = null;
 		String msg = "";
 		
-		if(dataInicial != null && dataInicial.length() != 0 && dataFinal != null && dataFinal.length() != 0 && dataInicial.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d")
-				 && dataFinal.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d")){
+		//Se as datas não forem vazias e estiverem no formato correto
+		if(dataInicial != null && dataInicial.length() != 0 && dataFinal != null && dataFinal.length() != 0 && 
+		dataInicial.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d") && dataFinal.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d")){
 			
-			Date dataInicialFormatada = null;
-			Date dataFinalFormatada = null;
-			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+			//Transformando as datas para Date em sql
 			try {
 				dataInicialFormatada = formato.parse(dataInicial);
 				dataFinalFormatada = formato.parse(dataFinal);
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				/**TODO: **/
 			}
 			
-			SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 	        Date dataUtil = dataInicialFormatada;
 	        Date dataUtil2 = dataFinalFormatada;
 	        java.sql.Date dataSql = null;
 	        java.sql.Date dataSql2 = null;
+	        
 	        try {
 	            dataUtil = new java.sql.Date(dataUtil.getTime());
 	            dataUtil2 = new java.sql.Date(dataUtil2.getTime());
 	            dataSql = (java.sql.Date) dataUtil;
 	            dataSql2 = (java.sql.Date) dataUtil2;
 	        } catch (Exception e) {
-	            JOptionPane.showMessageDialog(null, "Erro ao converte data para sql: " + e.getMessage());
+	            /**TODO: **/
 	        }
+	        
+	        //Se a data inicial não depois da final
 	        if (!(dataSql.after(dataSql2))){
-	        	List<TermoEstagio> lista = GerarRelatorioServices.gerarRelatorio(dataSql, dataSql2, radioestagio);
-	        	System.out.println("Valido");
-	        	 	
-	        	
+	        	//Recupera a lista com a consulta do relatório
+	        	List<Object[]> lista = GerarRelatorioServices.gerarRelatorio(dataSql, dataSql2, radioestagio);
+	        	req.setAttribute("listaRelatorio", lista);
+	        	//Se a lista for vázia, não há resultados para estas datas e seta a mensagem de erro
+	        	if (lista.isEmpty()){
+	        		req.setAttribute("msg2", "A consulta não retornou resultados");
+	        	}
+	        //Se a data inicial for depois da final, mensagem de erro
 	        }else{
 	        	msg+="Data inicial deve ser antes da data final";
 	        }
+	    //Se alguma data não tiver sido preenchida ou não estiver no formato correto
 		}else{
-			msg+="Datas precisam ser preenchidas";
+			msg+="Datas precisam ser preenchidas e precisam estar no formato correto";
 		}
 		
 		if(msg != ""){

@@ -37,7 +37,5 @@ public class GenericDAO<T> {
 	
 	public void alterar(T entidade){
 		manager.merge(entidade);
-	}
-	
-	
+	}	
 }

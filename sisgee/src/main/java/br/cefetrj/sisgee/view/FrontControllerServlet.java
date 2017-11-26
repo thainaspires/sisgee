@@ -18,6 +18,7 @@ import br.cefetrj.sisgee.view.commands.Command;
 import br.cefetrj.sisgee.view.commands.ConsultasTermoEstagioCommand;
 import br.cefetrj.sisgee.view.commands.GerarRelatorioCommand;
 import br.cefetrj.sisgee.view.commands.IncluirTermoEstagioCommand;
+import br.cefetrj.sisgee.view.commands.ValidarRegistroRescisaoCommand;
 import br.cefetrj.sisgee.view.commands.ValidarTermoEstagioCommand;
 
 /**
@@ -38,6 +39,7 @@ public class FrontControllerServlet extends HttpServlet {
 		comandos.put("BuscarEmpresa", new BuscarEmpresaCommand());
 		comandos.put("BuscarEmpresaLigada", new BuscarEmpresaLigadaAICommand());
 		comandos.put("ValidarTermoEstagio", new ValidarTermoEstagioCommand());
+		comandos.put("ValidarRescisao", new ValidarRegistroRescisaoCommand());
 	}
 	
 	

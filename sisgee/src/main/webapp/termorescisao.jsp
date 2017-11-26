@@ -10,37 +10,43 @@
 <body>
 	<%@ include file="menu.jspf" %>
 	<div class="container">
-		<form method="post" action="">
+		<form method="post" action="FrontControllerServlet?action=ValidarRescisao" id="formulario">
 			<h2 class="title-func text-center">Registro de Rescisão</h2>
+			<c:if test="${ not empty msg }">
+	 				<div class="alert" style="margin-top: 20px; background: #B8B3CC;">${ msg }</div>		
+	 		</c:if>
 			<fieldset>
 				<legend>Dados do Aluno</legend>
 				<div class="row">
 					<div class="form-group col-md-4" style="display:inline-block;">
 						<label for="matricula">Matrícula</label>
 						<div class="input-group">
-							<input type="text" class="form-control" name="matricula" id="matricula">	
+							<input type="text" class="form-control" name="matricula" id="matricula" value="${ param.matricula }">	
 							<span class="input-group-btn">
-								<button class="btn btn-primary" type="button">Buscar</button>
+								<button class="btn btn-primary" type="button" onClick="var form = document.getElementById('formulario');var mat = document.getElementById('matricula').value;form.action='FrontControllerServlet?action=BuscarAluno&matricula='+mat+'&ondeEstaVindo=rescisao';form.submit()">Buscar</button>
 							</span>
 						</div>
 					</div>
 
 					<div class="form-group col-md-8">
 						<label for="nome_aluno">Nome</label>
-						<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled">
+						<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled" value="${ alunoBuscado.pessoa }">
 					</div>							
 					<div class="form-group col-md-6">
 						<label for="curso">Curso</label>
-						<input type="text" class="form-control" name="curso" id="curso" disabled="disabled">
+						<input type="text" class="form-control" name="curso" id="curso" disabled="disabled" value="${ alunoBuscado.curso }">
 					</div>
 
 					<div class="form-group col-md-6">
 						<label for="unidade">Unidade</label>
-						<input type="text" class="form-control" name="unidade" id="unidade" disabled="disabled">
+						<input type="text" class="form-control" name="unidade" id="unidade" disabled="disabled" value="${ alunoBuscado.curso.campus }">
 					</div>
 				</div>
 			</fieldset>
 			<hr/>
+			<c:if test="${ not empty msg2 }">
+	 				<div class="alert" style="margin-top: 20px; background: #B8B3CC;">${ msg2 }</div>		
+	 		</c:if>
 			<div class="row" id="recisaogrupo">
 				<div class="col-md-4"></div>
 				<div class="form-group col-md-4">
