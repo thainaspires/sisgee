@@ -28,10 +28,13 @@ import br.cefetrj.sisgee.model.entity.Empresa;
 public class ValidarTermoEstagioCommand implements Command {
 	
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Convenio convincluido = new Convenio();
 		/**THAINA**/
 		Aluno aluno = null;
 		String numConvenio = req.getParameter("numero_convenio");
+		Convenio convenio = new Convenio();
 		String matricula = req.getParameter("matricula");
+		Empresa empresa = new Empresa();
 		String msg = "";
 		
 		if (matricula != null && matricula.trim().length() > 0){
@@ -53,22 +56,6 @@ public class ValidarTermoEstagioCommand implements Command {
 		String cnpj_empresa_ligada = req.getParameter("cnpj_empresa_ligada");
 		String nome_agente = req.getParameter("razao_social");
 		
-		/**THAINA**/
-		if(numConvenio == null || numConvenio.trim().length() == 0){
-			msg += "Número do convênio não pode ser vazio"; 
-		}else{
-			try {
-				Long nConvenio = Long.parseLong(numConvenio);
-				if(numConvenio.trim().length() < 10 || numConvenio.trim().length() > 10){
-					msg += "Número do convênio precisa ter 10 digitos";
-				}else{
-					//convenio = ConvenioServices.BuscarConvenio(numConvenio);
-					System.out.println("convenio valido");
-				}
-			} catch (Exception e) {
-				msg += "Número do convênio só pode ter números";
-			}
-		}
 		/**THAINA**/
 		
 		String dataInicio = req.getParameter("data_inicio");
@@ -207,13 +194,75 @@ public class ValidarTermoEstagioCommand implements Command {
 				msg += "Cep precisa ter somente dígitos";
 			}
 		}
+		
+		//Validação do convênio
+		if(numConvenio == null || numConvenio.trim().length() == 0){
+			msg += "Número do convênio não pode ser vazio"; 
+		}else{
+			try {
+				Long nConvenio = Long.parseLong(numConvenio);
+				if(numConvenio.trim().length() < 10 || numConvenio.trim().length() > 10){
+					msg += "Número do convênio precisa ter 10 digitos";
+				}else{
+					System.out.println("convenio valido");
+					List<Convenio> resultconvenio = ConvenioServices.buscarConvenio(numConvenio);
+					if(!(resultconvenio.isEmpty())){
+						convenio = resultconvenio.get(0);
+						System.out.println(convenio.getNumeroConvenio());
+					}
+					System.out.println("Agora é testar se é agente ou não");
+					if(eagente.equals("sim")){
+						System.out.println("sim");
+					
+						List<Empresa> resultempresa = EmpresaServices.buscarEmpresaLigadaAI(cnpj_empresa_ligada, nome_agente);
+						if(!(resultempresa.isEmpty())){
+							empresa = resultempresa.get(0);
+							System.out.println("empresa: "+empresa.getNomeEmpresa());
+						} else {
+							msg += "Agente de integração não está ligado à esta empresa";
+						}
+					} else {
+						System.out.println("nao");
+						List<Empresa> resultempresa = EmpresaServices.buscarEmpresa(cnpj_empresa);
+						if(!(resultempresa.isEmpty())){
+							empresa = resultempresa.get(0);
+							System.out.println("empresa: "+empresa.getNomeEmpresa());
+							//System.out.println("EMPRESINHA> "+empresa.getCnpjEmpresa());
+						} else {
+							msg += "Empresa não encontrada";
+						}
+					}
+					/*System.out.println(msg);
+					System.out.println(resultconvenio.isEmpty());
+					System.out.println(resultconvenio.isEmpty() && msg.equals(""));*/
+					if(resultconvenio.isEmpty() && msg.equals("")){
+						//Criar convenio
+						System.out.println("ENTROU EM CONVENIO");
+						convincluido.setNumeroConvenio(numConvenio);
+						convincluido.setEmpresa(empresa);
+						ConvenioServices.registrarConvenio(convincluido);
+						System.out.println("passou pelo convenio");
+						//msg += "Convênio cadastrado: Número: "+numConvenio+" Empresa: "+empresa;
+					} else {
+						/*if(convenio.getEmpresa().getIdEmpresa() == null || convenio.getEmpresa().getIdEmpresa() != empresa.getIdEmpresa()){
+							// Mostrar erro
+							msg += "Este convênio já existe";
+						}*/
+						System.out.println("OIEEE");
+					}
+						
+				}
+			} catch (Exception e) {
+				msg += "Número do convênio só pode ter números";
+			}
+		}
 	
 		
 		if(!msg.equals("")){
 			req.setAttribute("msg", msg);
 			req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
 		}else{
-			System.out.println("comeco do convenio");
+			System.out.println("comeco do termo");
 			TermoEstagio termoNovo = new TermoEstagio();
 			termoNovo.setDatainiciote(dataSql);
 			termoNovo.setDatafimte(dataSql2);
@@ -223,19 +272,20 @@ public class ValidarTermoEstagioCommand implements Command {
 			termoNovo.setCependerecote(cep);
 			termoNovo.setCidadeenderecote(cidade);
 			termoNovo.setComplementoenderecote(complemento);
-			//termoNovo.setConvenio(convenio);
+			//termoNovo.setConvenio(convincluido);
 			termoNovo.setEestagioobrigatorio(1);
 			termoNovo.setEnderecote(endereco);
 			termoNovo.setNumeroenderecote("22");
 			termoNovo.setValorbolsa(Float.parseFloat(valor_bolsa));
 			termoNovo.setEstadoenderecote(estado);
-			Convenio convenio = new Convenio();
-			convenio.setNumeroConvenio("1234555533");
+			/*Convenio convenio = new Convenio();
+			convenio.setNumeroConvenio("1234555533");*/
 			
 			/**
 			 * Primeiro é preciso criar ou pegar o convênio existente.
 			 * Parte do Alexander
 			 */
+			/*
 			EntityManagerFactory factory =
 					Persistence.createEntityManagerFactory("SisgeePU");
 			EntityManager manager = factory.createEntityManager();
@@ -248,13 +298,14 @@ public class ValidarTermoEstagioCommand implements Command {
 			manager.close();
 			factory.close();
 			System.out.println("termin!");
+			*/
 			/**
 			 * Parte do Alexander
 			 */
-			
-			termoNovo.setConvenio(convenio);
+			termoNovo.setConvenio(convincluido);
 			TermoEstagioServices.IncluirTermoEstagio(termoNovo);
 			req.setAttribute("sucesso", "Termo cadastrado com sucesso");
+			System.out.println("Termo cadastado");
 			req.getRequestDispatcher("/index.jsp").forward(req, resp);
 		}
 		/*
