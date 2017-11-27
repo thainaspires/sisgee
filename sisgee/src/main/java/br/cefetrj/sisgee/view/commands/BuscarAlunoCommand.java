@@ -27,7 +27,7 @@ public class BuscarAlunoCommand implements Command{
 				if(aluno.size() > 0){
 					Aluno alunoBuscado = aluno.get(0);
 					msg += "Matrícula retornada com sucesso";
-					req.setAttribute("alunoBuscado", alunoBuscado);
+					req.setAttribute("aluno", alunoBuscado);
 				} else {
 					msg += "Matrícula não encontrada";
 				}	

@@ -60,4 +60,9 @@ function temProfessor(tipo){
 }*/
 
 
+if(document.getElementById("valorprof").value == "n") {
+	document.getElementById("naoTemProfessor").checked = true;
+}else{
+	document.getElementById("temProfessor").checked = true;
+} 
 

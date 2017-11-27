@@ -143,7 +143,7 @@
 
 							<div class="form-group col-md-8">
 								<label for="nome_aluno"><fmt:message key="br.cefetrj.sisgee.termo_estagio.nomealuno"></fmt:message></label>
-								<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled" value="${ aluno.pessoa }">
+								<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" value="${ aluno.pessoa }">
 							</div>							
 							<div class="form-group col-md-6">
 								<label for="curso"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cursoaluno"></fmt:message></label>
@@ -259,15 +259,16 @@
 						<legend></legend>
 						<div class="row">
 							<div class="form-group col-md-12">
+							<input type="hidden" id="valorprof" value="${param.isn_obrigatorio}"/>
 								<div>
 									<label for="isn_obrigatorio"><fmt:message key="br.cefetrj.sisgee.termo_estagio.prof_orientador"></fmt:message></label>
 									<br/>
 									<label class="form-check-label">
-									  <input class="form-check-input" type="radio" name="isn_obrigatorio" id="temProfessor" value="s" onClick="temProfessor('s');"/>
+									  <input class="form-check-input" type="radio" name="isn_obrigatorio" id="temProfessor" value="s"/>
 									  Sim
 									</label>
 									<label class="form-check-label">
-									  <input class="form-check-input" type="radio" name="isn_obrigatorio" id="naoTemProfessor" value="n" onClick="temProfessor('n');"/>
+									  <input class="form-check-input" type="radio" name="isn_obrigatorio" id="naoTemProfessor" value="n"/>
 									  Não
 									</label>
 								</div>
