@@ -44,4 +44,20 @@ public class TermoEstagioDAO {
 		manager.close();
 		factory.close();
 	}
+	
+	public static void IncluirTermoEstagio(TermoEstagio termo){
+		
+		EntityManagerFactory factory =
+				Persistence.createEntityManagerFactory("SisgeePU");
+		EntityManager manager = factory.createEntityManager();
+	
+		manager.getTransaction().begin();
+		
+		manager.persist(termo);
+		
+		manager.getTransaction().commit();
+		manager.close();
+		factory.close();
+		System.out.println("terminou");
+	}
 }

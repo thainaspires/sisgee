@@ -35,6 +35,10 @@ public class Convenio {
 	public Long getIdConvenio() {
 		return idConvenio;
 	}
+	
+	public void setTermoEstagio(TermoEstagio termo){
+		termosEstagios.add(termo);
+	}
 
 	public void setIdConvenio(Long idConvenio) {
 		this.idConvenio = idConvenio;

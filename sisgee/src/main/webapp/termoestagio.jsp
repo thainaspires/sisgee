@@ -53,6 +53,7 @@
 				<!--<form>  -->
 					<fieldset>
 						<legend id="title-te"><fmt:message key="br.cefetrj.sisgee.termo_estagio.titulo"/></legend>
+						<legend><fmt:message key="br.cefetrj.sisgee.termo_estagio.dadosempresa"/></legend>
 						<div class="row">
 							<div class="form-group col-md-12">
 								<label for="numero_convenio"><fmt:message key="br.cefetrj.sisgee.termo_estagio.numconvenio"></fmt:message></label>

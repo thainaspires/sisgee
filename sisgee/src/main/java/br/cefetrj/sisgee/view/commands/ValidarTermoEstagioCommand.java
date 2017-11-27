@@ -6,34 +6,38 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.cefetrj.sisgee.control.AlunoServices;
-import br.cefetrj.sisgee.control.GerarRelatorioServices;
+import br.cefetrj.sisgee.control.TermoEstagioServices;
+import br.cefetrj.sisgee.model.entity.Aluno;
 import br.cefetrj.sisgee.model.entity.Convenio;
+import br.cefetrj.sisgee.model.entity.TermoEstagio;
 
 public class ValidarTermoEstagioCommand implements Command {
 	
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Convenio convenio = new Convenio();
+		Aluno aluno = null;
+		
 		String numConvenio = req.getParameter("numero_convenio");
-		String idAluno = req.getParameter("idAluno");
-		System.out.println("idaluno: "+idAluno);
+		String matricula = req.getParameter("matricula");
 		String msg = "";
-		String nome_aluno = req.getParameter("nome_aluno");
-		System.out.println("nome: "+ nome_aluno);
 		
-		
-		if(idAluno == null || idAluno.trim().length() == 0){
-			msg+="Aluno precisa ser pesquisado";
+		if (matricula != null && matricula.trim().length() > 0){
+			List<Aluno> alunoList = null;
+			alunoList = AlunoServices.buscarDetermAluno(matricula);
+			if(!(alunoList.isEmpty())){
+				aluno = alunoList.get(0);
+			} else {
+				msg += "Matrícula não encontrada";
+			}	
 		}else{
-			try {
-				Long nIdAluno = Long.parseLong(idAluno);
-			} catch (Exception e) {
-				msg += "Id do aluno inválido";
-			}
+			msg += "É necessário digitar uma matrícula.";
 		}
 		
 		//Validação do convênio
@@ -55,6 +59,8 @@ public class ValidarTermoEstagioCommand implements Command {
 		
 		String dataInicio = req.getParameter("data_inicio");
 		String dataTermino = req.getParameter("data_termino");
+		java.sql.Date dataSql = null;
+	    java.sql.Date dataSql2 = null;
 		
 		//validação das datas de vigencia
 		if(dataInicio != null && dataInicio.length() != 0 && dataTermino != null && dataTermino.length() != 0 && 
@@ -71,8 +77,6 @@ public class ValidarTermoEstagioCommand implements Command {
 			}
 			Date dataUtil = dataInicioFormatada;
 	        Date dataUtil2 = dataTerminoFormatada;
-	        java.sql.Date dataSql = null;
-	        java.sql.Date dataSql2 = null;
 	        
 	        try {
 	            dataUtil = new java.sql.Date(dataUtil.getTime());
@@ -189,9 +193,57 @@ public class ValidarTermoEstagioCommand implements Command {
 				msg += "Cep precisa ter somente dígitos";
 			}
 		}
+	
 		
-		req.setAttribute("msg", msg);
-		req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
+		if(!msg.equals("")){
+			req.setAttribute("msg", msg);
+			req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
+		}else{
+			System.out.println("comeco do convenio");
+			TermoEstagio termoNovo = new TermoEstagio();
+			termoNovo.setDatainiciote(dataSql);
+			termoNovo.setDatafimte(dataSql2);
+			termoNovo.setAluno(aluno);
+			termoNovo.setBairroenderecote(bairro);
+			termoNovo.setCargahorariate(Integer.parseInt(horas_dia));
+			termoNovo.setCependerecote(cep);
+			termoNovo.setCidadeenderecote(cidade);
+			termoNovo.setComplementoenderecote(complemento);
+			//termoNovo.setConvenio(convenio);
+			termoNovo.setEestagioobrigatorio(1);
+			termoNovo.setEnderecote(endereco);
+			termoNovo.setNumeroenderecote("22");
+			termoNovo.setValorbolsa(Float.parseFloat(valor_bolsa));
+			termoNovo.setEstadoenderecote(estado);
+			Convenio convenio = new Convenio();
+			convenio.setNumeroConvenio("1234555533");
+			
+			/**
+			 * Primeiro é preciso criar ou pegar o convênio existente.
+			 * Parte do Alexander
+			 */
+			EntityManagerFactory factory =
+					Persistence.createEntityManagerFactory("SisgeePU");
+			EntityManager manager = factory.createEntityManager();
+		
+			manager.getTransaction().begin();
+			
+			manager.persist(convenio);
+			
+			manager.getTransaction().commit();
+			manager.close();
+			factory.close();
+			System.out.println("termin!");
+			/**
+			 * Parte do Alexander
+			 */
+			
+			termoNovo.setConvenio(convenio);
+			TermoEstagioServices.IncluirTermoEstagio(termoNovo);
+			req.setAttribute("sucesso", "Termo cadastrado com sucesso");
+			req.getRequestDispatcher("/index.jsp").forward(req, resp);
+		}
+		
 	}
 
 }
