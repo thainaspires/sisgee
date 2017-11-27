@@ -26,7 +26,7 @@
 			<jsp:useBean id="professororientador" scope="request" class="br.cefetrj.sisgee.model.entity.ProfessorOrientador" type="br.cefetrj.sisgee.model.entity.ProfessorOrientador"/>		
 				<jsp:setProperty name="professororientador" property="idpo" value="${ param.professor_orientador }"/>
 			<jsp:useBean id="agenteintegracao" scope="request" class="br.cefetrj.sisgee.model.entity.AgenteIntegracao" type="br.cefetrj.sisgee.model.entity.AgenteIntegracao"/>		
-				<jsp:setProperty name="agenteintegracao" property="idAgenteIntegracao" value="${ param.razao_social }"/>
+				<jsp:setProperty name="agenteintegracao" property="nomeAgenteIntegracao" value="${ param.razao_social }"/>
 		</c:if>
 		<c:if test="${ empty empresaligada }">
 			<jsp:useBean id="empresaligada" scope="request" class="br.cefetrj.sisgee.model.entity.Empresa" type="br.cefetrj.sisgee.model.entity.Empresa"/>		
@@ -40,7 +40,7 @@
 		</c:if>		
 	
 	<div class="container">
-		X = ${ param.razao_social_empresa }<br/>
+		X = ${ param.razao }<br/>
 		Y = ${ empresa.nomeEmpresa }<br/>
 		Z = ${ param.nome_aluno }<br/>
 		W = ${ aluno.pessoa }<br/>
@@ -79,7 +79,7 @@
 										<label for="razao_social"><fmt:message key="br.cefetrj.sisgee.termo_estagio.razao"></fmt:message></label>
 										
 										<!-- Tag para listar os Agentes de Integração -->	
-										<cmp:ComboAgente id="${ agenteintegracao.idAgenteIntegracao }"/>
+										<cmp:ComboAgente nome="${ agenteintegracao.nomeAgenteIntegracao }"/>
 														
 										<a href="cadastrar_empresa.jsp" style="float:right;"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cadastro_empresa"></fmt:message></a>							
 									</div>									
@@ -219,33 +219,33 @@
 							<div class="form-group col-md-4">
 								<label for="estado"><fmt:message key="br.cefetrj.sisgee.termo_estagio.estado"></fmt:message></label>
 								<select class="form-control" class="form-control" name="estado" id="estado">
-									<option value="AC">Acre</option>
-									<option value="AL">Alagoas</option>
-									<option value="AP">Amapá</option>
-									<option value="AM">Amazonas</option>
-									<option value="BA">Bahia</option>
-									<option value="CE">Ceará</option>
-									<option value="DF">Distrito Federal</option>
-									<option value="ES">Espírito Santo</option>
-									<option value="GO">Goiás</option>
-									<option value="MA">Maranhão</option>
-									<option value="MT">Mato Grosso</option>
-									<option value="MS">Mato Grosso do Sul</option>
-									<option value="MG">Minas Gerais</option>
-									<option value="PA">Pará</option>
-									<option value="PB">Paraíba</option>
-									<option value="PR">Paraná</option>
-									<option value="PE">Pernambuco</option>
-									<option value="PI">Piauí</option>
-									<option value="RJ">Rio de Janeiro</option>
-									<option value="RN">Rio Grande do Norte</option>
-									<option value="RS">Rio Grande do Sul</option>
-									<option value="RO">Rondônia</option>
-									<option value="RR">Roraima</option>
-									<option value="SC">Santa Catarina</option>
-									<option value="SP">São Paulo</option>
-									<option value="SE">Sergipe</option>
-									<option value="TO">Tocantins</option>
+									<option ${ param.estado eq "AC" ? "selected" : "" } value="AC">Acre</option>
+									<option ${ param.estado eq "AL" ? "selected" : "" } value="AL">Alagoas</option>
+									<option ${ param.estado eq "AP" ? "selected" : "" } value="AP">Amapá</option>
+									<option ${ param.estado eq "AM" ? "selected" : "" } value="AM">Amazonas</option>
+									<option ${ param.estado eq "BA" ? "selected" : "" } value="BA">Bahia</option>
+									<option ${ param.estado eq "CE" ? "selected" : "" } value="CE">Ceará</option>
+									<option ${ param.estado eq "DF" ? "selected" : "" } value="DF">Distrito Federal</option>
+									<option ${ param.estado eq "ES" ? "selected" : "" } value="ES">Espírito Santo</option>
+									<option ${ param.estado eq "GO" ? "selected" : "" } value="GO">Goiás</option>
+									<option ${ param.estado eq "MA" ? "selected" : "" } value="MA">Maranhão</option>
+									<option ${ param.estado eq "MT" ? "selected" : "" } value="MT">Mato Grosso</option>
+									<option ${ param.estado eq "MS" ? "selected" : "" } value="MS">Mato Grosso do Sul</option>
+									<option ${ param.estado eq "MG" ? "selected" : "" } value="MG">Minas Gerais</option>
+									<option ${ param.estado eq "PA" ? "selected" : "" } value="PA">Pará</option>
+									<option ${ param.estado eq "PB" ? "selected" : "" } value="PB">Paraíba</option>
+									<option ${ param.estado eq "PR" ? "selected" : "" } value="PR">Paraná</option>
+									<option ${ param.estado eq "PE" ? "selected" : "" } value="PE">Pernambuco</option>
+									<option ${ param.estado eq "PI" ? "selected" : "" } value="PI">Piauí</option>
+									<option ${ param.estado eq "RJ" ? "selected" : "" } value="RJ">Rio de Janeiro</option>
+									<option ${ param.estado eq "RN" ? "selected" : "" } value="RN">Rio Grande do Norte</option>
+									<option ${ param.estado eq "RS" ? "selected" : "" } value="RS">Rio Grande do Sul</option>
+									<option ${ param.estado eq "RO" ? "selected" : "" } value="RO">Rondônia</option>
+									<option ${ param.estado eq "RR" ? "selected" : "" } value="RR">Roraima</option>
+									<option ${ param.estado eq "SC" ? "selected" : "" } value="SC">Santa Catarina</option>
+									<option ${ param.estado eq "SP" ? "selected" : "" } value="SP">São Paulo</option>
+									<option ${ param.estado eq "SE" ? "selected" : "" } value="SE">Sergipe</option>
+									<option ${ param.estado eq "TO" ? "selected" : "" } value="TO">Tocantins</option>
 								</select>
 							</div>
 
