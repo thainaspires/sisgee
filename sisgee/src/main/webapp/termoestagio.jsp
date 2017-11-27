@@ -40,10 +40,10 @@
 		</c:if>		
 	
 	<div class="container">
-		X = ${ param.razao_social_empresa }<br/>
+		<!--  X = ${ param.razao_social_empresa }<br/>
 		Y = ${ empresa.nomeEmpresa }<br/>
 		Z = ${ param.nome_aluno }<br/>
-		W = ${ aluno.pessoa }<br/>
+		W = ${ aluno.pessoa }<br/>-->
 		<form method="post" action="FrontControllerServlet?action=ValidarTermoEstagio" id="formulario">
 			<div class="container">
 				<!-- Variável de mensagem que mostrao o Status do sistema -->
@@ -131,9 +131,11 @@
 						<div class="row">
 							<div class="form-group col-md-4" style="display:inline-block;">
 								<label for="matricula"><fmt:message key="br.cefetrj.sisgee.termo_estagio.matricula"></fmt:message></label>
+								<input type="hidden" id="idAluno" name="idAluno" value="${ idAluno }"/>
+								
 								<div class="input-group">
 									<input type="text" class="form-control" name="matricula" id="matricula" value="${ aluno.matricula }">	
-									<span class="input-group-btn"> <!-- javascript:location.href='FrontControllerServlet?action=ConsultasTermoEst&matricula='+mat+'&form='+form"-->
+									<span class="input-group-btn"> <!-- javascript:location.href='FrontControllerServlet?action=ConsultasTermoEst&matricula='+mat+'&form='+form+'&ondeEstaVindo=termoestagio'-->
 										<button class="btn btn-primary" type="button" onClick="buscarAluno();">
 											<span><fmt:message key="br.cefetrj.sisgee.termo_estagio.buscar"></fmt:message></span>
 										</button>
@@ -264,11 +266,11 @@
 									<label for="isn_obrigatorio"><fmt:message key="br.cefetrj.sisgee.termo_estagio.prof_orientador"></fmt:message></label>
 									<br/>
 									<label class="form-check-label">
-									  <input class="form-check-input" type="radio" name="isn_obrigatorio" checked value="s"/>
+									  <input class="form-check-input" type="radio" name="isn_obrigatorio" id="temProfessor" value="s" onClick="temProfessor('s');"/>
 									  Sim
 									</label>
 									<label class="form-check-label">
-									  <input class="form-check-input" type="radio" name="isn_obrigatorio" value="n"/>
+									  <input class="form-check-input" type="radio" name="isn_obrigatorio" id="naoTemProfessor" value="n" onClick="temProfessor('n');"/>
 									  Não
 									</label>
 								</div>

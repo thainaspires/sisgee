@@ -44,3 +44,20 @@ function buscarAluno(){
 	form.action='FrontControllerServlet?action=BuscarAluno&matricula='+mat;
 	form.submit();
 }
+/*
+if(document.getElementById("temProfessor").value == "s") {
+	temProfessor('s');
+}else{
+	temProfessor('n');
+}
+
+function temProfessor(tipo){
+	if(tipo == "s"){
+		document.getElementById("temProfessor").checked = true;
+	}else{
+		document.getElementById("naoTemProfessor").checked = true;
+	}
+}*/
+
+
+
