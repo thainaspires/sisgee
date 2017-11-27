@@ -38,25 +38,26 @@ public class BuscarAlunoCommand implements Command{
 			req.getRequestDispatcher("/termorescisao.jsp").forward(req, resp);
 			
 		}else{		
-		
-		if (matricula != null && matricula.trim().length() > 0){
-			List<Aluno> alunos = null;
-			alunos = AlunoServices.buscarDetermAluno(matricula);
-			if(alunos.size() > 0){
-				Aluno aluno = alunos.get(0);
-				String idAluno = aluno.getIdAluno().toString();
-				msg += "Matrícula retornada com sucesso";
-				System.out.println(idAluno);
-				req.setAttribute("idAluno", idAluno);
-				req.setAttribute("aluno", aluno);
-			} else {
-				msg += "Matrícula não encontrada";
-			}	
-		}else{
-			msg += "É necessário digitar uma matrícula antes de buscar";
-		}
-		req.setAttribute("msg", msg);
-		req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
+			if (matricula != null && matricula.trim().length() > 0){
+				List<Aluno> alunos = null;
+				alunos = AlunoServices.buscarDetermAluno(matricula);
+				if(alunos.size() > 0){
+					Aluno aluno = alunos.get(0);
+					String idAluno = aluno.getIdAluno().toString();
+					msg += "Matrícula retornada com sucesso";
+					System.out.println(idAluno);
+					req.setAttribute("idAluno", idAluno);
+					req.setAttribute("aluno", aluno);
+				} else {
+					msg += "Matrícula não encontrada";
+				}	
+			} else if(!(matricula.trim().length() <= 100)){ 
+				msg += "O tamanho da matrícula excede o limite permitido";
+			} else{
+				msg += "É necessário digitar uma matrícula antes de buscar";
+			}
+			req.setAttribute("msg", msg);
+			req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
 		}
 	}
 	

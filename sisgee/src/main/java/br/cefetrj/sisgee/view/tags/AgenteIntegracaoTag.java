@@ -10,7 +10,7 @@ import br.cefetrj.sisgee.control.AgenteIntegracaoServices;
 import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
 
 public class AgenteIntegracaoTag extends SimpleTagSupport{
-	private Long id; 
+	private String nome; 
 	@Override
 	public void doTag() throws JspException, IOException {
 		/*String msg;
@@ -26,8 +26,8 @@ public class AgenteIntegracaoTag extends SimpleTagSupport{
 		String retorno = "<select style='float:left;' id='razao_social' name='razao_social' class='form-control'>"+
 							"<option value=''>Escolha um agente de integração</option>";
 		for(AgenteIntegracao agente:lista){
-			retorno += "<option value='"+ agente.getIdAgenteIntegracao() +"' ";
-			if(agente.getIdAgenteIntegracao().equals(id)){
+			retorno += "<option value='"+ agente.getNomeAgenteIntegracao() +"' ";
+			if(agente.getNomeAgenteIntegracao().equals(nome)){
 				retorno += " selected ";
 			}
 			retorno += ">"+agente.getNomeAgenteIntegracao()+"</option>";
@@ -36,11 +36,12 @@ public class AgenteIntegracaoTag extends SimpleTagSupport{
 		getJspContext().getOut().append(retorno);
 
 	}
-	public Long getId() {
-		return id;
+	public String getNome() {
+		return nome;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
+	
 		
 }

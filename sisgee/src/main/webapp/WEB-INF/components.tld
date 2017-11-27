@@ -18,7 +18,7 @@
 		 <tag-class>br.cefetrj.sisgee.view.tags.AgenteIntegracaoTag</tag-class>
 			 <body-content>empty</body-content>
 			 <attribute>
-				 <name>id</name>
+				 <name>nome</name>
 				 <required>true</required>
 				 <type>java.lang.String</type>
 				 <rtexprvalue>true</rtexprvalue>

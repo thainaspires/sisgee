@@ -17,37 +17,19 @@ import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
 public class BuscarEmpresaLigadaAICommand implements Command {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String cnpj_empresa_ligada = req.getParameter("cnpj_empresa_ligada");
-		/*String matricula = req.getParameter("matricula");
-		String numero_convenio = req.getParameter("numero_convenio");
-		String cnpj_empresa = req.getParameter("cnpj_empresa");
-		String data_inicio = req.getParameter("data_inicio");
-		String data_termino = req.getParameter("data_termino");
-		String horas_dia = req.getParameter("horas_dia");
-		String valor_bolsa = req.getParameter("valor_bolsa");
-		String endereco = req.getParameter("endereco");
-		String complemento = req.getParameter("complemento");
-		String bairro = req.getParameter("bairro");
-		String cidade = req.getParameter("cidade");
-		String cep = req.getParameter("cep");*/
-		//String nome_agente = req.getParameter("nome_agente");
+		String ai = req.getParameter("razao_social");
+		
+		String msg = "";
+		System.out.println("PRINTA SAPORRA: "+ai);
 		if (cnpj_empresa_ligada != null && cnpj_empresa_ligada.trim().length() > 0){
 			List<Empresa> empresa = null;
-			empresa = EmpresaServices.buscarEmpresaLigadaAI(cnpj_empresa_ligada, "CIEE");
+			empresa = EmpresaServices.buscarEmpresaLigadaAI(cnpj_empresa_ligada, ai);
 			Empresa empresaLigadaAIBuscada = empresa.get(0);
 			req.setAttribute("empresaligada", empresaLigadaAIBuscada);
-		}/*
-		req.setAttribute("numero_convenio", numero_convenio);
-		req.setAttribute("cnpj_empresa_ligada", cnpj_empresa_ligada);
-		req.setAttribute("cnpj_empresa", cnpj_empresa);
-		req.setAttribute("data_inicio", data_inicio);
-		req.setAttribute("data_termino", data_termino);
-		req.setAttribute("horas_dia", horas_dia);
-		req.setAttribute("valor_bolsa", valor_bolsa);
-		req.setAttribute("endereco", endereco);
-		req.setAttribute("complemento", complemento);
-		req.setAttribute("cidade", cidade);
-		req.setAttribute("bairro", bairro);
-		req.setAttribute("cep", cep);*/
+		} else {
+			msg += "ERRO";
+		}
+		req.setAttribute("msg", msg);
 		req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
 	}
 }

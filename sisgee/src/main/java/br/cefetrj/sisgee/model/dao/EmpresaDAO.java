@@ -8,7 +8,6 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
-import br.cefetrj.sisgee.model.entity.Aluno;
 import br.cefetrj.sisgee.model.entity.Empresa;
 
 public class EmpresaDAO  extends GenericDAO<EmpresaDAO>{
@@ -35,8 +34,8 @@ public class EmpresaDAO  extends GenericDAO<EmpresaDAO>{
 		Query query = manager.createQuery("select p from Empresa as p "+"where p.cnpjEmpresa = :paramNome");
 		query.setParameter("paramNome", cnpj_empresa);
 		List<Empresa> lista = query.getResultList();
-		System.out.println("lista: "+lista);
 		manager.close();
+		System.out.println("ESSA É A LISTA: "+lista);
 		return lista;
 	}
 	
@@ -44,12 +43,26 @@ public class EmpresaDAO  extends GenericDAO<EmpresaDAO>{
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");
 		EntityManager manager = factory.createEntityManager();
 		Query query = manager.createQuery("select p from Empresa as p " + "where p.cnpjEmpresa = :paramNome and p.agenteIntegracao.nomeAgenteIntegracao = :paramNome2");
+		//Query query2 = manager.createNativeQuery("select * from empresa p JOIN agenteintegracao ai ON p.agenteintegracao_idagenteintegracao = ai.idagenteintegracao where cnpjempresa = :paramNome and ai.nomeagenteintegracao = :paramNome2");
 		query.setParameter("paramNome", cnpj_empresa);
 		query.setParameter("paramNome2", nome_agente);
 		List<Empresa> lista = query.getResultList();
-		System.out.println("lista: "+lista);
 		manager.close();
 		return lista;
 	}
+	
+	/*
+	 * EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");
+		EntityManager manager = factory.createEntityManager();
+		//Query query = manager.createQuery("select p from Empresa as p " + "where p.cnpjEmpresa = :paramNome and p.agenteIntegracao = :paramNome2");
+		Query query2 = manager.createNativeQuery("select * from empresa p JOIN agenteintegracao ai ON p.agenteintegracao_idagenteintegracao = ai.idagenteintegracao where cnpjempresa = :paramNome and ai.nomeagenteintegracao = :paramNome2");
+		query2.setParameter("paramNome", cnpj_empresa);
+		query2.setParameter("paramNome2", nome_agente);
+		List<Object []> lista = query2.getResultList();
+		String retorno = (String) lista.get(0)[0];
+		System.out.println("lista TESTE: "+lista.get(0)[0]);
+		manager.close();
+		return retorno;
+	 */
 
 }

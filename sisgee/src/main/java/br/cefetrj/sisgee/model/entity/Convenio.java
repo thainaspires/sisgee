@@ -52,6 +52,13 @@ public class Convenio {
 		this.numeroConvenio = numeroConvenio;
 	}
 
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
 
 	@Override
 	public int hashCode() {
