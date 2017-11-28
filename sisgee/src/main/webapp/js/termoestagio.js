@@ -13,7 +13,6 @@ function eagente(tipo){
 		document.getElementById("cnpj_empresa").setAttribute("disabled","disabled");
 		
 		document.getElementById("cnpj_empresa_ligada").removeAttribute("disabled");
-		document.getElementById("razao_social_empresa_ligada").removeAttribute("disabled");
 		
 	} else {
 		document.getElementById("exampleRadios2").checked = true;
@@ -27,18 +26,57 @@ function eagente(tipo){
 	}
 }
 function buscarEmpresaLigada(){
+	// Tirar disabled para pegar o valor dos campos
+	document.getElementById("razao_social_empresa_ligada").removeAttribute("disabled");
+	document.getElementById("razao_social_empresa").removeAttribute("disabled");
+	document.getElementById("nome_aluno").removeAttribute("disabled");
+	document.getElementById("curso").removeAttribute("disabled");
+	document.getElementById("unidade").removeAttribute("disabled");
+	
+	document.getElementById("razao_social_empresa_ligada").style.background = "#e9ecef";
+	document.getElementById("razao_social_empresa").style.background = "#e9ecef";
+	document.getElementById("nome_aluno").style.background = "#e9ecef";
+	document.getElementById("curso").style.background = "#e9ecef";
+	document.getElementById("unidade").style.background = "#e9ecef";
+	
 	var form = document.getElementById('formulario');
 	var cnpj = document.getElementById('cnpj_empresa_ligada').value;
 	form.action='FrontControllerServlet?action=BuscarEmpresaLigada&cnpj_empresa_ligada='+cnpj;
 	form.submit();
 }
 function buscarEmpresa(){
+	// Tirar disabled para pegar o valor dos campos
+	document.getElementById("razao_social_empresa_ligada").removeAttribute("disabled");
+	document.getElementById("razao_social_empresa").removeAttribute("disabled");
+	document.getElementById("nome_aluno").removeAttribute("disabled");
+	document.getElementById("curso").removeAttribute("disabled");
+	document.getElementById("unidade").removeAttribute("disabled");
+	
+	document.getElementById("razao_social_empresa_ligada").style.background = "#e9ecef";
+	document.getElementById("razao_social_empresa").style.background = "#e9ecef";
+	document.getElementById("nome_aluno").style.background = "#e9ecef";
+	document.getElementById("curso").style.background = "#e9ecef";
+	document.getElementById("unidade").style.background = "#e9ecef";
+	
 	var form = document.getElementById('formulario');
 	var cnpj = document.getElementById('cnpj_empresa').value;
 	form.action='FrontControllerServlet?action=BuscarEmpresa&cnpj_empresa='+cnpj;
 	form.submit();
 }
 function buscarAluno(){
+	// Tirar disabled para pegar o valor dos campos
+	document.getElementById("razao_social_empresa_ligada").removeAttribute("disabled");
+	document.getElementById("razao_social_empresa").removeAttribute("disabled");
+	document.getElementById("nome_aluno").removeAttribute("disabled");
+	document.getElementById("curso").removeAttribute("disabled");
+	document.getElementById("unidade").removeAttribute("disabled");
+	
+	document.getElementById("razao_social_empresa_ligada").style.background = "#e9ecef";
+	document.getElementById("razao_social_empresa").style.background = "#e9ecef";
+	document.getElementById("nome_aluno").style.background = "#e9ecef";
+	document.getElementById("curso").style.background = "#e9ecef";
+	document.getElementById("unidade").style.background = "#e9ecef";
+	
 	var form = document.getElementById('formulario');
 	var mat = document.getElementById('matricula').value;
 	form.action='FrontControllerServlet?action=BuscarAluno&matricula='+mat;

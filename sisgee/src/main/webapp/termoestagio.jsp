@@ -11,12 +11,17 @@
 	<%@ include file="menu.jspf" %>
 		<!-- Declaração das classes que receberão os parâmetros -->
 		<c:if test="${ empty aluno }">
-			<jsp:useBean id="aluno" scope="request" class="br.cefetrj.sisgee.model.entity.Aluno" type="br.cefetrj.sisgee.model.entity.Aluno"/>		
-				<jsp:setProperty name="aluno" property="pessoa" value="${param.nome_aluno}" />
-				<jsp:setProperty name="aluno" property="matricula" value="${param.matricula}" />
-				<jsp:setProperty name="aluno" property="curso" value="${param.curso}" />
+			<jsp:useBean id="pessoa" scope="request" class="br.cefetrj.sisgee.model.entity.Pessoa" type="br.cefetrj.sisgee.model.entity.Pessoa"/>		
+				<jsp:setProperty name="pessoa" property="nome" value="${param.nome_aluno}" />
+			<jsp:useBean id="campus" scope="request" class="br.cefetrj.sisgee.model.entity.Campus" type="br.cefetrj.sisgee.model.entity.Campus"/>		
+				<jsp:setProperty name="campus" property="nomeCampus" value="${param.unidade}" />
 			<jsp:useBean id="curso" scope="request" class="br.cefetrj.sisgee.model.entity.Curso" type="br.cefetrj.sisgee.model.entity.Curso"/>		
-				<jsp:setProperty name="curso" property="campus" value="${ param.unidade }"/>
+				<jsp:setProperty name="curso" property="campus" value="${ campus }"/>
+				<jsp:setProperty name="curso" property="nomeCurso" value="${ param.curso } "/>
+			<jsp:useBean id="aluno" scope="request" class="br.cefetrj.sisgee.model.entity.Aluno" type="br.cefetrj.sisgee.model.entity.Aluno"/>		
+				<jsp:setProperty name="aluno" property="pessoa" value="${pessoa}" />
+				<jsp:setProperty name="aluno" property="matricula" value="${param.matricula}" />
+				<jsp:setProperty name="aluno" property="curso" value="${curso}" />
 		</c:if>
 		<c:if test="${ not empty aluno }">
 			<jsp:useBean id="cursoalt" scope="request" class="br.cefetrj.sisgee.model.entity.Curso" type="br.cefetrj.sisgee.model.entity.Curso"/>		
@@ -92,7 +97,7 @@
 									<div class="form-group col-md-6" style="display:inline-block;">
 										<label for="razao_social_empresa_ligada"><fmt:message key="br.cefetrj.sisgee.termo_estagio.razao_empresa_ligada"></fmt:message></label>
 										<div class="input-group">
-											<input type="text" class="form-control" name="razao_social_empresa_ligada" id="razao_social_empresa_ligada" disabled="disabled" value="${ empresaligada.nomeEmpresa }">	
+											<input type="text" class="form-control" name="razao_social_empresa_ligada" disabled="disabled" id="razao_social_empresa_ligada" value="${ empresaligada.nomeEmpresa }">	
 											<span class="input-group-btn">
 												<button class="btn btn-primary btn-plus" type="button" onclick="javascript:location.href='registrar_empresa_ligada_ai.jsp'">+</button>
 											</span>
@@ -143,7 +148,7 @@
 
 							<div class="form-group col-md-8">
 								<label for="nome_aluno"><fmt:message key="br.cefetrj.sisgee.termo_estagio.nomealuno"></fmt:message></label>
-								<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" value="${ aluno.pessoa }">
+								<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled" value="${ aluno.pessoa }">
 							</div>							
 							<div class="form-group col-md-6">
 								<label for="curso"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cursoaluno"></fmt:message></label>
