@@ -46,10 +46,10 @@ public class ValidarTermoEstagioCommand implements Command {
 			if(!(alunoList.isEmpty())){
 				aluno = alunoList.get(0);
 			} else {
-				msg += "Matrícula não encontrada";
+				msg += "Matrícula não encontrada.";
 			}	
 		}else{
-			msg += "É necessário digitar uma matrícula.";
+			msg += " É necessário digitar uma matrícula.";
 		}
 		
 		String eagente = req.getParameter("exampleRadios");
@@ -67,7 +67,6 @@ public class ValidarTermoEstagioCommand implements Command {
 		//validação das datas de vigencia
 		if(dataInicio != null && dataInicio.length() != 0 && dataTermino != null && dataTermino.length() != 0 && 
 		dataInicio.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d") && dataTermino.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d")){
-			/**TODO: validação de datas no sentido de ser uma data no formato certo mas não ser válida **/
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 			Date dataInicioFormatada = null;
 			Date dataTerminoFormatada = null;
@@ -90,26 +89,26 @@ public class ValidarTermoEstagioCommand implements Command {
 	        }
 	        
 	        if (dataSql.after(dataSql2)){
-		        msg+="Data inicial deve ser antes da data final";
+		        msg+=" Data inicial deve ser antes da data final.";
 		    }
 			
 		}else{
-			msg+="Datas precisam ser preenchidas e precisam estar no formato correto";
+			msg+=" Datas precisam ser preenchidas e precisam estar no formato correto.";
 		}
 		
 		String horas_dia = req.getParameter("horas_dia");
 		
 		//validação das horas
 		if(horas_dia == null || horas_dia.trim().length() == 0){
-			msg+="Por favor digite a carga horária do aluno";
+			msg+=" Por favor digite a carga horária do aluno.";
 		}else{
 			try {
 				Integer horas_dia_ = Integer.parseInt(horas_dia);
 				if(horas_dia_ < 0 || horas_dia_ > 6){
-					msg += "Carga horária do aluno precisa ser maior que 0 e menor que 6";
+					msg += " Carga horária do aluno precisa ser maior que 0 e menor que 6.";
 				}
 			} catch (Exception e) {
-				msg += "Carga horária precisa ser digito";
+				msg += " Carga horária precisa ser digito.";
 			}
 		}
 		
@@ -117,15 +116,15 @@ public class ValidarTermoEstagioCommand implements Command {
 		
 		//Validação do valor da bolsa
 		if(valor_bolsa == null || valor_bolsa.trim().length() == 0){
-			msg+="Por favor digite o valor da bolsa do aluno";
+			msg+=" Por favor digite o valor da bolsa do aluno.";
 		}else{
 			try {
 				Float valor_bolsa_ = Float.parseFloat(valor_bolsa);
 				if(valor_bolsa_ < 0){
-					msg += "Valor da bolsa do aluno precisa ser maior que 0";
+					msg += " Valor da bolsa do aluno precisa ser maior que 0.";
 				}
 			} catch (Exception e) {
-				msg += "Valor da bolsa precisa ser dígito (com ponto se necessário para número quebrado)";
+				msg += " Valor da bolsa precisa ser dígito (com ponto se necessário para número quebrado).";
 			}
 		}
 		
@@ -133,76 +132,76 @@ public class ValidarTermoEstagioCommand implements Command {
 		
 		//Validação do endereço
 		if(endereco == null || endereco.trim().length() == 0){
-			msg+="Por favor digite o endereço do aluno";
+			msg+=" Por favor digite o endereço do aluno.";
 		}else{
 			if (endereco.length() > 255){
-				msg+="Endereço só pode ter até 255 caracteres";
+				msg+=" Endereço só pode ter até 255 caracteres.";
 			}
 		}
 		
 		String complemento = req.getParameter("complemento");
 		//Validação do complemento
 		if(complemento == null || complemento.trim().length() == 0){
-			msg+="Por favor digite o complemento do aluno";
+			msg+=" Por favor digite o complemento do aluno.";
 		}else{
 			if (complemento.length() > 150){
-				msg+="Complemento só pode ter até 150 caracteres";
+				msg+=" Complemento só pode ter até 150 caracteres.";
 			}
 		}
 		
 		String bairro = req.getParameter("bairro");
 		//Validação do bairro
 		if(bairro == null || bairro.trim().length() == 0){
-			msg+="Por favor digite o bairro do aluno";
+			msg+=" Por favor digite o bairro do aluno.";
 		}else{
 			if (bairro.length() > 150){
-				msg+="Bairro só pode ter até 150 caracteres";
+				msg+=" Bairro só pode ter até 150 caracteres.";
 			}
 		}
 		
 		String cidade = req.getParameter("cidade");
 		//Validação do cidade
 		if(cidade == null || cidade.trim().length() == 0){
-			msg+="Por favor digite o cidade do aluno";
+			msg+=" Por favor digite o cidade do aluno.";
 		}else{
 			if (cidade.length() > 150){
-				msg+="Cidade só pode ter até 150 caracteres";
+				msg+=" Cidade só pode ter até 150 caracteres.";
 			}
 		} 
 		
 		String estado = req.getParameter("estado");
 		//Validação do estado
 		if(estado == null || estado.trim().length() == 0 ){
-			msg+="Por favor selecione o estado do aluno";
+			msg+=" Por favor selecione o estado do aluno.";
 		}else{
 			if (estado.length() != 2){
-				msg+="Por favor selecione um estado válido";
+				msg+=" Por favor selecione um estado válido.";
 			}
 		}
 		
 		String cep = req.getParameter("cep");
 		//Validação do cep
 		if(cep == null || cep.trim().length() == 0 ){
-			msg+="Por favor digite o cep do aluno";
+			msg+=" Por favor digite o cep do aluno.";
 		}else{
 			try {
 				Integer cep_ = Integer.parseInt(cep);
 				if (cep.length() <0 || cep.length() > 15){
-					msg += "Cep precisa ter até 15 caracteres";
+					msg += " Cep precisa ter até 15 caracteres.";
 				}
 			} catch (Exception e) {
-				msg += "Cep precisa ter somente dígitos";
+				msg += " Cep precisa ter somente dígitos.";
 			}
 		}
 		
 		//Validação do convênio
 		if(numConvenio == null || numConvenio.trim().length() == 0){
-			msg += "Número do convênio não pode ser vazio"; 
+			msg += " Número do convênio não pode ser vazio."; 
 		}else{
 			try {
 				Long nConvenio = Long.parseLong(numConvenio);
 				if(numConvenio.trim().length() < 10 || numConvenio.trim().length() > 10){
-					msg += "Número do convênio precisa ter 10 digitos";
+					msg += " Número do convênio precisa ter 10 digitos.";
 				}else{
 					resultconvenio = ConvenioServices.buscarConvenio(numConvenio);
 					if(!(resultconvenio.isEmpty())){
@@ -214,14 +213,14 @@ public class ValidarTermoEstagioCommand implements Command {
 						if(!(resultempresa.isEmpty())){
 							empresa = resultempresa.get(0);
 						} else {
-							msg += "Agente de integração não está ligado à esta empresa";
+							msg += " Agente de integração não está ligado à esta empresa.";
 						}
 					} else {
 						List<Empresa> resultempresa = EmpresaServices.buscarEmpresa(cnpj_empresa);
 						if(!(resultempresa.isEmpty())){
 							empresa = resultempresa.get(0);
 						} else {
-							msg += "Empresa não encontrada";
+							msg += " Empresa não encontrada.";
 						}
 					}
 					if(resultconvenio.isEmpty() && msg.equals("")){
@@ -230,13 +229,13 @@ public class ValidarTermoEstagioCommand implements Command {
 						ConvenioServices.registrarConvenio(convincluido);
 					} else {
 						if(convenio.getEmpresa().getIdEmpresa() == null || convenio.getEmpresa().getIdEmpresa() != empresa.getIdEmpresa()){
-							msg+="Convenio não está ligado com empresa selecionada";
+							msg+=" Convenio não está ligado com empresa selecionada.";
 						}
 					}
 						
 				}
 			} catch (Exception e) {
-				msg += "Número do convênio só pode ter números";
+				msg += " Número do convênio só pode ter números.";
 			}
 		}
 		
