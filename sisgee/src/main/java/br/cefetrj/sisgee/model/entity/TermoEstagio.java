@@ -50,6 +50,9 @@ public class TermoEstagio {
 	private Integer estagioobrigatorio;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
+	private ProfessorOrientador professorOrientador;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Convenio convenio;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -58,8 +61,6 @@ public class TermoEstagio {
 	@OneToMany(mappedBy="termoEstagio")
 	private List<TermoAditivo> termosAditivos;
 	
-	@OneToMany(mappedBy="termoestagio")
-	private List<ProfessorOrientador> professoresOrientadores;
 	
 	public Aluno getAluno(){
 		return aluno;
@@ -76,11 +77,12 @@ public class TermoEstagio {
 	public void setTermosAditivos(List<TermoAditivo> termosAditivos) {
 		this.termosAditivos = termosAditivos;
 	}
-	public List<ProfessorOrientador> getProfessoresOrientadores() {
-		return professoresOrientadores;
+	
+	public ProfessorOrientador getProfessorOrientador() {
+		return professorOrientador;
 	}
-	public void setProfessoresOrientadores(ProfessorOrientador pO) {
-		this.professoresOrientadores.add(pO);
+	public void setProfessorOrientador(ProfessorOrientador professorOrientador) {
+		this.professorOrientador = professorOrientador;
 	}
 	public Date getDatainiciote() {
 		return datainiciote;

@@ -56,7 +56,6 @@ public class ValidarRegistroRescisaoCommand implements Command {
 		//Se o aluno Buscado não for null então é possivel pegar o termo de estágio que tem data de rescisão nula
 		if(alunoBuscado != null){
 			termoEstagio = TermoEstagioServices.buscarTermoPorIdAluno(alunoBuscado.getIdAluno());
-			System.out.println("Termo: "+termoEstagio);
 		}
 		
 		//Se o termo de estágio é null, é porque não existe termo de estágio com rescisão nula para o determinado aluno

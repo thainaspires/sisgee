@@ -13,13 +13,6 @@ public class AgenteIntegracaoTag extends SimpleTagSupport{
 	private String nome; 
 	@Override
 	public void doTag() throws JspException, IOException {
-		/*String msg;
-		getJspContext().getOut().append("chamou a matricula: "+matricula);
-		List<Aluno> aluno = AlunoServices.buscarDetermAluno(matricula);*/
-		/*JspWriter out = pageContext.getOut();
-		out.print(dateFormatter.format(today));
-		JspWriter out = getJspContext().getOut();
-	    out.println(aluno.get(0).getPessoa());*/
 		
 		List<AgenteIntegracao> lista = AgenteIntegracaoServices.listarAgentesIntegracao();
 		

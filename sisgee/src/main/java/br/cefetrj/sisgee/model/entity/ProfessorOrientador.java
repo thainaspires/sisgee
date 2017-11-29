@@ -24,9 +24,15 @@ public class ProfessorOrientador {
 	@Column(columnDefinition="VARCHAR(80)",nullable=false)
 	private String nomepo;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	private TermoEstagio termoestagio;
+	@OneToMany(mappedBy="professorOrientador")
+	private List<TermoEstagio> termoestagio;
 	
+	public List<TermoEstagio> getTermoestagio() {
+		return termoestagio;
+	}
+	public void setTermoestagio(List<TermoEstagio> termoestagio) {
+		this.termoestagio = termoestagio;
+	}
 	public Long getIdpo() {
 		return idpo;
 	}
