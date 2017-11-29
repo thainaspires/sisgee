@@ -29,16 +29,5 @@ public class AlunoServices {
 		
 		return AlunoDAO.buscarPorMatricula(matricula);
 	}
-	/*public static void incluirAluno(Aluno aluno){
-		GenericDAO<Aluno> alunoDao = PersistenceManager.createGenericDAO(Aluno.class);
-		PersistenceManager.getTransaction().begin();
-		try{
-			alunoDao.incluir(aluno);
-			PersistenceManager.getTransaction().commit();
-		}catch(Exception e){
-			PersistenceManager.getTransaction().rollback();
-		}
-	}*/ 
-	
 
 }

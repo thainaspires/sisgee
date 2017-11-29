@@ -13,4 +13,9 @@ public class ProfessorOrientadorServices {
 				PersistenceManager.createGenericDAO(ProfessorOrientador.class);
 		return professorOrientadorDAO.buscarTodos();
 	}
+	public static ProfessorOrientador buscarProfessorOrientador(Long id){
+		GenericDAO<ProfessorOrientador> professorOrientadorDAO = 
+				PersistenceManager.createGenericDAO(ProfessorOrientador.class);
+		return professorOrientadorDAO.buscar(id);
+	}
 }

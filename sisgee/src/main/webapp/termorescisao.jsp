@@ -30,16 +30,16 @@
 
 					<div class="form-group col-md-8">
 						<label for="nome_aluno">Nome</label>
-						<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled" value="${ alunoBuscado.pessoa }">
+						<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled" value="${ aluno.pessoa }">
 					</div>							
 					<div class="form-group col-md-6">
 						<label for="curso">Curso</label>
-						<input type="text" class="form-control" name="curso" id="curso" disabled="disabled" value="${ alunoBuscado.curso }">
+						<input type="text" class="form-control" name="curso" id="curso" disabled="disabled" value="${ aluno.curso }">
 					</div>
 
 					<div class="form-group col-md-6">
 						<label for="unidade">Unidade</label>
-						<input type="text" class="form-control" name="unidade" id="unidade" disabled="disabled" value="${ alunoBuscado.curso.campus }">
+						<input type="text" class="form-control" name="unidade" id="unidade" disabled="disabled" value="${ aluno.curso.campus }">
 					</div>
 				</div>
 			</fieldset>

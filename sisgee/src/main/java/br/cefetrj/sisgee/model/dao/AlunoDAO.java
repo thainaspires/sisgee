@@ -22,16 +22,8 @@ public class AlunoDAO  extends GenericDAO<Aluno> {
 		Query query = manager.createQuery("select p from Aluno as p "+"where p.matricula = :paramNome");
 		query.setParameter("paramNome", matricula);
 		List<Aluno> lista = query.getResultList();
-		System.out.println("lista: "+lista);
-
-		
-		/* ALERTA: QUERY FUNCIONANDO */
-		
-		/*Query query = manager.createQuery("select a from Aluno a JOIN a.pessoa JOIN a.curso JOIN a.campus WHERE matricula = :paramNome");
-		query.setParameter("paramNome", matricula);
-		List<Aluno> lista = query.getResultList();*/
-		
 		manager.close();
+		factory.close();
 		
 		return lista;
 	}

@@ -27,6 +27,7 @@ public class RelatorioDAO {
 		List<Object[]> relatorio = query.getResultList();
 		
 		manager.close();
+		factory.close();
 		return relatorio;
 	
 	}

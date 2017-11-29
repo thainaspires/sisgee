@@ -47,6 +47,10 @@ public class TermoAditivo {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private TermoEstagio termoEstagio;
 	
+	public TermoEstagio getTermoEstagio(){
+		return termoEstagio;
+	}
+	
 	public Long getIdta() {
 		return idta;
 	}

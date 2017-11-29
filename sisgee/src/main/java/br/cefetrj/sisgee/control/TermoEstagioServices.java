@@ -2,10 +2,6 @@ package br.cefetrj.sisgee.control;
 
 import java.util.Date;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import br.cefetrj.sisgee.model.dao.GenericDAO;
 import br.cefetrj.sisgee.model.dao.PersistenceManager;
 import br.cefetrj.sisgee.model.dao.TermoEstagioDAO;
@@ -25,5 +21,9 @@ public class TermoEstagioServices {
 	}
 	public static void IncluirTermoEstagio(TermoEstagio termo){
 		TermoEstagioDAO.IncluirTermoEstagio(termo);
+	}
+	public static TermoEstagio BuscarTermoEstagio(Long id){
+		GenericDAO<TermoEstagio> termoEstagioDAO = PersistenceManager.createGenericDAO(TermoEstagio.class);
+		return termoEstagioDAO.buscar(id);
 	}
 }

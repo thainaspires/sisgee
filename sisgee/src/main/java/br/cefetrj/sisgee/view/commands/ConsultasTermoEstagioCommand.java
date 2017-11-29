@@ -28,9 +28,6 @@ public class ConsultasTermoEstagioCommand implements Command {
 		List<AgenteIntegracao> agentesIntegracao = AgenteIntegracaoServices.listarAgentesIntegracao();
 		req.setAttribute("agentesIntegracao", agentesIntegracao);
 		
-		//String numero_convenio = req.getParameter("numero_convenio");
-		//String valor_bolsa = req.getParameter("valor_bolsa");
-		//System.out.println(numero_convenio);
 		String msg = "";
 		String matricula = req.getParameter("matricula");
 		
@@ -48,13 +45,7 @@ public class ConsultasTermoEstagioCommand implements Command {
 			msg += "É necessário digitar uma matrícula antes de buscar";
 		}
 		req.setAttribute("msg", msg);
-		//req.setAttribute("numero_convenio", numero_convenio);
-		//req.setAttribute("valor_bolsa", valor_bolsa);
 		req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
-		
-		//req.getRequestDispatcher("/redirect").forward(req, resp);
-		//resp.sendRedirect("termoestagio.jsp");
-		
 	
 	}
 	

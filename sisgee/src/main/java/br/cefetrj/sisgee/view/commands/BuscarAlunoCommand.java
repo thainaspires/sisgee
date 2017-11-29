@@ -45,7 +45,6 @@ public class BuscarAlunoCommand implements Command{
 					Aluno aluno = alunos.get(0);
 					String idAluno = aluno.getIdAluno().toString();
 					msg += "Matrícula retornada com sucesso";
-					System.out.println(idAluno);
 					req.setAttribute("idAluno", idAluno);
 					req.setAttribute("aluno", aluno);
 				} else {

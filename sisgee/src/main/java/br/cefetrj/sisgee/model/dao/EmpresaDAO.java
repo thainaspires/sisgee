@@ -19,11 +19,9 @@ public class EmpresaDAO  extends GenericDAO<EmpresaDAO>{
 	public static List<Empresa> buscarPorAgenteIntegracao(AgenteIntegracao agenteintegracao, String cnpj){
 		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");
-		EntityManager manager = factory.createEntityManager();
-		
-		//** TODO: Buscar a empresa que está ligada aquele agente de integração **//
-		
+		EntityManager manager = factory.createEntityManager();	
 		manager.close();
+		factory.close();
 		
 		return null;
 	}
@@ -35,7 +33,7 @@ public class EmpresaDAO  extends GenericDAO<EmpresaDAO>{
 		query.setParameter("paramNome", cnpj_empresa);
 		List<Empresa> lista = query.getResultList();
 		manager.close();
-		System.out.println("ESSA É A LISTA: "+lista);
+		factory.close();
 		return lista;
 	}
 	
@@ -48,6 +46,7 @@ public class EmpresaDAO  extends GenericDAO<EmpresaDAO>{
 		query.setParameter("paramNome2", nome_agente);
 		List<Empresa> lista = query.getResultList();
 		manager.close();
+		factory.close();
 		return lista;
 	}
 	

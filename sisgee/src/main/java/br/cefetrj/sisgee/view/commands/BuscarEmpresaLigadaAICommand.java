@@ -18,16 +18,18 @@ public class BuscarEmpresaLigadaAICommand implements Command {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String cnpj_empresa_ligada = req.getParameter("cnpj_empresa_ligada");
 		String ai = req.getParameter("razao_social");
-		
 		String msg = "";
-		System.out.println("PRINTA SAPORRA: "+ai);
 		if (cnpj_empresa_ligada != null && cnpj_empresa_ligada.trim().length() > 0){
 			List<Empresa> empresa = null;
 			empresa = EmpresaServices.buscarEmpresaLigadaAI(cnpj_empresa_ligada, ai);
-			Empresa empresaLigadaAIBuscada = empresa.get(0);
-			req.setAttribute("empresaligada", empresaLigadaAIBuscada);
+			if(empresa.isEmpty()){
+				msg += "Empresa não encontrada";
+			} else {
+				Empresa empresaLigadaAIBuscada = empresa.get(0);
+				req.setAttribute("empresaligada", empresaLigadaAIBuscada);
+			}
 		} else {
-			msg += "ERRO";
+			msg += "Digite um CNPJ antes de buscar";
 		}
 		req.setAttribute("msg", msg);
 		req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);

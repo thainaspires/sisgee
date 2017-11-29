@@ -5,7 +5,6 @@ import java.util.List;
 import br.cefetrj.sisgee.model.dao.GenericDAO;
 import br.cefetrj.sisgee.model.dao.PersistenceManager;
 import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
-import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
 
 public class AgenteIntegracaoServices {
 	public static void registrarAgenteIntegracao(AgenteIntegracao ai){

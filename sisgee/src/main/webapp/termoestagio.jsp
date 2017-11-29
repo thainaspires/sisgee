@@ -81,7 +81,7 @@
 										<label for="razao_social"><fmt:message key="br.cefetrj.sisgee.termo_estagio.razao"></fmt:message></label>
 										
 										<!-- Tag para listar os Agentes de Integração -->	
-										<cmp:ComboAgente nome="${ agenteintegracao.nomeAgenteIntegracao }"/>
+										<!--<cmp:ComboAgente nome="${ agenteintegracao.nomeAgenteIntegracao }"/>-->
 														
 										<a href="cadastrar_empresa.jsp" style="float:right;"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cadastro_empresa"></fmt:message></a>							
 									</div>									

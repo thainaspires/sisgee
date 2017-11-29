@@ -13,11 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import br.cefetrj.sisgee.view.commands.BuscarAlunoCommand;
 import br.cefetrj.sisgee.view.commands.BuscarEmpresaCommand;
 import br.cefetrj.sisgee.view.commands.BuscarEmpresaLigadaAICommand;
+import br.cefetrj.sisgee.view.commands.BuscarTermoCommand;
 import br.cefetrj.sisgee.view.commands.CadastrarEmpresaCommand;
 import br.cefetrj.sisgee.view.commands.Command;
 import br.cefetrj.sisgee.view.commands.ConsultasTermoEstagioCommand;
 import br.cefetrj.sisgee.view.commands.GerarRelatorioCommand;
 import br.cefetrj.sisgee.view.commands.IncluirTermoEstagioCommand;
+import br.cefetrj.sisgee.view.commands.ListarTermosAditivosCommand;
 import br.cefetrj.sisgee.view.commands.ValidarRegistroRescisaoCommand;
 import br.cefetrj.sisgee.view.commands.ValidarTermoEstagioCommand;
 
@@ -40,6 +42,9 @@ public class FrontControllerServlet extends HttpServlet {
 		comandos.put("BuscarEmpresaLigada", new BuscarEmpresaLigadaAICommand());
 		comandos.put("ValidarTermoEstagio", new ValidarTermoEstagioCommand());
 		comandos.put("ValidarRescisao", new ValidarRegistroRescisaoCommand());
+		comandos.put("ListarTermosAditivos", new ListarTermosAditivosCommand());
+		comandos.put("BuscarTermo", new BuscarTermoCommand());
+
 	}
 	
 	
@@ -50,7 +55,7 @@ public class FrontControllerServlet extends HttpServlet {
 			comandos.get(action).execute(req, resp);
 		} catch(Exception e){
 			System.out.println(e);
-			//req.getRequestDispatcher("/erro.jsp").forward(req, resp);
+			req.getRequestDispatcher("/erro.jsp").forward(req, resp);
 		}
 	}
 

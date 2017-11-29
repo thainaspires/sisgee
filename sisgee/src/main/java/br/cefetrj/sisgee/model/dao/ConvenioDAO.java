@@ -20,14 +20,13 @@ public class ConvenioDAO extends GenericDAO<ConvenioDAO>{
 		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");
 		EntityManager manager = factory.createEntityManager();
-		
-		//** TODO: Buscar a empresa que está ligada aquele agente de integração **//
+
 		Query query = manager.createQuery("select p from Convenio as p "+"where p.numeroConvenio = :paramNome");
 		query.setParameter("paramNome", numero_convenio);
 		List<Convenio> lista = query.getResultList();
-		System.out.println("lista: "+lista);
 
 		manager.close();
+		factory.close();
 		
 		return lista;
 	}

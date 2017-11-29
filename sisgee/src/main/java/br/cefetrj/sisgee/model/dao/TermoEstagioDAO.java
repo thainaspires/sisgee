@@ -22,13 +22,13 @@ public class TermoEstagioDAO {
 		query.setParameter("paramNome", id);
 		List<TermoEstagio> lista = query.getResultList();
 		manager.close();
+		factory.close();
 		if(lista.size() == 0 || lista.size() > 1){
 			return null;
 		}else{
 			termo = lista.get(0);
 			return termo;
 		}
-		
 	}
 	
 	public static void AlterarTermoEstagio(TermoEstagio termo, Date data_Rescisao){
@@ -58,6 +58,5 @@ public class TermoEstagioDAO {
 		manager.getTransaction().commit();
 		manager.close();
 		factory.close();
-		System.out.println("terminou");
 	}
 }

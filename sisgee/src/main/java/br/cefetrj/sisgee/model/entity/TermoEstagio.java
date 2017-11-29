@@ -79,8 +79,8 @@ public class TermoEstagio {
 	public List<ProfessorOrientador> getProfessoresOrientadores() {
 		return professoresOrientadores;
 	}
-	public void setProfessoresOrientadores(List<ProfessorOrientador> professoresOrientadores) {
-		this.professoresOrientadores = professoresOrientadores;
+	public void setProfessoresOrientadores(ProfessorOrientador pO) {
+		this.professoresOrientadores.add(pO);
 	}
 	public Date getDatainiciote() {
 		return datainiciote;
