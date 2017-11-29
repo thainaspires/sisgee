@@ -12,15 +12,15 @@
 	<%@ include file="menu.jspf" %>
 	<div class="container">
 		<form method="post" action="" id="formulario">
-			<h2 class="title-func text-center">Alterações do Aditivo</h2>
+			<h2 class="title-func text-center"><fmt:message key="br.cefetrj.sisgee.termo_aditivo.alteracoesaditivo"></fmt:message></h2>
 			<fieldset>
-				<legend>Dados do Aluno</legend>
+				<legend><fmt:message key="br.cefetrj.sisgee.termo_aditivo.dados_aluno"></fmt:message></legend>
 				<c:if test="${ not empty msg }">
 	 				<div class="alert" style="margin-top: 20px; background: #B8B3CC;">${ msg }</div>		
 	 			</c:if>
 				<div class="row">
 					<div class="form-group col-md-4" style="display:inline-block;">
-						<label for="matricula">Matrícula</label>
+						<label for="matricula"><fmt:message key="br.cefetrj.sisgee.termo_estagio.matricula"></fmt:message></label>
 						<div class="input-group">
 							<input type="text" class="form-control" name="matricula" id="matricula" value="${ matricula }">	
 							<span class="input-group-btn">
@@ -30,16 +30,16 @@
 					</div>
 
 					<div class="form-group col-md-8">
-						<label for="nome_aluno">Nome</label>
+						<label for="nome_aluno"><fmt:message key="br.cefetrj.sisgee.termo_estagio.nomealuno"></fmt:message></label>
 						<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled" value="${ aluno.pessoa }">
 					</div>							
 					<div class="form-group col-md-6">
-						<label for="curso">Curso</label>
+						<label for="curso"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cursoaluno"></fmt:message></label>
 						<input type="text" class="form-control" name="curso" id="curso" disabled="disabled" value="${ aluno.curso }">
 					</div>
 
 					<div class="form-group col-md-6">
-						<label for="unidade">Unidade</label>
+						<label for="unidade"><fmt:message key="br.cefetrj.sisgee.termo_estagio.unidadealuno"></fmt:message></label>
 						<input type="text" class="form-control" name="unidade" id="unidade" disabled="disabled" value="${ not empty aluno ? cursoalt.campus : curso.campus}">
 					</div>
 				</div>
@@ -52,9 +52,9 @@
 			<table class="table table-striped text-center">
 			    <thead>
 			      <tr>
-			        <th>Data de Registro</th>
-			        <th>CNPJ</th>
-			        <th>Razão Social</th>
+			        <th><fmt:message key="br.cefetrj.sisgee.termo_aditivo.dados_registro"></fmt:message></th>
+			        <th><fmt:message key="br.cefetrj.sisgee.termo_aditivo.CNPJ"></fmt:message></th>
+			        <th><fmt:message key="br.cefetrj.sisgee.termo_aditivo.razao"></fmt:message></th>
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -72,23 +72,23 @@
 			<hr/>
 			<div class="form-group" id="checkgroup">
 				<div class="checkbox">
-				  <label><input type="checkbox" value="">Vigência</label>
+				  <label><input type="checkbox" value=""><fmt:message key="br.cefetrj.sisgee.termo_aditivo.vigencia"></fmt:message></label>
 				</div>
 				<div class="checkbox">
-				  <label><input type="checkbox" value="">Carga Horária</label>
+				  <label><input type="checkbox" value=""><fmt:message key="br.cefetrj.sisgee.termo_aditivo.carga"></fmt:message></label>
 				</div>
 				<div class="checkbox">
-				  <label><input type="checkbox" value="">Valor da Bolsa</label>
+				  <label><input type="checkbox" value=""><fmt:message key="br.cefetrj.sisgee.termo_aditivo.bolsa"></fmt:message></label>
 				</div>
 				<div class="checkbox">
-				  <label><input type="checkbox" value="">Endereço do Estágio</label>
+				  <label><input type="checkbox" value=""><fmt:message key="br.cefetrj.sisgee.termo_aditivo.endereco"></fmt:message></label>
 				</div>
 				<div class="checkbox">
-				  <label><input type="checkbox" value="">Professor Orientador</label>
+				  <label><input type="checkbox" value=""><fmt:message key="br.cefetrj.sisgee.termo_aditivo.professor"></fmt:message></label>
 				</div>
 			</div>
 			<br/>
-			<input type="submit" id="btn-enviar" class="btn btn-active" name="enviar" value="Enviar">
+			<input type="submit" id="btn-enviar" class="btn btn-active" name="enviar" value="<fmt:message key='br.cefetrj.sisgee.termo_aditivo.enviar'></fmt:message>">
 		</form>
 	</div>			
     <%@ include file="scripts_imports.jspf" %>

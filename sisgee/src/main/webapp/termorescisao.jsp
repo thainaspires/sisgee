@@ -11,15 +11,15 @@
 	<%@ include file="menu.jspf" %>
 	<div class="container">
 		<form method="post" action="FrontControllerServlet?action=ValidarRescisao" id="formulario">
-			<h2 class="title-func text-center">Registro de Rescisão</h2>
+			<h2 class="title-func text-center"><fmt:message key="br.cefetrj.sisgee.termo_rescisao.registrorescisao"></fmt:message></h2>
 			<c:if test="${ not empty msg }">
 	 				<div class="alert" style="margin-top: 20px; background: #B8B3CC;">${ msg }</div>		
 	 		</c:if>
 			<fieldset>
-				<legend>Dados do Aluno</legend>
+				<legend><fmt:message key="br.cefetrj.sisgee.termo_rescisao.dadosaluno"></fmt:message></legend>
 				<div class="row">
 					<div class="form-group col-md-4" style="display:inline-block;">
-						<label for="matricula">Matrícula</label>
+						<label for="matricula"><fmt:message key="br.cefetrj.sisgee.termo_rescisao.matricula"></fmt:message></label>
 						<div class="input-group">
 							<input type="text" class="form-control" name="matricula" id="matricula" value="${ param.matricula }">	
 							<span class="input-group-btn">
@@ -29,16 +29,16 @@
 					</div>
 
 					<div class="form-group col-md-8">
-						<label for="nome_aluno">Nome</label>
+						<label for="nome_aluno"><fmt:message key="br.cefetrj.sisgee.termo_rescisao.nome"></fmt:message></label>
 						<input type="text" class="form-control" name="nome_aluno" id="nome_aluno" disabled="disabled" value="${ aluno.pessoa }">
 					</div>							
 					<div class="form-group col-md-6">
-						<label for="curso">Curso</label>
+						<label for="curso"><fmt:message key="br.cefetrj.sisgee.termo_rescisao.curso"></fmt:message></label>
 						<input type="text" class="form-control" name="curso" id="curso" disabled="disabled" value="${ aluno.curso }">
 					</div>
 
 					<div class="form-group col-md-6">
-						<label for="unidade">Unidade</label>
+						<label for="unidade"><fmt:message key="br.cefetrj.sisgee.termo_rescisao.unidade"></fmt:message></label>
 						<input type="text" class="form-control" name="unidade" id="unidade" disabled="disabled" value="${ aluno.curso.campus }">
 					</div>
 				</div>
@@ -50,12 +50,12 @@
 			<div class="row" id="recisaogrupo">
 				<div class="col-md-4"></div>
 				<div class="form-group col-md-4">
-						<label for="unidade">Data de Rescisão</label>
+						<label for="unidade"><fmt:message key="br.cefetrj.sisgee.termo_rescisao.dataRescisao"></fmt:message></label>
 						<input type="text" class="form-control" name="datarescisao" id="datarescisao">
 				</div>
 			</div>
 			<br/>
-			<input type="submit" id="btn-enviar" class="btn btn-active" name="enviar" value="Enviar">
+			<input type="submit" id="btn-enviar" class="btn btn-active" name="enviar" value="<fmt:message key="br.cefetrj.sisgee.termo_rescisao.enviar"></fmt:message>">
 		</form>
 	</div>			
     <%@ include file="scripts_imports.jspf" %>

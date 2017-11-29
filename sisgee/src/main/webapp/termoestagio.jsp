@@ -270,11 +270,11 @@
 									<br/>
 									<label class="form-check-label">
 									  <input class="form-check-input" type="radio" name="isn_obrigatorio" id="temProfessor" value="s"/>
-									  Sim
+									  <fmt:message key="br.cefetrj.sisgee.termo_estagio.is_agentesim"></fmt:message>
 									</label>
 									<label class="form-check-label">
 									  <input class="form-check-input" type="radio" name="isn_obrigatorio" id="naoTemProfessor" value="n"/>
-									  Não
+									  <fmt:message key="br.cefetrj.sisgee.termo_estagio.is_agentenao"></fmt:message>
 									</label>
 								</div>
 							</div>
