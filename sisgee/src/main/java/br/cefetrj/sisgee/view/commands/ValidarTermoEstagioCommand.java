@@ -26,10 +26,10 @@ public class ValidarTermoEstagioCommand implements Command {
 	
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Convenio convincluido = new Convenio();
-		/**THAINA**/
+		List<Convenio> resultconvenio= null;
 		Aluno aluno = null;
 		String numConvenio = req.getParameter("numero_convenio");
-		Convenio convenio = new Convenio();
+		Convenio convenio = null;
 		String matricula = req.getParameter("matricula");
 		ProfessorOrientador professor = null;
 		Empresa empresa = new Empresa();
@@ -51,7 +51,7 @@ public class ValidarTermoEstagioCommand implements Command {
 		}else{
 			msg += "É necessário digitar uma matrícula.";
 		}
-		//Validação do convênio
+		
 		String eagente = req.getParameter("exampleRadios");
 		String cnpj_empresa = req.getParameter("cnpj_empresa");
 		String nome_empresa = req.getParameter("razao_social_empresa");
@@ -204,7 +204,7 @@ public class ValidarTermoEstagioCommand implements Command {
 				if(numConvenio.trim().length() < 10 || numConvenio.trim().length() > 10){
 					msg += "Número do convênio precisa ter 10 digitos";
 				}else{
-					List<Convenio> resultconvenio = ConvenioServices.buscarConvenio(numConvenio);
+					resultconvenio = ConvenioServices.buscarConvenio(numConvenio);
 					if(!(resultconvenio.isEmpty())){
 						convenio = resultconvenio.get(0);
 					}
@@ -225,16 +225,13 @@ public class ValidarTermoEstagioCommand implements Command {
 						}
 					}
 					if(resultconvenio.isEmpty() && msg.equals("")){
-						//Criar convenio
 						convincluido.setNumeroConvenio(numConvenio);
 						convincluido.setEmpresa(empresa);
 						ConvenioServices.registrarConvenio(convincluido);
-						//msg += "Convênio cadastrado: Número: "+numConvenio+" Empresa: "+empresa;
 					} else {
-						/*if(convenio.getEmpresa().getIdEmpresa() == null || convenio.getEmpresa().getIdEmpresa() != empresa.getIdEmpresa()){
-							// Mostrar erro
-							msg += "Este convênio já existe";
-						}*/
+						if(convenio.getEmpresa().getIdEmpresa() == null || convenio.getEmpresa().getIdEmpresa() != empresa.getIdEmpresa()){
+							msg+="Convenio não está ligado com empresa selecionada";
+						}
 					}
 						
 				}
@@ -264,11 +261,13 @@ public class ValidarTermoEstagioCommand implements Command {
 			termoNovo.setEstadoenderecote(estado);
 			if(!professor_orientador.equals("")){
 				professor = ProfessorOrientadorServices.buscarProfessorOrientador(Long.parseLong(professor_orientador));
-				//termoNovo.setProfessoresOrientadores(professor);
+				termoNovo.setProfessorOrientador(professor);
 			}
-			
-			
-			termoNovo.setConvenio(convincluido);
+			if(resultconvenio.isEmpty()){
+				termoNovo.setConvenio(convincluido);	
+			}else{
+				termoNovo.setConvenio(convenio);
+			}
 			TermoEstagioServices.IncluirTermoEstagio(termoNovo);
 			req.setAttribute("sucesso", "Termo cadastrado com sucesso");
 			req.getRequestDispatcher("/index.jsp").forward(req, resp);
