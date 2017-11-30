@@ -2,14 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>Registro do Termo de Estágio</title>
+	<title>Registro do Termo de EstÃ¡gio</title>
 	<%@ include file="head_imports.jspf" %>	
 	<meta charset="utf-8">	
 </head>
 <body>
 
 	<%@ include file="menu.jspf" %>
-		<!-- Declaração das classes que receberão os parâmetros -->
+		<!-- DeclaraÃ§Ã£o das classes que receberÃ£o os parÃ¢metros -->
 		<c:if test="${ empty aluno }">
 			<jsp:useBean id="pessoa" scope="request" class="br.cefetrj.sisgee.model.entity.Pessoa" type="br.cefetrj.sisgee.model.entity.Pessoa"/>		
 				<jsp:setProperty name="pessoa" property="nome" value="${param.nome_aluno}" />
@@ -47,7 +47,7 @@
 	<div class="container">
 		<form method="post" action="FrontControllerServlet?action=ValidarTermoEstagio" id="formulario">
 			<div class="container">
-				<!-- Variável de mensagem que mostrao o Status do sistema -->
+				<!-- VariÃ¡vel de mensagem que mostrao o Status do sistema -->
 				<c:if test="${ not empty msg }">
 	 				<div class="alert" style="margin-top: 20px; background: #B8B3CC;">${ msg }</div>		
 	 			</c:if>
@@ -60,7 +60,7 @@
 								<label for="numero_convenio"><fmt:message key="br.cefetrj.sisgee.termo_estagio.numconvenio"></fmt:message></label>
 								<input type="text" class="form-control" name="numero_convenio" id="numero_convenio" value="${ param.numero_convenio }">
 							</div>
-							<!-- Campo hidden que pega o valor do Radio necessário para o JS -->
+							<!-- Campo hidden que pega o valor do Radio necessÃ¡rio para o JS -->
 							<input type="hidden" id="valorRadio" value="${param.exampleRadios}"/>
 							<div class="form-group col-md-12">
 								<div>
@@ -80,8 +80,8 @@
 									<div class="form-group col-md-4">
 										<label for="razao_social"><fmt:message key="br.cefetrj.sisgee.termo_estagio.razao"></fmt:message></label>
 										
-										<!-- Tag para listar os Agentes de Integração -->	
-										<!--<cmp:ComboAgente nome="${ agenteintegracao.nomeAgenteIntegracao }"/>-->
+										<!-- Tag para listar os Agentes de IntegraÃ§Ã£o -->	
+										<cmp:ComboAgente nome="${ agenteintegracao.nomeAgenteIntegracao }"/>
 														
 										<a href="cadastrar_empresa.jsp" style="float:right;"><fmt:message key="br.cefetrj.sisgee.termo_estagio.cadastro_empresa"></fmt:message></a>							
 									</div>									
@@ -225,29 +225,29 @@
 								<select class="form-control" class="form-control" name="estado" id="estado">
 									<option ${ param.estado eq "AC" ? "selected" : "" } value="AC">Acre</option>
 									<option ${ param.estado eq "AL" ? "selected" : "" } value="AL">Alagoas</option>
-									<option ${ param.estado eq "AP" ? "selected" : "" } value="AP">Amapá</option>
+									<option ${ param.estado eq "AP" ? "selected" : "" } value="AP">AmapÃ¡</option>
 									<option ${ param.estado eq "AM" ? "selected" : "" } value="AM">Amazonas</option>
 									<option ${ param.estado eq "BA" ? "selected" : "" } value="BA">Bahia</option>
-									<option ${ param.estado eq "CE" ? "selected" : "" } value="CE">Ceará</option>
+									<option ${ param.estado eq "CE" ? "selected" : "" } value="CE">CearÃ¡</option>
 									<option ${ param.estado eq "DF" ? "selected" : "" } value="DF">Distrito Federal</option>
-									<option ${ param.estado eq "ES" ? "selected" : "" } value="ES">Espírito Santo</option>
-									<option ${ param.estado eq "GO" ? "selected" : "" } value="GO">Goiás</option>
-									<option ${ param.estado eq "MA" ? "selected" : "" } value="MA">Maranhão</option>
+									<option ${ param.estado eq "ES" ? "selected" : "" } value="ES">EspÃ­rito Santo</option>
+									<option ${ param.estado eq "GO" ? "selected" : "" } value="GO">GoiÃ¡s</option>
+									<option ${ param.estado eq "MA" ? "selected" : "" } value="MA">MaranhÃ£o</option>
 									<option ${ param.estado eq "MT" ? "selected" : "" } value="MT">Mato Grosso</option>
 									<option ${ param.estado eq "MS" ? "selected" : "" } value="MS">Mato Grosso do Sul</option>
 									<option ${ param.estado eq "MG" ? "selected" : "" } value="MG">Minas Gerais</option>
-									<option ${ param.estado eq "PA" ? "selected" : "" } value="PA">Pará</option>
-									<option ${ param.estado eq "PB" ? "selected" : "" } value="PB">Paraíba</option>
-									<option ${ param.estado eq "PR" ? "selected" : "" } value="PR">Paraná</option>
+									<option ${ param.estado eq "PA" ? "selected" : "" } value="PA">ParÃ¡</option>
+									<option ${ param.estado eq "PB" ? "selected" : "" } value="PB">ParaÃ­ba</option>
+									<option ${ param.estado eq "PR" ? "selected" : "" } value="PR">ParanÃ¡</option>
 									<option ${ param.estado eq "PE" ? "selected" : "" } value="PE">Pernambuco</option>
-									<option ${ param.estado eq "PI" ? "selected" : "" } value="PI">Piauí</option>
+									<option ${ param.estado eq "PI" ? "selected" : "" } value="PI">PiauÃ­</option>
 									<option ${ param.estado eq "RJ" ? "selected" : "" } value="RJ">Rio de Janeiro</option>
 									<option ${ param.estado eq "RN" ? "selected" : "" } value="RN">Rio Grande do Norte</option>
 									<option ${ param.estado eq "RS" ? "selected" : "" } value="RS">Rio Grande do Sul</option>
-									<option ${ param.estado eq "RO" ? "selected" : "" } value="RO">Rondônia</option>
+									<option ${ param.estado eq "RO" ? "selected" : "" } value="RO">RondÃ´nia</option>
 									<option ${ param.estado eq "RR" ? "selected" : "" } value="RR">Roraima</option>
 									<option ${ param.estado eq "SC" ? "selected" : "" } value="SC">Santa Catarina</option>
-									<option ${ param.estado eq "SP" ? "selected" : "" } value="SP">São Paulo</option>
+									<option ${ param.estado eq "SP" ? "selected" : "" } value="SP">SÃ£o Paulo</option>
 									<option ${ param.estado eq "SE" ? "selected" : "" } value="SE">Sergipe</option>
 									<option ${ param.estado eq "TO" ? "selected" : "" } value="TO">Tocantins</option>
 								</select>
