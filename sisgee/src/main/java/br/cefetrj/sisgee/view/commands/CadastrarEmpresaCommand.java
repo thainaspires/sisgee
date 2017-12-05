@@ -59,10 +59,10 @@ public class CadastrarEmpresaCommand implements Command {
 			req.getRequestDispatcher("/cadastrar_empresa.jsp").forward(req,resp);
 		} else {
 			sucesso = true;
-			msg += "Cadastro realizado com sucesso";
+			msg += "Cadastro de empresa realizado com sucesso";
 			req.setAttribute("msg", msg);
 			req.setAttribute("sucesso", sucesso);
-			req.getRequestDispatcher("/FrontControllerServlet?action=ConsultasTermoEst").forward(req, resp);
+			req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);
 		}
 	}
 
