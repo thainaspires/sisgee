@@ -33,10 +33,12 @@ public class ValidarRegistroRescisaoCommand implements Command {
 		
 		//Transformando data para formato necessário
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		boolean format = true;
 		try {
 			data_Rescisao = formato.parse(datarescisao);
 		} catch (ParseException e) {
-			/** TODO: **/
+			format = false;
+			msg2+="Data de rescisão precisa estar no formato correto. ";
 		}
 		
 		//Buscando o aluno através da matricula
@@ -50,34 +52,41 @@ public class ValidarRegistroRescisaoCommand implements Command {
 				msg2 += "Matrícula não encontrada";
 			}	
 		}else{
-			msg2 += "É necessário digitar uma matrícula antes de buscar";
+			msg2 += "É necessário digitar uma matrícula antes de buscar. ";
 		}
 		
-		//Se o aluno Buscado não for null então é possivel pegar o termo de estágio que tem data de rescisão nula
-		if(alunoBuscado != null){
-			termoEstagio = TermoEstagioServices.buscarTermoPorIdAluno(alunoBuscado.getIdAluno());
-		}
-		
-		//Se o termo de estágio é null, é porque não existe termo de estágio com rescisão nula para o determinado aluno
-		if(termoEstagio == null){
-			msg2+="Não foi possível achar termo de estagio para este aluno que não tenha data de rescisão";
-		//Se não for null, é porque existe termo estágio com rescisão nula
+		if (data_Rescisao == null){
+			if(format == true){
+				msg2+="Data de rescisão não pode ser vazia. ";
+			}
 		}else{
-			//Se a data que a pessoa selecionou não for nula e se o formato for correto
-			if(datarescisao != null && datarescisao.length() != 0 && datarescisao.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d")){
-				//Se a data for antes da data de inicio do termo ou se for depois da data final do termo, é inválida
-				if(data_Rescisao.before(termoEstagio.getDatainiciote()) || data_Rescisao.after(termoEstagio.getDatafimte())){
-					msg2+="Data de rescisão precisa estar entre os intervalos de data inicio e final";
-				//Se a data estiver dentro das datasa de inicio e fim, então é uma data válida e o termoEstagio é alterado
-				}else{
-					TermoEstagioServices.AlterarTermoEstagio(termoEstagio, data_Rescisao);
-					sucesso = "Rescisão registrada com sucesso";
-				}
-			//Se a pessoa não selecionou a data ou se a data não estiver no formato correto
+			//Se o aluno Buscado não for null então é possivel pegar o termo de estágio que tem data de rescisão nula
+			if(alunoBuscado != null){
+				termoEstagio = TermoEstagioServices.buscarTermoPorIdAluno(alunoBuscado.getIdAluno());
+			}
+			
+			//Se o termo de estágio é null, é porque não existe termo de estágio com rescisão nula para o determinado aluno
+			if(termoEstagio == null){
+				msg2+="Não foi possível achar termo de estagio para este aluno que não tenha data de rescisão";
+			//Se não for null, é porque existe termo estágio com rescisão nula
 			}else{
-				msg2+="Data de rescisão não pode ser vazia e precisa ter o formato correto";
+				//Se a data que a pessoa selecionou não for nula e se o formato for correto
+				if(datarescisao != null && datarescisao.length() != 0 && datarescisao.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d")){
+					//Se a data for antes da data de inicio do termo ou se for depois da data final do termo, é inválida
+					if(data_Rescisao.before(termoEstagio.getDatainiciote()) || data_Rescisao.after(termoEstagio.getDatafimte())){
+						msg2+="Data de rescisão precisa estar entre os intervalos de data inicio e final";
+					//Se a data estiver dentro das datasa de inicio e fim, então é uma data válida e o termoEstagio é alterado
+					}else{
+						TermoEstagioServices.AlterarTermoEstagio(termoEstagio, data_Rescisao);
+						sucesso = "Rescisão registrada com sucesso";
+					}
+				//Se a pessoa não selecionou a data ou se a data não estiver no formato correto
+				}else{
+					msg2+="Data de rescisão não pode ser vazia e precisa ter o formato correto";
+				}
 			}
 		}
+
 		
 		if(msg2 != ""){
 			req.setAttribute("msg2", msg2);

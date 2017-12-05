@@ -55,6 +55,7 @@ public class ValidarTermoEstagioCommand implements Command {
 		String nome_empresa = req.getParameter("razao_social_empresa");
 		String cnpj_empresa_ligada = req.getParameter("cnpj_empresa_ligada");
 		String nome_agente = req.getParameter("razao_social");
+	
 		
 		
 		String dataInicio = req.getParameter("data_inicio");
@@ -202,13 +203,43 @@ public class ValidarTermoEstagioCommand implements Command {
 				msg += " Cep precisa ter somente dígitos.";
 			}
 		}
+		boolean cnpjinvalido = false;
+		
+		if(eagente.equals("sim") && (cnpj_empresa_ligada == null || cnpj_empresa_ligada.trim().length() == 0)){
+			msg+=" Cnpj não pode estar vazio. ";
+			cnpjinvalido = true; 
+		}
+		if(eagente.equals("sim") && cnpj_empresa_ligada.trim().length() > 0 && cnpj_empresa_ligada.trim().length() < 14){
+			msg+=" Cnpj precisa ter 14 caracteres. ";
+			cnpjinvalido = true;
+		}
+		
+		if(!(eagente.equals("sim")) && cnpj_empresa_ligada.trim().length() > 0 && cnpj_empresa_ligada.trim().length() < 14){
+			msg+=" Cnpj precisa ter 14 caracteres. ";
+			cnpjinvalido = true;
+		}
+		
+		if(eagente.equals("sim") && cnpj_empresa_ligada.trim().length() > 0 && cnpj_empresa_ligada.trim().length() > 14){
+			msg+=" Cnpj precisa ter 14 caracteres. ";
+			cnpjinvalido = true;
+		}
+		
+		if(!(eagente.equals("sim")) && cnpj_empresa_ligada.trim().length() > 0 && cnpj_empresa_ligada.trim().length() > 14){
+			msg+=" Cnpj precisa ter 14 caracteres. ";
+			cnpjinvalido = true;
+		}
+		
+		if(!(eagente.equals("sim")) && (cnpj_empresa == null || cnpj_empresa.trim().length() == 0)){
+			msg+=" Cnpj não pode estar vazio. ";
+			cnpjinvalido = true;
+		}
 		
 		//Validação do convênio
 		if(numConvenio == null || numConvenio.trim().length() == 0){
 			msg += " Número do convênio não pode ser vazio."; 
 		}else{
 			try {
-				Long nConvenio = Long.parseLong(numConvenio);
+				Double nConvenio = Double.parseDouble(numConvenio);
 				if(numConvenio.trim().length() < 10 || numConvenio.trim().length() > 10){
 					msg += " Número do convênio precisa ter 10 digitos.";
 				}else{
@@ -217,19 +248,26 @@ public class ValidarTermoEstagioCommand implements Command {
 						convenio = resultconvenio.get(0);
 					}
 					if(eagente.equals("sim")){
-					
-						List<Empresa> resultempresa = EmpresaServices.buscarEmpresaLigadaAI(cnpj_empresa_ligada, nome_agente);
-						if(!(resultempresa.isEmpty())){
-							empresa = resultempresa.get(0);
-						} else {
-							msg += " Agente de integração não está ligado à esta empresa.";
+						if(cnpjinvalido == false){
+							List<Empresa> resultempresa = EmpresaServices.buscarEmpresaLigadaAI(cnpj_empresa_ligada, nome_agente);
+							if(!(resultempresa.isEmpty())){
+								empresa = resultempresa.get(0);
+							} else {
+								msg += " Agente de integração não está ligado à esta empresa.";
+							}
 						}
 					} else {
-						List<Empresa> resultempresa = EmpresaServices.buscarEmpresa(cnpj_empresa);
-						if(!(resultempresa.isEmpty())){
-							empresa = resultempresa.get(0);
-						} else {
-							msg += " Empresa não encontrada.";
+						if(cnpj_empresa == null || cnpj_empresa.trim().length() == 0){
+							msg+=" Cnpj não pode estar vazio.";
+						}else{
+							if(cnpjinvalido == false){
+								List<Empresa> resultempresa = EmpresaServices.buscarEmpresa(cnpj_empresa);
+								if(!(resultempresa.isEmpty())){
+									empresa = resultempresa.get(0);
+								} else {
+									msg += " Empresa não encontrada.";
+								}
+							}
 						}
 					}
 					if(resultconvenio.isEmpty() && msg.equals("")){

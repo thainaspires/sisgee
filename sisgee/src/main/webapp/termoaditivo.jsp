@@ -40,7 +40,7 @@
 
 					<div class="form-group col-md-6">
 						<label for="unidade"><fmt:message key="br.cefetrj.sisgee.termo_estagio.unidadealuno"></fmt:message></label>
-						<input type="text" class="form-control" name="unidade" id="unidade" disabled="disabled" value="${ not empty aluno ? cursoalt.campus : curso.campus}">
+						<input type="text" class="form-control" name="unidade" id="unidade" disabled="disabled" value="${ aluno.curso.campus }">
 					</div>
 				</div>
 			</fieldset>

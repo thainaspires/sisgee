@@ -27,19 +27,23 @@ public class ListarTermosAditivosCommand implements Command{
 			if(aluno.size() > 0){
 				
 				Aluno alunoBuscado = aluno.get(0);
-				msg += "Matrícula retornada com sucesso";
+				msg += "Matrícula retornada com sucesso. ";
 				req.setAttribute("aluno", alunoBuscado);
 
 				termoEstagio = TermoAditivoServices.listarTermoEstagio(matricula);
 				if (termoEstagio == null){
-					msg2+="Não foi possível encontrar termo estágio/aditivos para o aluno atualmente";
+					msg2+="Não foi possível encontrar termo estágio/aditivos para o aluno atualmente. ";
 				}else{
 					termosAditivos = TermoAditivoServices.listarTermosAditivos(matricula);
 					if(termosAditivos == null){
 						termo = termoEstagio;
+						msg+="Termos retornados com sucesso.";
+						System.out.println(termo);
 					}else{
+						msg+="Termos retornados com sucesso.";
 						termo = termosAditivos;
 						eEstagio = false;
+						System.out.println(termo);
 					}
 				}
 				
@@ -48,12 +52,12 @@ public class ListarTermosAditivosCommand implements Command{
 				}else{
 					req.setAttribute("eEstagio", "s");
 				}
-				req.setAttribute("listaTermos", termo);
 				
-				
+				req.setAttribute("listaTermos", termo);	
 				
 			} else {
 				msg += "Matrícula não encontrada";
+				msg2+= "Pesquisa inválida";
 			}	
 		}else{
 			msg += "É necessário digitar uma matrícula antes de buscar";
