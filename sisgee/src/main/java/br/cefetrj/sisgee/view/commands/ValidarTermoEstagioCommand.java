@@ -209,6 +209,16 @@ public class ValidarTermoEstagioCommand implements Command {
 			msg+=" Cnpj não pode estar vazio. ";
 			cnpjinvalido = true; 
 		}
+		if((nome_empresa == null || nome_empresa.trim().length() == 0)){
+			msg+=" Razão social não pode estar vazio. ";
+			cnpjinvalido = true; 
+		}else{
+			if((nome_empresa.trim().length() > 0 && nome_empresa.trim().length() > 100)){
+				msg+=" Razão social não pode utrapassar 100 caracteres. ";
+				cnpjinvalido = true; 
+			}
+		}
+		
 		if(eagente.equals("sim") && cnpj_empresa_ligada.trim().length() > 0 && cnpj_empresa_ligada.trim().length() < 14){
 			msg+=" Cnpj precisa ter 14 caracteres. ";
 			cnpjinvalido = true;
