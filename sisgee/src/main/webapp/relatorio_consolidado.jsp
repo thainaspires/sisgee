@@ -35,7 +35,7 @@
 						</label>
 						<label class="form-check-label">
 						  <input class="form-check-input" id="radioestagio2" type="radio" name="isn_obrigatorio" value="0"/>
-						  <fmt:message key="br.cefetrj.sisgee.relatorio.estagioobrigatorio"></fmt:message>
+						  <fmt:message key="br.cefetrj.sisgee.relatorio.estagionobrigatorio"></fmt:message>
 						</label>
 					</div>
 					

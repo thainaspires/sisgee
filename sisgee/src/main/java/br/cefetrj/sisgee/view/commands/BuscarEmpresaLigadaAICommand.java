@@ -20,14 +20,25 @@ public class BuscarEmpresaLigadaAICommand implements Command {
 		String ai = req.getParameter("razao_social");
 		String msg = "";
 		if (cnpj_empresa_ligada != null && cnpj_empresa_ligada.trim().length() > 0){
-			List<Empresa> empresa = null;
-			empresa = EmpresaServices.buscarEmpresaLigadaAI(cnpj_empresa_ligada, ai);
-			if(empresa.isEmpty()){
-				msg += "Empresa não encontrada";
-			} else {
-				Empresa empresaLigadaAIBuscada = empresa.get(0);
-				req.setAttribute("empresaligada", empresaLigadaAIBuscada);
-			}
+			try {
+				Double cnpj_empresA = Double.parseDouble(cnpj_empresa_ligada);
+				if(cnpj_empresa_ligada.trim().length() < 14){
+					msg+="Cnpj pequeno, o CNPJ precisa ter 14 caracteres";
+				}else if(cnpj_empresa_ligada.trim().length() > 14){
+					msg+="Cnpj grande, o CNPJ precisa ter 14 caracteres";
+				}else{
+					List<Empresa> empresa = null;
+					empresa = EmpresaServices.buscarEmpresaLigadaAI(cnpj_empresa_ligada, ai);
+					if(empresa.isEmpty()){
+						msg += "Empresa não encontrada ou não está ligada ao agente de integração";
+					} else {
+						Empresa empresaLigadaAIBuscada = empresa.get(0);
+						req.setAttribute("empresaligada", empresaLigadaAIBuscada);
+					}
+				}
+			}catch (Exception e) {
+				msg += "Cnpj precisa ser composto somente de números";
+			}	
 		} else {
 			msg += "Digite um CNPJ antes de buscar";
 		}

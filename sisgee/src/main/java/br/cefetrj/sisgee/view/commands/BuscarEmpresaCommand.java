@@ -20,13 +20,24 @@ public class BuscarEmpresaCommand  implements Command {
 			String cnpj_empresa = req.getParameter("cnpj_empresa");
 			String msg = "";
 			if (cnpj_empresa != null && cnpj_empresa.trim().length() > 0){
-				List<Empresa> empresa = null;
-				empresa = EmpresaServices.buscarEmpresa(cnpj_empresa);
-				if(empresa.isEmpty()){
-					msg += "Empresa não encontrada";
-				} else {
-					Empresa empresaBuscada = empresa.get(0);
-					req.setAttribute("empresa", empresaBuscada);
+				try {
+					Integer cnpj_empresA = Integer.parseInt(cnpj_empresa);
+					if(cnpj_empresa.trim().length() < 14){
+						msg+="Cnpj pequeno, o CNPJ precisa ter 14 caracteres";
+					}else if(cnpj_empresa.trim().length() > 14){
+						msg+="Cnpj grande, o CNPJ precisa ter 14 caracteres";
+					}else{
+						List<Empresa> empresa = null;
+						empresa = EmpresaServices.buscarEmpresa(cnpj_empresa);
+						if(empresa.isEmpty()){
+							msg += "Empresa não encontrada";
+						} else {
+							Empresa empresaBuscada = empresa.get(0);
+							req.setAttribute("empresa", empresaBuscada);
+						}
+					}
+				} catch (Exception e) {
+					msg += "Cnpj precisa ser composto somente de números";
 				}
 			} else {
 				msg += "Digite um CNPJ antes de buscar";

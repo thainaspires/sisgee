@@ -22,15 +22,19 @@ public class BuscarAlunoCommand implements Command{
 		String msg = "";
 		if (ondeEstaVindo != null && ondeEstaVindo.equals("rescisao") ){
 			if (matricula != null && matricula.trim().length() > 0){
-				List<Aluno> aluno = null;
-				aluno = AlunoServices.buscarDetermAluno(matricula);
-				if(aluno.size() > 0){
-					Aluno alunoBuscado = aluno.get(0);
-					msg += "Matrícula retornada com sucesso";
-					req.setAttribute("aluno", alunoBuscado);
-				} else {
-					msg += "Matrícula não encontrada";
-				}	
+				if(matricula.trim().length() > 100){
+					msg+="Matrícula precisa ter até 100 caracteres";
+				}else{
+					List<Aluno> aluno = null;
+					aluno = AlunoServices.buscarDetermAluno(matricula);
+					if(aluno.size() > 0){
+						Aluno alunoBuscado = aluno.get(0);
+						msg += "Matrícula retornada com sucesso";
+						req.setAttribute("aluno", alunoBuscado);
+					} else {
+						msg += "Matrícula não encontrada";
+					}
+				}		
 			}else{
 				msg += "É necessário digitar uma matrícula antes de buscar";
 			}
@@ -39,17 +43,21 @@ public class BuscarAlunoCommand implements Command{
 			
 		}else{		
 			if (matricula != null && matricula.trim().length() > 0){
-				List<Aluno> alunos = null;
-				alunos = AlunoServices.buscarDetermAluno(matricula);
-				if(alunos.size() > 0){
-					Aluno aluno = alunos.get(0);
-					String idAluno = aluno.getIdAluno().toString();
-					msg += "Matrícula retornada com sucesso";
-					req.setAttribute("idAluno", idAluno);
-					req.setAttribute("aluno", aluno);
-				} else {
-					msg += "Matrícula não encontrada";
-				}	
+				if(matricula.trim().length() > 100){
+					msg+="Matrícula precisa ter até 100 caracteres";
+				}else{
+					List<Aluno> alunos = null;
+					alunos = AlunoServices.buscarDetermAluno(matricula);
+					if(alunos.size() > 0){
+						Aluno aluno = alunos.get(0);
+						String idAluno = aluno.getIdAluno().toString();
+						msg += "Matrícula retornada com sucesso";
+						req.setAttribute("idAluno", idAluno);
+						req.setAttribute("aluno", aluno);
+					} else {
+						msg += "Matrícula não encontrada";
+					}	
+				}
 			} else if(!(matricula.trim().length() <= 100)){ 
 				msg += "O tamanho da matrícula excede o limite permitido";
 			} else{

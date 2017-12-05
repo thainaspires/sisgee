@@ -37,9 +37,7 @@ public class ValidarTermoEstagioCommand implements Command {
 		String isn_obrigatorio = req.getParameter("isn_obrigatorio");
 		String professor_orientador = "";
 		
-		if(isn_obrigatorio.equals("s")){
-			professor_orientador = req.getParameter("professor_orientador");
-		}
+		professor_orientador = req.getParameter("professor_orientador");
 		if (matricula != null && matricula.trim().length() > 0){
 			List<Aluno> alunoList = null;
 			alunoList = AlunoServices.buscarDetermAluno(matricula);
@@ -93,7 +91,18 @@ public class ValidarTermoEstagioCommand implements Command {
 		    }
 			
 		}else{
-			msg+=" Datas precisam ser preenchidas e precisam estar no formato correto.";
+			if(dataInicio == null || dataInicio.length() == 0){
+				msg+=" Data inicio não pode estar vazia. ";
+			}
+			if(dataTermino == null || dataTermino.length() == 0){
+				msg+=" Data final não pode estar vazia. ";
+			}
+			if(!dataTermino.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d")){
+				msg+=" Data Termino precisa estar no formato DD/MM/AAAA.";
+			}
+			if(!dataInicio.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d")){
+				msg+=" Data Inicio precisa estar no formato DD/MM/AAAA. ";
+			}
 		}
 		
 		String horas_dia = req.getParameter("horas_dia");
@@ -253,11 +262,16 @@ public class ValidarTermoEstagioCommand implements Command {
 			termoNovo.setCependerecote(cep);
 			termoNovo.setCidadeenderecote(cidade);
 			termoNovo.setComplementoenderecote(complemento);
-			termoNovo.setEestagioobrigatorio(1);
 			termoNovo.setEnderecote(endereco);
 			termoNovo.setNumeroenderecote("22");
 			termoNovo.setValorbolsa(Float.parseFloat(valor_bolsa));
 			termoNovo.setEstadoenderecote(estado);
+			termoNovo.setEestagioobrigatorio(1);
+			if(isn_obrigatorio.equals("s")){
+				termoNovo.setEestagioobrigatorio(1);
+			}else{
+				termoNovo.setEestagioobrigatorio(0);
+			}
 			if(!professor_orientador.equals("")){
 				professor = ProfessorOrientadorServices.buscarProfessorOrientador(Long.parseLong(professor_orientador));
 				termoNovo.setProfessorOrientador(professor);

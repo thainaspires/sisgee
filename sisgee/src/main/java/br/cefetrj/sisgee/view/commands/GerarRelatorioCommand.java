@@ -73,7 +73,13 @@ public class GerarRelatorioCommand implements Command{
 	        }
 	    //Se alguma data não tiver sido preenchida ou não estiver no formato correto
 		}else{
-			msg+="Datas precisam ser preenchidas e precisam estar no formato correto";
+			if (!(dataInicial != null && dataInicial.length() != 0)){
+				msg+="Data de inicio precisa ser preenchida";
+			}
+			if (!(dataFinal != null && dataFinal.length() != 0)){
+				msg+="Data final precisa ser preenchida";
+			}
+		
 		}
 		
 		if(msg != ""){
