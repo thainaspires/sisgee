@@ -26,11 +26,20 @@ public class CadastrarEmpresaCommand implements Command {
 		String msg = "";
 		boolean sucesso = false;
 		
-		if(!(cnpj != null && cnpj.trim().length() > 0 && cnpj.trim().length() == 14)){
-			msg += "CNPJ é um campo obrigatório e deve ter 14 caracteres. ";
+		if(!(cnpj != null && cnpj.trim().length() > 0)){
+			msg += "CNPJ não pode ser vazio ";
 		}
-		if(!(razaosocial != null && razaosocial.trim().length() > 0 && razaosocial.trim().length() <= 100)){
-			msg += "Razão Social é um campo obrigatório e deve ter até 100 caracteres.";
+		if(cnpj.trim().length() > 14){
+			msg += "CNPJ não pode ser maior que 14 caracteres.";
+		}
+		if(cnpj.trim().length() > 0 && cnpj.trim().length() < 14){
+			msg += "CNPJ não pode ser menor que 14 caracteres.";
+		}
+		if(!(razaosocial != null && razaosocial.trim().length() > 0)){
+			msg += "Razão Social não pode ser vazio.";
+		}
+		if(!(razaosocial.trim().length() <= 100)){
+			msg += "Razão Social deve ter até 100 caracteres.";
 		}
 		if(agente.equals("")){
 			//Agente deve ser sim ou não

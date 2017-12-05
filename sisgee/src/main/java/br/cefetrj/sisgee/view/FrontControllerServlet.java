@@ -16,7 +16,6 @@ import br.cefetrj.sisgee.view.commands.BuscarEmpresaLigadaAICommand;
 import br.cefetrj.sisgee.view.commands.BuscarTermoCommand;
 import br.cefetrj.sisgee.view.commands.CadastrarEmpresaCommand;
 import br.cefetrj.sisgee.view.commands.Command;
-import br.cefetrj.sisgee.view.commands.ConsultasTermoEstagioCommand;
 import br.cefetrj.sisgee.view.commands.GerarRelatorioCommand;
 import br.cefetrj.sisgee.view.commands.IncluirTermoEstagioCommand;
 import br.cefetrj.sisgee.view.commands.ListarTermosAditivosCommand;
@@ -35,7 +34,6 @@ public class FrontControllerServlet extends HttpServlet {
 	static{
 		comandos.put("IncluirTermoEstagio", new IncluirTermoEstagioCommand());
 		comandos.put("CadastrarEmpresa", new CadastrarEmpresaCommand());
-		comandos.put("ConsultasTermoEst", new ConsultasTermoEstagioCommand());
 		comandos.put("GerarRelatorio", new GerarRelatorioCommand());
 		comandos.put("BuscarAluno", new BuscarAlunoCommand());
 		comandos.put("BuscarEmpresa", new BuscarEmpresaCommand());
