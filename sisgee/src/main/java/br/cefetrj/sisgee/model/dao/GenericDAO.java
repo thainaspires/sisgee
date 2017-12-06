@@ -6,6 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+/**
+ * @author Bruno
+ * DAO generico para manipulações no banco
+ */
+
 public class GenericDAO<T> {
 	
 	private EntityManager manager;

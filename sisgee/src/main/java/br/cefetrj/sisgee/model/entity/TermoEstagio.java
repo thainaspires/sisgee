@@ -12,10 +12,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+/**
+ * @author Thaina Pires
+ * Classe para a entidade Termo Estagio
+ */
+
 @Entity
 public class TermoEstagio {
 	/**
-	 * Todos os atributos que se refiram a TermoEstagio serão denominados com o sufixo te
+	 * Todos os atributos que se refiram a TermoEstagio serï¿½o denominados com o sufixo te
 	 * @author: Alexander Hugo
 	 */
 	@Id

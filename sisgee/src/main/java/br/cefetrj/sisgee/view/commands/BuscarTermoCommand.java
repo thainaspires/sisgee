@@ -14,6 +14,12 @@ import br.cefetrj.sisgee.model.entity.Aluno;
 import br.cefetrj.sisgee.model.entity.TermoAditivo;
 import br.cefetrj.sisgee.model.entity.TermoEstagio;
 
+/**
+ * @author Nathalia Gomes
+ * Command para validação da busca de Termo e os dados
+ *  
+ */
+
 public class BuscarTermoCommand implements Command{
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Aluno> aluno = null;
@@ -68,7 +74,7 @@ public class BuscarTermoCommand implements Command{
 				termoEstagio = TermoEstagioServices.BuscarTermoEstagio(id);
 			}
 		}catch(Exception e){
-			System.out.println("id do termo est� errado");
+			System.out.println("id do termo est� errado");
 		}
 		
 		req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);

@@ -7,8 +7,18 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+/**
+ * @author Bruno
+ * Classe para manipulaÃ§Ãµes no banco relacionadas com a entidade termo aditivo
+ */
+
 public class TermoAditivoDAO {
-	
+	/**
+	 * @author Bruno
+	 * Buscar termos aditivos a partir da matricula do aluno
+	 * @param matricula String - Matricula do aluno
+	 * @return List - Lista dos termos aditivos
+	 */
 	public static List listarTermosAditivos(String matricula){
 		List<Object[]> termosaditivos = null;
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");
@@ -24,7 +34,12 @@ public class TermoAditivoDAO {
 			return termosaditivos;
 		}
 	}
-	
+	/**
+	 * @author Bruno
+	 * Buscar termo estagio a partir da matricula do aluno
+	 * @param matricula String - Matricula do aluno
+	 * @return List - Lista de termos estagio
+	 */
 	public static List listarTermoEstagio(String matricula){
 		List<Object[]> termoestagio = null;
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");
@@ -39,10 +54,4 @@ public class TermoAditivoDAO {
 			return termoestagio;
 		}
 	}
-	/*//Lógica 1 - se retornar vazio, aluno não possui termoestágio
-	select te.datafimte,e.cnpjempresa,e.nomeempresa from aluno a JOIN termoestagio te ON a.idaluno = te.aluno_idaluno JOIN convenio c ON te.convenio_idconvenio = c.idconvenio JOIN empresa e ON c.empresa_idempresa = e.idempresa where matricula = '5555123'
-
-	//Lógica 2 -  se retonar vazio, aluno não possui aditivo, porém, da lógica 1, ele possui TermoEstágio
-	select ta.datafimta, e.cnpjempresa,e.nomeempresa from termoaditivo ta JOIN termoestagio te ON ta.termoestagio_idte = te.idte JOIN aluno a ON a.idaluno = te.aluno_idaluno JOIN convenio c ON te.convenio_idconvenio = c.idconvenio JOIN empresa e ON c.empresa_idempresa = e.idempresa where matricula = '5555123'
-	*/
 }

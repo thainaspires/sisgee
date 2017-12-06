@@ -13,7 +13,18 @@ import javax.swing.JOptionPane;
 
 import br.cefetrj.sisgee.model.entity.TermoEstagio;
 
+/**
+ * @author Bruno
+ * Classe para manipulações no banco relacionadas com a entidade termo estagio
+ */
+
 public class TermoEstagioDAO {
+	/**
+	 * @author Bruno
+	 * Buscar termos estagios a partir de id
+	 * @param id Long - Id do termo
+	 * @return TermoEstagio - Retorna o termo estágio procurado
+	 */
 	public static TermoEstagio buscarTermoPorIdAluno(Long id){
 		TermoEstagio termo = null;
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");
@@ -30,7 +41,13 @@ public class TermoEstagioDAO {
 			return termo;
 		}
 	}
-	
+	/**
+	 * @author Bruno
+	 * Altera o termo estagio para acrescentar a data de rescisão
+	 * @param termo TermoEstagio - Entidade termo
+	 * @param data_Rescisao Date - Data de rescisão do termo
+	 * @return void
+	 */
 	public static void AlterarTermoEstagio(TermoEstagio termo, Date data_Rescisao){
 		EntityManagerFactory factory =
 				Persistence.createEntityManagerFactory("SisgeePU");
@@ -45,6 +62,12 @@ public class TermoEstagioDAO {
 		factory.close();
 	}
 	
+	/**
+	 * @author Bruno
+	 * Incluir termo de estágio no banco
+	 * @param termo TermoEstagio - Entidade termo
+	 * @return void
+	 */
 	public static void IncluirTermoEstagio(TermoEstagio termo){
 		
 		EntityManagerFactory factory =

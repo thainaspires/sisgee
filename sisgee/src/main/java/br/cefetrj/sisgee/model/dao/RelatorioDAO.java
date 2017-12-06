@@ -10,7 +10,21 @@ import javax.persistence.Query;
 
 import br.cefetrj.sisgee.model.entity.TermoEstagio;
 
+/**
+ * @author Bruno
+ * Classe para manipulações no banco relacionadas com o relatório de termos
+ */
+
 public class RelatorioDAO {
+	
+	/**
+	 * @author Bruno
+	 * Busca de termos no banco de dados entre as datas escolhidas 
+	 * @param dataInicial
+	 * @param dataFinal
+	 * @param estagioObr
+	 * @return retorna uma lista de objetos
+	 */
 	
 	public static List<Object[]> relatorioTermos(Date dataInicial, Date dataFinal, String estagioObr){
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");

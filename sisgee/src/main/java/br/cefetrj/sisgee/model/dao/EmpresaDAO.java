@@ -10,11 +10,24 @@ import javax.persistence.Query;
 import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
 import br.cefetrj.sisgee.model.entity.Empresa;
 
+/**
+ * @author Bruno
+ * Classe para pesquisas no banco relacionadas com a entidade empresa
+ */
+
 public class EmpresaDAO  extends GenericDAO<EmpresaDAO>{
 	
 	public EmpresaDAO(){
 		super(EmpresaDAO.class, PersistenceManager.getEntityManager());
 	}
+	
+	/**
+	 * @author Bruno
+	 * Busca uma empresa ligada a um agente de integração a partir de seu cnpj e o agente de integração
+	 * @param agenteintegracao
+	 * @param cnpj
+	 * @return retorna lista de empresas
+	 */
 	
 	public static List<Empresa> buscarPorAgenteIntegracao(AgenteIntegracao agenteintegracao, String cnpj){
 		
@@ -22,9 +35,16 @@ public class EmpresaDAO  extends GenericDAO<EmpresaDAO>{
 		EntityManager manager = factory.createEntityManager();	
 		manager.close();
 		factory.close();
-		
 		return null;
 	}
+	
+	/**
+	 * @author Leticia
+	 * busca uma empresa que esteja ligada ao agente de integração
+	 * @param agenteintegracao
+	 * @param cnpj
+	 * @return retorna uma lista contendo a empresa ligada ao cnpj
+	 */
 	
 	public static List<Empresa> buscarPorCNPJ(String cnpj_empresa){
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");
@@ -36,6 +56,14 @@ public class EmpresaDAO  extends GenericDAO<EmpresaDAO>{
 		factory.close();
 		return lista;
 	}
+	
+	/**
+	 * @author Leticia
+	 * busca uma empresa que esteja ligada ao agente de integração
+	 * @param nome_agente
+	 * @param cnpj_empresa
+	 * @return retorna uma lista de empresas
+	 */
 	
 	public static List<Empresa> buscarEmpresaLigadaAI(String cnpj_empresa, String nome_agente){
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("SisgeePU");

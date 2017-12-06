@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 
  * Servlet implementation class IncluirAlunoServlet
  */
 public class IncluirTermoEstagioCommand implements Command {

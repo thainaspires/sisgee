@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 
 /**
  * @author Thaina Pires
- * Classe para a entidade Agente de IntegraÁ„o
+ * Classe para a entidade Agente de Integracao
  */
 
 @Entity
@@ -57,6 +57,12 @@ public class AgenteIntegracao {
 		result = prime * result + ((idAgenteIntegracao == null) ? 0 : idAgenteIntegracao.hashCode());
 		return result;
 	}
+	/**
+	 * @author Thaina Pires
+	 * Compara se dois objetos Agente de Integra√ß√£o sao o mesmo objeto
+	 * @param obj Object
+	 * @return boolean
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -73,6 +79,12 @@ public class AgenteIntegracao {
 			return false;
 		return true;
 	}
+	/**
+	 * @author Thaina Pires
+	 * Sobrescreve o toString padr√£o
+	 * @return void
+	 */
+	
 	@Override
 	public String toString() {
 		return nomeAgenteIntegracao;

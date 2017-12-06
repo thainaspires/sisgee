@@ -11,7 +11,11 @@ import br.cefetrj.sisgee.control.AlunoServices;
 import br.cefetrj.sisgee.control.TermoAditivoServices;
 import br.cefetrj.sisgee.model.entity.Aluno;
 import br.cefetrj.sisgee.model.entity.TermoAditivo;
-
+/**
+ * @author Thainï¿½
+ * Command para Listar os termos aditivos e realizar sua validaÃ§Ã£o
+ * 
+ */
 public class ListarTermosAditivosCommand implements Command{
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String matricula = req.getParameter("matricula");
@@ -27,12 +31,12 @@ public class ListarTermosAditivosCommand implements Command{
 			if(aluno.size() > 0){
 				
 				Aluno alunoBuscado = aluno.get(0);
-				msg += "Matrícula retornada com sucesso. ";
+				msg += "Matrï¿½cula retornada com sucesso. ";
 				req.setAttribute("aluno", alunoBuscado);
 
 				termoEstagio = TermoAditivoServices.listarTermoEstagio(matricula);
 				if (termoEstagio == null){
-					msg2+="Não foi possível encontrar termo estágio/aditivos para o aluno atualmente. ";
+					msg2+="Nï¿½o foi possï¿½vel encontrar termo estï¿½gio/aditivos para o aluno atualmente. ";
 				}else{
 					termosAditivos = TermoAditivoServices.listarTermosAditivos(matricula);
 					if(termosAditivos == null){
@@ -56,11 +60,11 @@ public class ListarTermosAditivosCommand implements Command{
 				req.setAttribute("listaTermos", termo);	
 				
 			} else {
-				msg += "Matrícula não encontrada";
-				msg2+= "Pesquisa inválida";
+				msg += "Matrï¿½cula nï¿½o encontrada";
+				msg2+= "Pesquisa invï¿½lida";
 			}	
 		}else{
-			msg += "É necessário digitar uma matrícula antes de buscar";
+			msg += "ï¿½ necessï¿½rio digitar uma matrï¿½cula antes de buscar";
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("msg2", msg2);

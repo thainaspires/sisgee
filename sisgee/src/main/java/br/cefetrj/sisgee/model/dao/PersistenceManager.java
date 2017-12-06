@@ -5,6 +5,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+/**
+ * @author Bruno
+ * Classe para conexão com o banco
+ */
+
 public class PersistenceManager {
 	
 	private static EntityManagerFactory factory =

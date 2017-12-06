@@ -22,13 +22,15 @@ import br.cefetrj.sisgee.view.commands.ListarTermosAditivosCommand;
 import br.cefetrj.sisgee.view.commands.ValidarRegistroRescisaoCommand;
 import br.cefetrj.sisgee.view.commands.ValidarTermoEstagioCommand;
 
+
 /**
+ * @author Thaina Pires
  * Servlet implementation class FrontControllerServlet
  */
 @WebServlet("/FrontControllerServlet")
 public class FrontControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+	
 	private static Map<String, Command> comandos = new HashMap<String, Command>();
 	
 	static{

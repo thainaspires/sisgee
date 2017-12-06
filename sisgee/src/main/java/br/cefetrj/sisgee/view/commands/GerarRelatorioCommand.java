@@ -17,8 +17,8 @@ import br.cefetrj.sisgee.control.GerarRelatorioServices;
 import br.cefetrj.sisgee.model.entity.TermoEstagio;
 
 /**
- * Command para gerar o relatório consolidado
- * @author Thainá
+ * Command para gerar o relatï¿½rio consolidado e realizar a validaÃ§Ã£o dos dados
+ * @author Thainï¿½
  *
  */
 public class GerarRelatorioCommand implements Command{
@@ -32,7 +32,7 @@ public class GerarRelatorioCommand implements Command{
 		Date dataFinalFormatada = null;
 		String msg = "";
 		
-		//Se as datas não forem vazias e estiverem no formato correto
+		//Se as datas nï¿½o forem vazias e estiverem no formato correto
 		if(dataInicial != null && dataInicial.length() != 0 && dataFinal != null && dataFinal.length() != 0 && 
 		dataInicial.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d") && dataFinal.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d")){
 			
@@ -58,20 +58,20 @@ public class GerarRelatorioCommand implements Command{
 	            /**TODO: **/
 	        }
 	        
-	        //Se a data inicial não depois da final
+	        //Se a data inicial nï¿½o depois da final
 	        if (!(dataSql.after(dataSql2))){
-	        	//Recupera a lista com a consulta do relatório
+	        	//Recupera a lista com a consulta do relatï¿½rio
 	        	List<Object[]> lista = GerarRelatorioServices.gerarRelatorio(dataSql, dataSql2, radioestagio);
 	        	req.setAttribute("listaRelatorio", lista);
-	        	//Se a lista for vázia, não há resultados para estas datas e seta a mensagem de erro
+	        	//Se a lista for vï¿½zia, nï¿½o hï¿½ resultados para estas datas e seta a mensagem de erro
 	        	if (lista.isEmpty()){
-	        		req.setAttribute("msg2", "A consulta não retornou resultados");
+	        		req.setAttribute("msg2", "A consulta nï¿½o retornou resultados");
 	        	}
 	        //Se a data inicial for depois da final, mensagem de erro
 	        }else{
 	        	msg+="Data inicial deve ser antes da data final";
 	        }
-	    //Se alguma data não tiver sido preenchida ou não estiver no formato correto
+	    //Se alguma data nï¿½o tiver sido preenchida ou nï¿½o estiver no formato correto
 		}else{
 			if (!(dataInicial != null && dataInicial.length() != 0)){
 				msg+="Data de inicio precisa ser preenchida";

@@ -11,10 +11,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+/**
+ * @author Thaina Pires
+ * Classe para a entidade Professor Orientador
+ */
+
 @Entity
 public class ProfessorOrientador {
 	/**
-	 * Todos os atributos que se refiram a ProfessorOrientador serão denominados com o sufixo po
+	 * Todos os atributos que se refiram a ProfessorOrientador serï¿½o denominados com o sufixo po
 	 * @author: Alexander Hugo
 	 */
 	@Id

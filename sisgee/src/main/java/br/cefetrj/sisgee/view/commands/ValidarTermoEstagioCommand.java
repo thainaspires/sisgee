@@ -20,7 +20,12 @@ import br.cefetrj.sisgee.model.entity.Convenio;
 import br.cefetrj.sisgee.model.entity.Empresa;
 import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
 import br.cefetrj.sisgee.model.entity.TermoEstagio;
-
+/**
+ * 
+ * @author Thainï¿½
+ * Command para cadastrar o termo de estÃ¡gio e realizar validaÃ§Ã£o de seus dados
+ * 
+ */
 
 public class ValidarTermoEstagioCommand implements Command {
 	
@@ -44,10 +49,10 @@ public class ValidarTermoEstagioCommand implements Command {
 			if(!(alunoList.isEmpty())){
 				aluno = alunoList.get(0);
 			} else {
-				msg += "Matrícula não encontrada.";
+				msg += "Matrï¿½cula nï¿½o encontrada.";
 			}	
 		}else{
-			msg += " É necessário digitar uma matrícula.";
+			msg += " ï¿½ necessï¿½rio digitar uma matrï¿½cula.";
 		}
 		
 		String eagente = req.getParameter("exampleRadios");
@@ -63,7 +68,7 @@ public class ValidarTermoEstagioCommand implements Command {
 		java.sql.Date dataSql = null;
 	    java.sql.Date dataSql2 = null;
 		
-		//validação das datas de vigencia
+		//validaï¿½ï¿½o das datas de vigencia
 		if(dataInicio != null && dataInicio.length() != 0 && dataTermino != null && dataTermino.length() != 0 && 
 		dataInicio.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d") && dataTermino.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d")){
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -93,10 +98,10 @@ public class ValidarTermoEstagioCommand implements Command {
 			
 		}else{
 			if(dataInicio == null || dataInicio.length() == 0){
-				msg+=" Data inicio não pode estar vazia. ";
+				msg+=" Data inicio nï¿½o pode estar vazia. ";
 			}
 			if(dataTermino == null || dataTermino.length() == 0){
-				msg+=" Data final não pode estar vazia. ";
+				msg+=" Data final nï¿½o pode estar vazia. ";
 			}
 			if(!dataTermino.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d")){
 				msg+=" Data Termino precisa estar no formato DD/MM/AAAA.";
@@ -108,23 +113,23 @@ public class ValidarTermoEstagioCommand implements Command {
 		
 		String horas_dia = req.getParameter("horas_dia");
 		
-		//validação das horas
+		//validaï¿½ï¿½o das horas
 		if(horas_dia == null || horas_dia.trim().length() == 0){
-			msg+=" Por favor digite a carga horária do aluno.";
+			msg+=" Por favor digite a carga horï¿½ria do aluno.";
 		}else{
 			try {
 				Integer horas_dia_ = Integer.parseInt(horas_dia);
 				if(horas_dia_ < 0 || horas_dia_ > 6){
-					msg += " Carga horária do aluno precisa ser maior que 0 e menor que 6.";
+					msg += " Carga horï¿½ria do aluno precisa ser maior que 0 e menor que 6.";
 				}
 			} catch (Exception e) {
-				msg += " Carga horária precisa ser digito.";
+				msg += " Carga horï¿½ria precisa ser digito.";
 			}
 		}
 		
 		String valor_bolsa = req.getParameter("valor_bolsa");
 		
-		//Validação do valor da bolsa
+		//Validaï¿½ï¿½o do valor da bolsa
 		if(valor_bolsa == null || valor_bolsa.trim().length() == 0){
 			msg+=" Por favor digite o valor da bolsa do aluno.";
 		}else{
@@ -134,87 +139,87 @@ public class ValidarTermoEstagioCommand implements Command {
 					msg += " Valor da bolsa do aluno precisa ser maior que 0.";
 				}
 			} catch (Exception e) {
-				msg += " Valor da bolsa precisa ser dígito (com ponto se necessário para número quebrado).";
+				msg += " Valor da bolsa precisa ser dï¿½gito (com ponto se necessï¿½rio para nï¿½mero quebrado).";
 			}
 		}
 		
 		String endereco = req.getParameter("endereco");
 		
-		//Validação do endereço
+		//Validaï¿½ï¿½o do endereï¿½o
 		if(endereco == null || endereco.trim().length() == 0){
-			msg+=" Por favor digite o endereço do aluno.";
+			msg+=" Por favor digite o endereï¿½o do aluno.";
 		}else{
 			if (endereco.length() > 255){
-				msg+=" Endereço só pode ter até 255 caracteres.";
+				msg+=" Endereï¿½o sï¿½ pode ter atï¿½ 255 caracteres.";
 			}
 		}
 		
 		String complemento = req.getParameter("complemento");
-		//Validação do complemento
+		//Validaï¿½ï¿½o do complemento
 		if(complemento == null || complemento.trim().length() == 0){
 			msg+=" Por favor digite o complemento do aluno.";
 		}else{
 			if (complemento.length() > 150){
-				msg+=" Complemento só pode ter até 150 caracteres.";
+				msg+=" Complemento sï¿½ pode ter atï¿½ 150 caracteres.";
 			}
 		}
 		
 		String bairro = req.getParameter("bairro");
-		//Validação do bairro
+		//Validaï¿½ï¿½o do bairro
 		if(bairro == null || bairro.trim().length() == 0){
 			msg+=" Por favor digite o bairro do aluno.";
 		}else{
 			if (bairro.length() > 150){
-				msg+=" Bairro só pode ter até 150 caracteres.";
+				msg+=" Bairro sï¿½ pode ter atï¿½ 150 caracteres.";
 			}
 		}
 		
 		String cidade = req.getParameter("cidade");
-		//Validação do cidade
+		//Validaï¿½ï¿½o do cidade
 		if(cidade == null || cidade.trim().length() == 0){
 			msg+=" Por favor digite o cidade do aluno.";
 		}else{
 			if (cidade.length() > 150){
-				msg+=" Cidade só pode ter até 150 caracteres.";
+				msg+=" Cidade sï¿½ pode ter atï¿½ 150 caracteres.";
 			}
 		} 
 		
 		String estado = req.getParameter("estado");
-		//Validação do estado
+		//Validaï¿½ï¿½o do estado
 		if(estado == null || estado.trim().length() == 0 ){
 			msg+=" Por favor selecione o estado do aluno.";
 		}else{
 			if (estado.length() != 2){
-				msg+=" Por favor selecione um estado válido.";
+				msg+=" Por favor selecione um estado vï¿½lido.";
 			}
 		}
 		
 		String cep = req.getParameter("cep");
-		//Validação do cep
+		//Validaï¿½ï¿½o do cep
 		if(cep == null || cep.trim().length() == 0 ){
 			msg+=" Por favor digite o cep do aluno.";
 		}else{
 			try {
 				Integer cep_ = Integer.parseInt(cep);
 				if (cep.length() <0 || cep.length() > 15){
-					msg += " Cep precisa ter até 15 caracteres.";
+					msg += " Cep precisa ter atï¿½ 15 caracteres.";
 				}
 			} catch (Exception e) {
-				msg += " Cep precisa ter somente dígitos.";
+				msg += " Cep precisa ter somente dï¿½gitos.";
 			}
 		}
 		boolean cnpjinvalido = false;
 		
 		if(eagente.equals("sim") && (cnpj_empresa_ligada == null || cnpj_empresa_ligada.trim().length() == 0)){
-			msg+=" Cnpj não pode estar vazio. ";
+			msg+=" Cnpj nï¿½o pode estar vazio. ";
 			cnpjinvalido = true; 
 		}
 		if((nome_empresa == null || nome_empresa.trim().length() == 0)){
-			msg+=" Razão social não pode estar vazio. ";
+			msg+=" Razï¿½o social nï¿½o pode estar vazio. ";
 			cnpjinvalido = true; 
 		}else{
 			if((nome_empresa.trim().length() > 0 && nome_empresa.trim().length() > 100)){
-				msg+=" Razão social não pode utrapassar 100 caracteres. ";
+				msg+=" Razï¿½o social nï¿½o pode utrapassar 100 caracteres. ";
 				cnpjinvalido = true; 
 			}
 		}
@@ -240,18 +245,18 @@ public class ValidarTermoEstagioCommand implements Command {
 		}
 		
 		if(!(eagente.equals("sim")) && (cnpj_empresa == null || cnpj_empresa.trim().length() == 0)){
-			msg+=" Cnpj não pode estar vazio. ";
+			msg+=" Cnpj nï¿½o pode estar vazio. ";
 			cnpjinvalido = true;
 		}
 		
-		//Validação do convênio
+		//Validaï¿½ï¿½o do convï¿½nio
 		if(numConvenio == null || numConvenio.trim().length() == 0){
-			msg += " Número do convênio não pode ser vazio."; 
+			msg += " Nï¿½mero do convï¿½nio nï¿½o pode ser vazio."; 
 		}else{
 			try {
 				Double nConvenio = Double.parseDouble(numConvenio);
 				if(numConvenio.trim().length() < 10 || numConvenio.trim().length() > 10){
-					msg += " Número do convênio precisa ter 10 digitos.";
+					msg += " Nï¿½mero do convï¿½nio precisa ter 10 digitos.";
 				}else{
 					resultconvenio = ConvenioServices.buscarConvenio(numConvenio);
 					if(!(resultconvenio.isEmpty())){
@@ -263,19 +268,19 @@ public class ValidarTermoEstagioCommand implements Command {
 							if(!(resultempresa.isEmpty())){
 								empresa = resultempresa.get(0);
 							} else {
-								msg += " Agente de integração não está ligado à esta empresa.";
+								msg += " Agente de integraï¿½ï¿½o nï¿½o estï¿½ ligado ï¿½ esta empresa.";
 							}
 						}
 					} else {
 						if(cnpj_empresa == null || cnpj_empresa.trim().length() == 0){
-							msg+=" Cnpj não pode estar vazio.";
+							msg+=" Cnpj nï¿½o pode estar vazio.";
 						}else{
 							if(cnpjinvalido == false){
 								List<Empresa> resultempresa = EmpresaServices.buscarEmpresa(cnpj_empresa);
 								if(!(resultempresa.isEmpty())){
 									empresa = resultempresa.get(0);
 								} else {
-									msg += " Empresa não encontrada.";
+									msg += " Empresa nï¿½o encontrada.";
 								}
 							}
 						}
@@ -286,13 +291,13 @@ public class ValidarTermoEstagioCommand implements Command {
 						ConvenioServices.registrarConvenio(convincluido);
 					} else {
 						if(convenio.getEmpresa().getIdEmpresa() == null || convenio.getEmpresa().getIdEmpresa() != empresa.getIdEmpresa()){
-							msg+=" Convenio não está ligado com empresa selecionada.";
+							msg+=" Convenio nï¿½o estï¿½ ligado com empresa selecionada.";
 						}
 					}
 						
 				}
 			} catch (Exception e) {
-				msg += " Número do convênio só pode ter números.";
+				msg += " Nï¿½mero do convï¿½nio sï¿½ pode ter nï¿½meros.";
 			}
 		}
 		
