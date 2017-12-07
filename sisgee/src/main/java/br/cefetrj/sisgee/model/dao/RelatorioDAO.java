@@ -12,7 +12,7 @@ import br.cefetrj.sisgee.model.entity.TermoEstagio;
 
 /**
  * @author Bruno
- * Classe para manipulaÃ§Ãµes no banco relacionadas com o relatÃ³rio de termos
+ * Classe para manipulações no banco relacionadas com o relatório de termos
  */
 
 public class RelatorioDAO {

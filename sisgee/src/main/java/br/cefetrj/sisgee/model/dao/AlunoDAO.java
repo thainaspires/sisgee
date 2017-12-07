@@ -23,9 +23,9 @@ public class AlunoDAO  extends GenericDAO<Aluno> {
 	
 	/**
 	 * @author Leticia
-	 * Busca um aluno a partir da matricula
+	 * Busca um aluno a partir da matrícula
 	 * @param matricula
-	 * @return retorna uma lista com o aluno correspondente a matrÃ­cula
+	 * @return retorna uma lista com o aluno correspondente a matrícula
 	 */
 	
 	public static List<Aluno> buscarPorMatricula(String matricula){

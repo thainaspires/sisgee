@@ -15,7 +15,7 @@ import br.cefetrj.sisgee.model.entity.Empresa;
 import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
 /**
  * @author Nathalia Gomes
- * Classe para validaÃ§Ã£o da busca de Empresa ligada a agente de integraÃ§Ã£o
+ * Classe para validação da busca de Empresa ligada a agente de integração
  *  
  */
 public class BuscarEmpresaLigadaAICommand implements Command {
@@ -34,14 +34,14 @@ public class BuscarEmpresaLigadaAICommand implements Command {
 					List<Empresa> empresa = null;
 					empresa = EmpresaServices.buscarEmpresaLigadaAI(cnpj_empresa_ligada, ai);
 					if(empresa.isEmpty()){
-						msg += "Empresa nï¿½o encontrada ou nï¿½o estï¿½ ligada ao agente de integraï¿½ï¿½o";
+						msg += "Empresa não encontrada ou não está ligada ao agente de integração";
 					} else {
 						Empresa empresaLigadaAIBuscada = empresa.get(0);
 						req.setAttribute("empresaligada", empresaLigadaAIBuscada);
 					}
 				}
 			}catch (Exception e) {
-				msg += "Cnpj precisa ser composto somente de nï¿½meros";
+				msg += "Cnpj precisa ser composto somente de números";
 			}	
 		} else {
 			msg += "Digite um CNPJ antes de buscar";

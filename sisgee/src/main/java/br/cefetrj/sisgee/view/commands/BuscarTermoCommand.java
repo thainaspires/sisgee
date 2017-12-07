@@ -16,7 +16,7 @@ import br.cefetrj.sisgee.model.entity.TermoEstagio;
 
 /**
  * @author Nathalia Gomes
- * Command para validaÃ§Ã£o da busca de Termo e os dados
+ * Command para validação da busca de Termo e os dados
  *  
  */
 

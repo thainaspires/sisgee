@@ -15,7 +15,7 @@ import br.cefetrj.sisgee.model.entity.Empresa;
 import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
 /**
  * @author Nathalia Gomes
- * Classe para validaÃ§Ã£o da busca de Empresa
+ * Classe para validação da busca de Empresa
  *  
  */
 public class BuscarEmpresaCommand  implements Command {
@@ -34,14 +34,14 @@ public class BuscarEmpresaCommand  implements Command {
 						List<Empresa> empresa = null;
 						empresa = EmpresaServices.buscarEmpresa(cnpj_empresa);
 						if(empresa.isEmpty()){
-							msg += "Empresa nï¿½o encontrada";
+							msg += "Empresa não encontrada";
 						} else {
 							Empresa empresaBuscada = empresa.get(0);
 							req.setAttribute("empresa", empresaBuscada);
 						}
 					}
 				} catch (Exception e) {
-					msg += "Cnpj precisa ser composto somente de nï¿½meros";
+					msg += "Cnpj precisa ser composto somente de números";
 				}
 			} else {
 				msg += "Digite um CNPJ antes de buscar";

@@ -15,7 +15,7 @@ import br.cefetrj.sisgee.model.entity.Empresa;
 /**
  * 
  * @author Alexander Hugo
- * Command para cadastrar Empresa e validar as informaÃ§Ãµes
+ * Command para cadastrar Empresa e validar as informaçõees
  * Servlet implementation class CadastrarEmpresaCommmand
  */
 public class CadastrarEmpresaCommand implements Command {
@@ -29,23 +29,23 @@ public class CadastrarEmpresaCommand implements Command {
 		boolean sucesso = false;
 		
 		if(!(cnpj != null && cnpj.trim().length() > 0)){
-			msg += "CNPJ nï¿½o pode ser vazio ";
+			msg += "CNPJ não pode ser vazio ";
 		}
 		if(cnpj.trim().length() > 14){
-			msg += "CNPJ nï¿½o pode ser maior que 14 caracteres.";
+			msg += "CNPJ não pode ser maior que 14 caracteres.";
 		}
 		if(cnpj.trim().length() > 0 && cnpj.trim().length() < 14){
-			msg += "CNPJ nï¿½o pode ser menor que 14 caracteres.";
+			msg += "CNPJ não pode ser menor que 14 caracteres.";
 		}
 		if(!(razaosocial != null && razaosocial.trim().length() > 0)){
-			msg += "Razï¿½o Social nï¿½o pode ser vazio.";
+			msg += "Razão Social não pode ser vazio.";
 		}
 		if(!(razaosocial.trim().length() <= 100)){
-			msg += "Razï¿½o Social deve ter atï¿½ 100 caracteres.";
+			msg += "Razão Social deve ter até 100 caracteres.";
 		}
 		if(agente.equals("")){
 			//Agente deve ser sim ou nï¿½o
-			msg += "A Opï¿½ï¿½o de Agente de Integraï¿½ï¿½o precisa ser sim ou nï¿½o.";
+			msg += "A Opção de Agente de Integração precisa ser sim ou não.";
 		}
 		
 		if(agente.equals("s")){

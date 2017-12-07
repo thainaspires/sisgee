@@ -23,7 +23,7 @@ public class EmpresaDAO  extends GenericDAO<EmpresaDAO>{
 	
 	/**
 	 * @author Bruno
-	 * Busca uma empresa ligada a um agente de integraÃ§Ã£o a partir de seu cnpj e o agente de integraÃ§Ã£o
+	 * Busca uma empresa ligada a um agente de integração a partir de seu cnpj e o agente de integração
 	 * @param agenteintegracao
 	 * @param cnpj
 	 * @return retorna lista de empresas
@@ -40,7 +40,7 @@ public class EmpresaDAO  extends GenericDAO<EmpresaDAO>{
 	
 	/**
 	 * @author Leticia
-	 * busca uma empresa que esteja ligada ao agente de integraÃ§Ã£o
+	 * busca uma empresa que esteja ligada ao agente de integração
 	 * @param agenteintegracao
 	 * @param cnpj
 	 * @return retorna uma lista contendo a empresa ligada ao cnpj
@@ -59,7 +59,7 @@ public class EmpresaDAO  extends GenericDAO<EmpresaDAO>{
 	
 	/**
 	 * @author Leticia
-	 * busca uma empresa que esteja ligada ao agente de integraÃ§Ã£o
+	 * busca uma empresa que esteja ligada ao agente de integração
 	 * @param nome_agente
 	 * @param cnpj_empresa
 	 * @return retorna uma lista de empresas

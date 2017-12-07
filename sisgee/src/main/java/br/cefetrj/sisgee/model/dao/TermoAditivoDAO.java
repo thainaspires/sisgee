@@ -9,7 +9,7 @@ import javax.persistence.Query;
 
 /**
  * @author Bruno
- * Classe para manipulaÃ§Ãµes no banco relacionadas com a entidade termo aditivo
+ * Classe para manipulações no banco relacionadas com a entidade termo aditivo
  */
 
 public class TermoAditivoDAO {

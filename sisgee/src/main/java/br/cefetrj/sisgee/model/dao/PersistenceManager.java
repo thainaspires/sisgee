@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 
 /**
  * @author Bruno
- * Classe para conex√£o com o banco
+ * Classe para conex„o com o banco
  */
 
 public class PersistenceManager {

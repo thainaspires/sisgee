@@ -15,7 +15,7 @@ import br.cefetrj.sisgee.model.entity.TermoEstagio;
 
 /**
  * @author Bruno
- * Classe para manipula√ß√µes no banco relacionadas com a entidade termo estagio
+ * Classe para manipulaÁıes no banco relacionadas com a entidade termo estagio
  */
 
 public class TermoEstagioDAO {
@@ -43,9 +43,9 @@ public class TermoEstagioDAO {
 	}
 	/**
 	 * @author Bruno
-	 * Altera o termo estagio para acrescentar a data de rescis√£o
+	 * Altera o termo estagio para acrescentar a data de rescis„o
 	 * @param termo TermoEstagio - Entidade termo
-	 * @param data_Rescisao Date - Data de rescis√£o do termo
+	 * @param data_Rescisao Date - Data de rescis„o do termo
 	 * @return void
 	 */
 	public static void AlterarTermoEstagio(TermoEstagio termo, Date data_Rescisao){
@@ -64,7 +64,7 @@ public class TermoEstagioDAO {
 	
 	/**
 	 * @author Bruno
-	 * Incluir termo de est√°gio no banco
+	 * Incluir termo de est·gio no banco
 	 * @param termo TermoEstagio - Entidade termo
 	 * @return void
 	 */

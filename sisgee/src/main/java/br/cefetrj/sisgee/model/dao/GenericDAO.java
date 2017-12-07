@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 
 /**
  * @author Bruno
- * DAO generico para manipulaÃ§Ãµes no banco
+ * DAO generico para manipulação no banco
  */
 
 public class GenericDAO<T> {

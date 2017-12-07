@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class ProfessorOrientador {
 	/**
-	 * Todos os atributos que se refiram a ProfessorOrientador serï¿½o denominados com o sufixo po
+	 * Todos os atributos que se refiram a ProfessorOrientador serão denominados com o sufixo po
 	 * @author: Alexander Hugo
 	 */
 	@Id

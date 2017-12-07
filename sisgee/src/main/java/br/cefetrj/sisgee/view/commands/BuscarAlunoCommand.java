@@ -15,7 +15,7 @@ import br.cefetrj.sisgee.model.entity.Aluno;
 import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
 /**
  * @author Nathalia Gomes
- * Classe para validaÃ§Ã£o da busca de Aluno
+ * Classe para validação da busca de Aluno
  *  
  */
 public class BuscarAlunoCommand implements Command{
@@ -27,20 +27,20 @@ public class BuscarAlunoCommand implements Command{
 		if (ondeEstaVindo != null && ondeEstaVindo.equals("rescisao") ){
 			if (matricula != null && matricula.trim().length() > 0){
 				if(matricula.trim().length() > 100){
-					msg+="Matrï¿½cula precisa ter atï¿½ 100 caracteres";
+					msg+="Matrícula precisa ter 100 caracteres";
 				}else{
 					List<Aluno> aluno = null;
 					aluno = AlunoServices.buscarDetermAluno(matricula);
 					if(aluno.size() > 0){
 						Aluno alunoBuscado = aluno.get(0);
-						msg += "Matrï¿½cula retornada com sucesso";
+						msg += "Matrícula retornada com sucesso";
 						req.setAttribute("aluno", alunoBuscado);
 					} else {
-						msg += "Matrï¿½cula nï¿½o encontrada";
+						msg += "Matrícula não encontrada";
 					}
 				}		
 			}else{
-				msg += "ï¿½ necessï¿½rio digitar uma matrï¿½cula antes de buscar";
+				msg += "É necessário digitar uma matrícula antes de buscar";
 			}
 			req.setAttribute("msg", msg);
 			req.getRequestDispatcher("/termorescisao.jsp").forward(req, resp);
@@ -48,24 +48,24 @@ public class BuscarAlunoCommand implements Command{
 		}else{		
 			if (matricula != null && matricula.trim().length() > 0){
 				if(matricula.trim().length() > 100){
-					msg+="Matrï¿½cula precisa ter atï¿½ 100 caracteres";
+					msg+="Matrícula precisa ter até 100 caracteres";
 				}else{
 					List<Aluno> alunos = null;
 					alunos = AlunoServices.buscarDetermAluno(matricula);
 					if(alunos.size() > 0){
 						Aluno aluno = alunos.get(0);
 						String idAluno = aluno.getIdAluno().toString();
-						msg += "Matrï¿½cula retornada com sucesso";
+						msg += "Matrícula retornada com sucesso";
 						req.setAttribute("idAluno", idAluno);
 						req.setAttribute("aluno", aluno);
 					} else {
-						msg += "Matrï¿½cula nï¿½o encontrada";
+						msg += "Matrícula não encontrada";
 					}	
 				}
 			} else if(!(matricula.trim().length() <= 100)){ 
-				msg += "O tamanho da matrï¿½cula excede o limite permitido";
+				msg += "O tamanho da matrícula excede o limite permitido";
 			} else{
-				msg += "ï¿½ necessï¿½rio digitar uma matrï¿½cula antes de buscar";
+				msg += "É necessário digitar uma matrícula antes de buscar";
 			}
 			req.setAttribute("msg", msg);
 			req.getRequestDispatcher("/termoestagio.jsp").forward(req, resp);

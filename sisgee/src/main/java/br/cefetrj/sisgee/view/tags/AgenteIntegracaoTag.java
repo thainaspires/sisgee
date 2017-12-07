@@ -10,8 +10,8 @@ import br.cefetrj.sisgee.control.AgenteIntegracaoServices;
 import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
 
 /**
- * @author Thainï¿½
- * Tag para buscar todos os agentes de Integracao e disponibilizÃ¡-los no combobox do jsp do termo de estÃ¡gio
+ * @author Thainá
+ * Tag para buscar todos os agentes de Integracao e disponibilizá-los no combobox do jsp do termo de estágio
  * 
  */
 
@@ -23,7 +23,7 @@ public class AgenteIntegracaoTag extends SimpleTagSupport{
 		List<AgenteIntegracao> lista = AgenteIntegracaoServices.listarAgentesIntegracao();
 		
 		String retorno = "<select style='float:left;' id='razao_social' name='razao_social' class='form-control'>"+
-							"<option value=''>Escolha um agente de integraï¿½ï¿½o</option>";
+							"<option value=''>Escolha um agente de integração</option>";
 		for(AgenteIntegracao agente:lista){
 			retorno += "<option value='"+ agente.getNomeAgenteIntegracao() +"' ";
 			if(agente.getNomeAgenteIntegracao().equals(nome)){

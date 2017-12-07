@@ -11,8 +11,8 @@ import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
 import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
 
 /**
- * @author Thainï¿½
- * Tag para buscar todos os Professores orientadores e disponibilizÃ¡-los no combobox do jsp do termo de estÃ¡gio
+ * @author Thainá
+ * Tag para buscar todos os Professores orientadores e disponibilizá-los no combobox do jsp do termo de estágio
  * 
  */
 

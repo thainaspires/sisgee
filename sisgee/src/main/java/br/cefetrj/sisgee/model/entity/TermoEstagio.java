@@ -20,7 +20,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class TermoEstagio {
 	/**
-	 * Todos os atributos que se refiram a TermoEstagio serï¿½o denominados com o sufixo te
+	 * Todos os atributos que se refiram a TermoEstagio serão denominados com o sufixo te
 	 * @author: Alexander Hugo
 	 */
 	@Id

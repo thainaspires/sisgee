@@ -17,8 +17,8 @@ import br.cefetrj.sisgee.control.GerarRelatorioServices;
 import br.cefetrj.sisgee.model.entity.TermoEstagio;
 
 /**
- * Command para gerar o relatï¿½rio consolidado e realizar a validaÃ§Ã£o dos dados
- * @author Thainï¿½
+ * Command para gerar o relatório consolidado e realizar a validação dos dados
+ * @author Thainá
  *
  */
 public class GerarRelatorioCommand implements Command{
@@ -65,7 +65,7 @@ public class GerarRelatorioCommand implements Command{
 	        	req.setAttribute("listaRelatorio", lista);
 	        	//Se a lista for vï¿½zia, nï¿½o hï¿½ resultados para estas datas e seta a mensagem de erro
 	        	if (lista.isEmpty()){
-	        		req.setAttribute("msg2", "A consulta nï¿½o retornou resultados");
+	        		req.setAttribute("msg2", "A consulta não retornou resultados");
 	        	}
 	        //Se a data inicial for depois da final, mensagem de erro
 	        }else{

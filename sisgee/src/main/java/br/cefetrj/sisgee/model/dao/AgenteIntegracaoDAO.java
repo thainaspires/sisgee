@@ -4,7 +4,7 @@ import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
 
 /**
  * @author Leticia
- * Classe para pesquisas no banco relacionadas com a entidade Agente de integraÃ§Ã£o
+ * Classe para pesquisas no banco relacionadas com a entidade Agente de integração
  */
 
 public class AgenteIntegracaoDAO  extends GenericDAO<AgenteIntegracao> {
