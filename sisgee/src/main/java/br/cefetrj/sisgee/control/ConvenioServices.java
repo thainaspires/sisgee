@@ -8,6 +8,10 @@ import br.cefetrj.sisgee.model.dao.PersistenceManager;
 import br.cefetrj.sisgee.model.entity.Convenio;
 import br.cefetrj.sisgee.model.entity.Empresa;
 
+/**
+ * Trata serviços relacionados ao convênio
+ * @author Thainá
+ */
 public class ConvenioServices {
 	public static void registrarConvenio(Convenio convenio){
 		GenericDAO<Convenio> convenioDao = PersistenceManager.createGenericDAO(Convenio.class);

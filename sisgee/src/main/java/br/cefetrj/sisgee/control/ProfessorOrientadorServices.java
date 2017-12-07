@@ -7,6 +7,10 @@ import br.cefetrj.sisgee.model.dao.PersistenceManager;
 import br.cefetrj.sisgee.model.entity.Aluno;
 import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
 
+/**
+ * Trata serviços relacionados ao professor orientador
+ * @author Thainá
+ */
 public class ProfessorOrientadorServices {
 	public static List<ProfessorOrientador> listarProfessoresOrientadores(){
 		GenericDAO<ProfessorOrientador> professorOrientadorDAO = 

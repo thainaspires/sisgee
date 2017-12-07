@@ -14,8 +14,8 @@ import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
 import br.cefetrj.sisgee.model.entity.Aluno;
 import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
 /**
- * @author Nathalia Gomes
  * Classe para validação da busca de Aluno
+ * @author Nathalia Gomes
  *  
  */
 public class BuscarAlunoCommand implements Command{

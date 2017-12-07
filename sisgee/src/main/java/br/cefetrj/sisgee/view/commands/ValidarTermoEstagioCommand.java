@@ -22,8 +22,8 @@ import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
 import br.cefetrj.sisgee.model.entity.TermoEstagio;
 /**
  * 
- * @author Thainá
  * Command para cadastrar o termo de estágio e realizar validação de seus dados
+ * @author Thainá
  * 
  */
 

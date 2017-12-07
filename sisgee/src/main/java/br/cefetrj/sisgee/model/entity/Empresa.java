@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
- * Entidade Empresa
+ * Classe para a entidade Empresa
  * @author Anderson Luiz
  * @since 1.0
  *

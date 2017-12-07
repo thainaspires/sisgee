@@ -13,8 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
- * @author Thaina Pires
  * Classe para a entidade Agente de Integracao
+ * @author Thaina Pires
  */
 
 @Entity

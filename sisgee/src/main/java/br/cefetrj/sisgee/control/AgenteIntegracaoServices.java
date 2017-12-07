@@ -6,6 +6,10 @@ import br.cefetrj.sisgee.model.dao.GenericDAO;
 import br.cefetrj.sisgee.model.dao.PersistenceManager;
 import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
 
+/**
+ * Trata serviços relacionados aoagente de integração
+ * @author Thainá
+ */
 public class AgenteIntegracaoServices {
 	public static void registrarAgenteIntegracao(AgenteIntegracao ai){
 		GenericDAO<AgenteIntegracao> agenteDao = PersistenceManager.createGenericDAO(AgenteIntegracao.class);

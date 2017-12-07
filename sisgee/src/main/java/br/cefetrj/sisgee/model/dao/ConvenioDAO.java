@@ -12,8 +12,8 @@ import br.cefetrj.sisgee.model.entity.Convenio;
 import br.cefetrj.sisgee.model.entity.Empresa;
 
 /**
- * @author Leticia
  * Classe para pesquisas no banco relacionadas com a entidade convênio
+ * @author Leticia
  */
 
 public class ConvenioDAO extends GenericDAO<ConvenioDAO>{
@@ -21,10 +21,10 @@ public class ConvenioDAO extends GenericDAO<ConvenioDAO>{
 		super(ConvenioDAO.class, PersistenceManager.getEntityManager());
 	}
 	/**
-	 * @author Leticia
 	 * Busca um convênio a a partir do número do convênio
+	 * @author Leticia
 	 * @param numero_convenio
-	 * @return retorna uma lista contendo o convÃªncio correspondente ao número
+	 * @return retorna uma lista contendo o convênio correspondente ao número
 	 */
 	public static List<Convenio> buscarConvenioPeloNumero(String numero_convenio){
 		

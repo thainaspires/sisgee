@@ -11,8 +11,8 @@ import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
 import br.cefetrj.sisgee.model.entity.Empresa;
 
 /**
- * @author Bruno
  * Classe para pesquisas no banco relacionadas com a entidade empresa
+ * @author Bruno
  */
 
 public class EmpresaDAO  extends GenericDAO<EmpresaDAO>{
@@ -22,8 +22,8 @@ public class EmpresaDAO  extends GenericDAO<EmpresaDAO>{
 	}
 	
 	/**
-	 * @author Bruno
 	 * Busca uma empresa ligada a um agente de integração a partir de seu cnpj e o agente de integração
+	 * @author Bruno
 	 * @param agenteintegracao
 	 * @param cnpj
 	 * @return retorna lista de empresas

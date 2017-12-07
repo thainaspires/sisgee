@@ -9,8 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 /**
- * @author Thaina Pires
  * Classe para a entidade pessoa
+ * @author Thaina Pires
  */
 
 @Entity

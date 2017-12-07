@@ -12,8 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
- * @author Thaina Pires
  * Classe para a entidade Professor Orientador
+ * @author Thaina Pires
  */
 
 @Entity

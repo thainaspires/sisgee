@@ -13,10 +13,8 @@ import br.cefetrj.sisgee.model.entity.Curso;
 import br.cefetrj.sisgee.model.entity.Empresa;
 
 /**
- * 
+ * Command para cadastrar Empresa e validar as informações
  * @author Alexander Hugo
- * Command para cadastrar Empresa e validar as informaçõees
- * Servlet implementation class CadastrarEmpresaCommmand
  */
 public class CadastrarEmpresaCommand implements Command {
 

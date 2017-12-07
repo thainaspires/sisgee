@@ -10,8 +10,8 @@ import br.cefetrj.sisgee.control.AgenteIntegracaoServices;
 import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
 
 /**
- * @author Thainá
  * Tag para buscar todos os agentes de Integracao e disponibilizá-los no combobox do jsp do termo de estágio
+ * @author Thainá
  * 
  */
 

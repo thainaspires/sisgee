@@ -24,8 +24,8 @@ import br.cefetrj.sisgee.view.commands.ValidarTermoEstagioCommand;
 
 
 /**
- * @author Thaina Pires
  * Servlet implementation class FrontControllerServlet
+ * @author Thaina Pires
  */
 @WebServlet("/FrontControllerServlet")
 public class FrontControllerServlet extends HttpServlet {

@@ -6,8 +6,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 /**
- * @author Bruno
  * Classe para conexão com o banco
+ * @author Bruno
  */
 
 public class PersistenceManager {

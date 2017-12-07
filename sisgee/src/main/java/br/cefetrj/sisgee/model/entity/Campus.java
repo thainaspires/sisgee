@@ -10,8 +10,8 @@ import javax.persistence.OneToMany;
 
 
 /**
- * @author Nathalia Gomes
  * Classe para a entidade campus
+ * @author Nathalia Gomes
  */
 
 @Entity

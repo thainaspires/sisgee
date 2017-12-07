@@ -14,14 +14,14 @@ import javax.swing.JOptionPane;
 import br.cefetrj.sisgee.model.entity.TermoEstagio;
 
 /**
- * @author Bruno
  * Classe para manipulações no banco relacionadas com a entidade termo estagio
+ * @author Bruno
  */
 
 public class TermoEstagioDAO {
 	/**
-	 * @author Bruno
 	 * Buscar termos estagios a partir de id
+	 * @author Bruno
 	 * @param id Long - Id do termo
 	 * @return TermoEstagio - Retorna o termo estÃ¡gio procurado
 	 */
@@ -42,8 +42,8 @@ public class TermoEstagioDAO {
 		}
 	}
 	/**
-	 * @author Bruno
 	 * Altera o termo estagio para acrescentar a data de rescisão
+	 * @author Bruno
 	 * @param termo TermoEstagio - Entidade termo
 	 * @param data_Rescisao Date - Data de rescisão do termo
 	 * @return void
@@ -63,8 +63,8 @@ public class TermoEstagioDAO {
 	}
 	
 	/**
-	 * @author Bruno
 	 * Incluir termo de estágio no banco
+	 * @author Bruno
 	 * @param termo TermoEstagio - Entidade termo
 	 * @return void
 	 */

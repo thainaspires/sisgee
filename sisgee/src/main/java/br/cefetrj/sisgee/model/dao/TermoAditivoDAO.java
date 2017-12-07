@@ -8,14 +8,14 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 /**
- * @author Bruno
  * Classe para manipulações no banco relacionadas com a entidade termo aditivo
+ * @author Bruno
  */
 
 public class TermoAditivoDAO {
 	/**
-	 * @author Bruno
 	 * Buscar termos aditivos a partir da matricula do aluno
+	 * @author Bruno
 	 * @param matricula String - Matricula do aluno
 	 * @return List - Lista dos termos aditivos
 	 */

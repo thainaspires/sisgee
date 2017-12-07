@@ -15,8 +15,8 @@ import br.cefetrj.sisgee.model.entity.TermoAditivo;
 import br.cefetrj.sisgee.model.entity.TermoEstagio;
 
 /**
- * @author Nathalia Gomes
  * Command para validação da busca de Termo e os dados
+ * @author Nathalia Gomes
  *  
  */
 

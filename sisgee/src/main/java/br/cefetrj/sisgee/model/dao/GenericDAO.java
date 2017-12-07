@@ -7,8 +7,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- * @author Bruno
  * DAO generico para manipulação no banco
+ * @author Bruno
  */
 
 public class GenericDAO<T> {

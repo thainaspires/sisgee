@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 
 
 /**
- * Entidade Convenio
+ * Classe para a entidade Convenio
  * @author Anderson Luiz
  * @since 1.0
  *

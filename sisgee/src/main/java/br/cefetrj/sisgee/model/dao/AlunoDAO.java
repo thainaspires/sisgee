@@ -11,8 +11,8 @@ import br.cefetrj.sisgee.model.entity.Aluno;
 import br.cefetrj.sisgee.model.entity.Pessoa;
 
 /**
- * @author Leticia
  * Classe para pesquisas no banco relacionadas com a entidade aluno
+ * @author Leticia
  */
 
 public class AlunoDAO  extends GenericDAO<Aluno> {
@@ -22,8 +22,8 @@ public class AlunoDAO  extends GenericDAO<Aluno> {
 	}
 	
 	/**
-	 * @author Leticia
 	 * Busca um aluno a partir da matrícula
+	 * @author Leticia
 	 * @param matricula
 	 * @return retorna uma lista com o aluno correspondente a matrícula
 	 */

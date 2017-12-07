@@ -8,8 +8,9 @@ import br.cefetrj.sisgee.model.dao.PersistenceManager;
 import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
 import br.cefetrj.sisgee.model.entity.Empresa;
 
-/** 
- * @author Alexander Hugo
+/**
+ * Trata serviços relacionados a empresa
+ * @author Thainá
  */
 public class EmpresaServices {
 	public static void registrarEmpresa(Empresa empresa){

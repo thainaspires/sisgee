@@ -8,6 +8,10 @@ import br.cefetrj.sisgee.model.dao.TermoAditivoDAO;
 import br.cefetrj.sisgee.model.entity.Aluno;
 import br.cefetrj.sisgee.model.entity.TermoAditivo;
 
+/**
+ * Trata serviços relacionados ao termo aditivo
+ * @author Thainá
+ */
 public class TermoAditivoServices {
 	public static List listarTermosAditivos(String matricula){
 		return TermoAditivoDAO.listarTermosAditivos(matricula);

@@ -12,8 +12,9 @@ import br.cefetrj.sisgee.control.TermoAditivoServices;
 import br.cefetrj.sisgee.model.entity.Aluno;
 import br.cefetrj.sisgee.model.entity.TermoAditivo;
 /**
- * @author Thainá
+ * 
  * Command para Listar os termos aditivos e realizar sua validação
+ * @author Thainá
  * 
  */
 public class ListarTermosAditivosCommand implements Command{

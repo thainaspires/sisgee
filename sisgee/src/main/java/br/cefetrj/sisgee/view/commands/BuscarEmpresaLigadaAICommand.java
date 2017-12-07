@@ -14,8 +14,8 @@ import br.cefetrj.sisgee.model.entity.AgenteIntegracao;
 import br.cefetrj.sisgee.model.entity.Empresa;
 import br.cefetrj.sisgee.model.entity.ProfessorOrientador;
 /**
- * @author Nathalia Gomes
  * Classe para validação da busca de Empresa ligada a agente de integração
+ * @author Nathalia Gomes
  *  
  */
 public class BuscarEmpresaLigadaAICommand implements Command {

@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 /**
- * @author Nathalia Gomes
  * Classe para entidade Termo Aditivo
+ * @author Nathalia Gomes
  */
 
 @Entity

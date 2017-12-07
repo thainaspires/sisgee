@@ -8,18 +8,10 @@ import br.cefetrj.sisgee.model.dao.PersistenceManager;
 import br.cefetrj.sisgee.model.entity.Aluno;
 
 /**
- * Exemplo de como utilizar a busca
- * 
- * @author Alexander Hugo
- * 
+ * Trata serviços relacionados ao aluno
+ * @author Thainá
  */
 public class AlunoServices {
-	
-	/**
-	 * Recupera todos os alunos e retorna em uma lista.
-	 * 
-	 * @return lista com todos os alunos
-	 */
 	public static List<Aluno> listarAlunos(){
 		GenericDAO<Aluno> alunoDao = PersistenceManager.createGenericDAO(Aluno.class);
 		return alunoDao.buscarTodos();
